@@ -1,0 +1,28 @@
+import React, { useContext, useEffect } from 'react'
+import DiscountForm from './DiscountForm/DiscountForm'
+import './discount.scss'
+import { ShopContext } from '../../../../Context/shopContext'
+
+const Discount = () => {
+
+    const { setAppState } = useContext( ShopContext )
+
+    useEffect(() => {
+        const html = document.querySelector('html')
+        html.scrollTop = 0
+        setAppState( prevState => {
+            return { ...prevState, page: 'discount' }
+        })
+    }, [])
+
+    return (
+        <div className='discount_container'>
+            <div className='title_container'>
+                <h3>10% DISCOUNT</h3>
+            </div>
+            <DiscountForm />
+        </div>
+    )
+}
+
+export default Discount

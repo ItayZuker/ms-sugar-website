@@ -1,0 +1,51 @@
+$dark_gray: rgb(20, 20, 20);
+$dark_gray_hover: rgb(30, 30, 30);
+$medium_dark_gray: rgb(50, 50, 50);
+$medium_gray: rgb(100, 100, 100);
+$medium_gray_hover: rgb(150, 150, 150);
+$light_gray: rgb(170, 170, 170);
+$off_white: rgb(220, 220, 220);
+$white: rgb(240, 240, 240);
+$red: rgb(200, 0, 0);
+$green: rgb(0, 150, 0);
+
+.desktop_confirmation_message_container {
+    width: 100vw;
+    height: 70vh;
+    background-color: $white;
+    position: fixed;
+    left: 0;
+    top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    > h3 {
+        color: $medium_gray;
+        font-size: 4vh;
+        font-weight: 400;
+        > i {
+            font-size: 10vh;
+        }
+    }
+    > h4 {
+        margin-top: 5vh;
+        color: $medium_gray;
+        font-size: 2.5vh;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        transition: color 0.2s;
+        > i {
+            margin-left: 10px;
+        }
+        &:hover {
+            cursor: pointer;
+            color: $light_gray;
+        }
+        &:active {
+            color: $medium_gray;
+        }
+    }
+}
+

@@ -1,0 +1,33 @@
+$dark_gray: rgb(20, 20, 20);
+$dark_gray_hover: rgb(30, 30, 30);
+$medium_dark_gray: rgb(50, 50, 50);
+$medium_gray: rgb(100, 100, 100);
+$medium_gray_hover: rgb(150, 150, 150);
+$light_gray: rgb(170, 170, 170);
+$off_white: rgb(220, 220, 220);
+$white: rgb(240, 240, 240);
+$red: rgb(200, 0, 0);
+$green: rgb(0, 150, 0);
+
+.animated_logo_containet {
+    height: 40px;
+    width: 200px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    &:hover {
+        cursor: pointer;
+    }
+    > img {
+        height: inherit;
+        position: relative;
+    }
+}
+
+@media (max-height: 600px) {
+    .animated_logo_containet {
+        height: 30px;
+        width: 150px;
+    }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cloudinary": "^1.25.0",
+    "coupon-code": "^0.4.5",
+    "dotenv": "^8.2.0",
+    "emailjs-com": "^2.6.4",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "install": "^0.13.0",
+    "mongodb": "^3.6.4",
+    "mongoose": "^5.11.19",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.7",
+    "npm": "^7.6.3",
+    "shopify-api-node": "^3.6.5"
+  }
+}

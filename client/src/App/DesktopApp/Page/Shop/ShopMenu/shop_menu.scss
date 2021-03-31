@@ -1,0 +1,125 @@
+$dark_gray: rgb(20, 20, 20);
+$dark_gray_hover: rgb(30, 30, 30);
+$medium_dark_gray: rgb(50, 50, 50);
+$medium_gray: rgb(100, 100, 100);
+$medium_gray_hover: rgb(150, 150, 150);
+$light_gray: rgb(170, 170, 170);
+$off_white: rgb(220, 220, 220);
+$white: rgb(240, 240, 240);
+
+$red: rgb(150, 0, 0);
+$green: rgb(0, 100, 0);
+
+.desktop_shop_menu_container {
+    position: fixed;
+    margin-top: 10vh;
+    width: 15vw;
+    height: 50vh;
+    background-color: $dark_gray;
+    border-radius: 3px;
+    > .dropdown_item_container {
+        color: $medium_gray;
+        padding-left: 3vh;
+        margin-top: 2.5vh;
+        transition: color 0.2s;
+        &:hover {
+            cursor: pointer;
+            color: $white;
+        }
+        > h3 {
+            font-weight: 400;
+            font-size: 2.3vh;
+            transition: color 0.2s;
+            &.selected {
+                color: $off_white;
+            }
+        }
+    }
+}
+
+@media (max-aspect-ratio: 16 / 9) {
+    .desktop_shop_menu_container {
+        position: fixed;
+        margin-top: 10vh;
+        width: 15vw;
+        height: 50vh;
+        background-color: $dark_gray;
+        border-radius: 3px;
+        > .dropdown_item_container {
+            color: $medium_gray;
+            padding-left: 3vh;
+            margin-top: 2.5vh;
+            transition: color 0.2s;
+            &:hover {
+                cursor: pointer;
+                color: $white;
+            }
+            > h3 {
+                font-weight: 400;
+                font-size: 2.1vh;
+                transition: color 0.2s;
+                &.selected {
+                    color: $off_white;
+                }
+            }
+        }
+    }
+}
+
+@media (max-aspect-ratio: 4 / 3) {
+    .desktop_shop_menu_container {
+        position: fixed;
+        margin-top: 10vh;
+        width: 20vw;
+        height: 50vh;
+        background-color: $dark_gray;
+        border-radius: 3px;
+        > .dropdown_item_container {
+            color: $medium_gray;
+            padding-left: 3vh;
+            margin-top: 2.5vh;
+            transition: color 0.2s;
+            &:hover {
+                cursor: pointer;
+                color: $white;
+            }
+            > h3 {
+                font-weight: 400;
+                font-size: 2.1vh;
+                transition: color 0.2s;
+                &.selected {
+                    color: $off_white;
+                }
+            }
+        }
+    }
+}
+
+@media (max-aspect-ratio: 1 / 1) {
+    .desktop_shop_menu_container {
+        position: fixed;
+        margin-top: 10vh;
+        width: 20vw;
+        height: 50vh;
+        background-color: $dark_gray;
+        border-radius: 3px;
+        > .dropdown_item_container {
+            color: $medium_gray;
+            padding-left: 3vh;
+            margin-top: 2.5vh;
+            transition: color 0.2s;
+            &:hover {
+                cursor: pointer;
+                color: $white;
+            }
+            > h3 {
+                font-weight: 400;
+                font-size: 1.9vh;
+                transition: color 0.2s;
+                &.selected {
+                    color: $off_white;
+                }
+            }
+        }
+    }
+}

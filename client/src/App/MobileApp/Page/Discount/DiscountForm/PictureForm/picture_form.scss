@@ -1,0 +1,175 @@
+$dark_gray: rgb(20, 20, 20);
+$dark_gray_hover: rgb(30, 30, 30);
+$medium_dark_gray: rgb(50, 50, 50);
+$medium_gray: rgb(100, 100, 100);
+$medium_gray_hover: rgb(150, 150, 150);
+$light_gray: rgb(170, 170, 170);
+$off_white: rgb(220, 220, 220);
+$white: rgb(240, 240, 240);
+$red: rgb(200, 0, 0);
+$green: rgb(0, 150, 0);
+
+.picture_form_container {
+    width: 80vw;
+    height: fit-content;
+    margin-top: 3vh;
+    > form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        > p {
+            color: $medium_gray;
+            font-weight: 400;
+            font-size: 4vw;
+            margin-bottom: 3vh;
+        }
+        > button {
+            height: 8vw;
+            width: 40vw;
+            background-color: $dark_gray;
+            border: none;
+            border-radius: 3px;
+            color: $off_white;
+            &:focus { 
+                outline: none;
+            }
+            &:active {
+                background-color: $medium_gray;
+            }
+        }
+        > .files_container {
+            width: 100%;
+            margin-top: 2vh;
+            margin-bottom: 2vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            > h3 {
+                font-size: 4vw;
+                font-weight: 400;
+                color: $medium_gray;
+                transition: color 0.2s;
+                &.notification {
+                    color: $red;
+                }
+            }
+            > i {
+                margin-left: 5vw;
+                color: $medium_gray;
+            }
+        }
+        > textarea {
+            width: 100%;
+            height: 50vw;
+            overflow: auto;
+            resize: none;
+            background-color: $off_white;
+            border: none;
+            color: $dark_gray;
+            font-size: 4vw;
+            padding: 3vh 6vw 3vh 6vw;
+            border-radius: 3px;
+            &:focus {
+                outline: none;
+            }
+            &::placeholder {
+                color: $medium_gray;
+            }
+            &.notifocation::placeholder {
+                color: $red;
+            }
+        }
+        > .email_container, .name_container {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            overflow: hidden;
+            margin-top: 2vh;
+            > h4 {
+                color: $medium_gray;
+                font-size: 4vw;
+                font-weight: 500;
+                transition: color 0.2s;
+            }
+            .email_input, .name_input {
+                border: none;
+                background-color: transparent;
+                max-width: 90%;
+                color: $dark_gray;
+                font-size: 4vw;
+                font-weight: 400;
+                overflow: hidden;
+                text-indent: 5px;
+                &:focus {
+                    background-color: transparent;
+                }
+                &::placeholder {
+                    color: $light_gray;
+                    transition: 0.2s;
+                }
+                &.notification::placeholder {
+                    color: $red;
+                }
+                &.anonymous::placeholder {
+                    color: $off_white;
+                }
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+        > .checkbox_container {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            margin-top: 2vh;
+            > .checkbox {
+                width: 5vw;
+                height: 5vw;
+                background-color: $off_white;
+                border-radius: 3px;
+                border: 2px solid $medium_gray;
+                margin-right: 2vw;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: 0.2s;
+                &.notification {
+                    background-color: $white;
+                    border-color: $red;
+                }
+                > i {
+                    font-size: 3vw;
+                    color: $dark_gray;
+                }
+            }
+            > p {
+                color: $medium_gray;
+                font-size: 4vw;
+                font-weight: 400;
+                transition: color 0.2s;
+                width: 70vw;
+            }
+        }
+        > .submit_button {
+            width: 30vw;
+            height: 10vw;
+            background-color: $dark_gray;
+            border: none;
+            margin-top: auto;
+            border-radius: 3px;
+            font-size: 4vw;
+            color: $white;
+            margin-top: 2vh;
+            margin-left: auto;
+            &:focus {
+                outline: none;
+            }
+            &:active {
+                background-color: $medium_gray;
+            }
+        }
+    }
+}

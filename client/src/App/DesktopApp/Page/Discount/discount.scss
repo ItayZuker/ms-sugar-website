@@ -1,0 +1,277 @@
+$dark_gray: rgb(20, 20, 20);
+$dark_gray_hover: rgb(30, 30, 30);
+$medium_dark_gray: rgb(50, 50, 50);
+$medium_gray: rgb(100, 100, 100);
+$medium_gray_hover: rgb(150, 150, 150);
+$light_gray: rgb(170, 170, 170);
+$off_white: rgb(220, 220, 220);
+$white: rgb(240, 240, 240);
+$red: rgb(200, 0, 0);
+$green: rgb(0, 150, 0);
+
+
+.desktop_discount_container {
+    width: 60vw;
+    height: 70vh;
+    opacity: 0;
+    transition: opacity 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &.load_component {
+        opacity: 1;
+    }
+    > h3 {
+        font-size: 4vh;
+        color: $medium_gray;
+        font-weight: 300;
+        margin-top: 5vh;
+        margin-bottom: 3vh;
+    }
+    > .main_discount_section {
+        display: flex;
+        width: 100%;
+        height: 50vh;
+        padding-bottom: 5%;
+        > .buttons_section {
+            width: 20vw;
+            position: absolute;
+            > .buttons_container {
+                display: flex;
+                justify-content: space-evenly;
+                width: 100%;
+                margin-bottom: 20px;
+                > button {
+                    width: 40%;
+                    height: 4vh;
+                    background-color: $light_gray;
+                    border: none;
+                    color: $medium_gray;
+                    border-radius: 3px;
+                    font-size: 1.6vh;
+                    transition: 0.2s;
+                    &:focus {
+                        outline: none;
+                    }
+                    &:hover {
+                        cursor: pointer;
+                    }
+                    &.selected {
+                        background-color: $dark_gray;
+                        color: $off_white;
+                        outline: 2px solid $light_gray;
+                        outline-offset: 5px;
+                    }
+                }
+            }
+            > p {
+                color: $light_gray;
+                font-size: 1.7vh;
+                font-weight: 400;
+                transition: color 0.2s;
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-aspect-ratio: 16 / 9) {
+    .desktop_discount_container {
+        width: 70vw;
+        height: 70vh;
+        opacity: 0;
+        transition: opacity 0.2s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &.load_component {
+            opacity: 1;
+        }
+        > h3 {
+            font-size: 4vh;
+            color: $medium_gray;
+            font-weight: 300;
+            margin-top: 5vh;
+            margin-bottom: 3vh;
+        }
+        > .main_discount_section {
+            display: flex;
+            width: 100%;
+            height: 50vh;
+            padding-bottom: 5%;
+            > .buttons_section {
+                width: 25vw;
+                position: absolute;
+                > .buttons_container {
+                    display: flex;
+                    justify-content: space-evenly;
+                    width: 100%;
+                    margin-bottom: 20px;
+                    > button {
+                        width: 40%;
+                        height: 4vh;
+                        background-color: $light_gray;
+                        border: none;
+                        color: $medium_gray;
+                        border-radius: 3px;
+                        font-size: 1.6vh;
+                        transition: 0.2s;
+                        &:focus {
+                            outline: none;
+                        }
+                        &:hover {
+                            cursor: pointer;
+                        }
+                        &.selected {
+                            background-color: $dark_gray;
+                            color: $off_white;
+                            outline: 2px solid $light_gray;
+                            outline-offset: 5px;
+                        }
+                    }
+                }
+                > p {
+                    color: $light_gray;
+                    font-size: 1.7vh;
+                    font-weight: 400;
+                    transition: color 0.2s;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-aspect-ratio: 4 / 3) {
+    .desktop_discount_container {
+        width: 80vw;
+        height: 70vh;
+        opacity: 0;
+        transition: opacity 0.2s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &.load_component {
+            opacity: 1;
+        }
+        > h3 {
+            font-size: 4vh;
+            color: $medium_gray;
+            font-weight: 300;
+            margin-top: 5vh;
+            margin-bottom: 3vh;
+        }
+        > .main_discount_section {
+            display: flex;
+            width: 100%;
+            height: 50vh;
+            padding-bottom: 5%;
+            > .buttons_section {
+                width: 30vw;
+                position: absolute;
+                > .buttons_container {
+                    display: flex;
+                    justify-content: space-evenly;
+                    width: 100%;
+                    margin-bottom: 20px;
+                    > button {
+                        width: 40%;
+                        height: 4vh;
+                        background-color: $light_gray;
+                        border: none;
+                        color: $medium_gray;
+                        border-radius: 3px;
+                        font-size: 1.6vh;
+                        transition: 0.2s;
+                        &:focus {
+                            outline: none;
+                        }
+                        &:hover {
+                            cursor: pointer;
+                        }
+                        &.selected {
+                            background-color: $dark_gray;
+                            color: $off_white;
+                            outline: 2px solid $light_gray;
+                            outline-offset: 5px;
+                        }
+                    }
+                }
+                > p {
+                    color: $light_gray;
+                    font-size: 1.7vh;
+                    font-weight: 400;
+                    transition: color 0.2s;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-aspect-ratio: 1 / 1) {
+    .desktop_discount_container {
+        width: 90vw;
+        height: 70vh;
+        opacity: 0;
+        transition: opacity 0.2s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &.load_component {
+            opacity: 1;
+        }
+        > h3 {
+            font-size: 4vh;
+            color: $medium_gray;
+            font-weight: 300;
+            margin-top: 5vh;
+            margin-bottom: 3vh;
+        }
+        > .main_discount_section {
+            display: flex;
+            width: 100%;
+            height: 50vh;
+            padding-bottom: 5%;
+            > .buttons_section {
+                width: 35vw;
+                position: absolute;
+                > .buttons_container {
+                    display: flex;
+                    justify-content: space-evenly;
+                    width: 100%;
+                    margin-bottom: 20px;
+                    > button {
+                        width: 40%;
+                        height: 4vh;
+                        background-color: $light_gray;
+                        border: none;
+                        color: $medium_gray;
+                        border-radius: 3px;
+                        font-size: 1.6vh;
+                        transition: 0.2s;
+                        &:focus {
+                            outline: none;
+                        }
+                        &:hover {
+                            cursor: pointer;
+                        }
+                        &.selected {
+                            background-color: $dark_gray;
+                            color: $off_white;
+                            outline: 2px solid $light_gray;
+                            outline-offset: 5px;
+                        }
+                    }
+                }
+                > p {
+                    color: $light_gray;
+                    font-size: 1.7vh;
+                    font-weight: 400;
+                    transition: color 0.2s;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

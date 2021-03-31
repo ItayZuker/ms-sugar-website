@@ -1,0 +1,50 @@
+$dark_gray: rgb(20, 20, 20);
+$dark_gray_hover: rgb(30, 30, 30);
+$medium_dark_gray: rgb(50, 50, 50);
+$medium_gray: rgb(100, 100, 100);
+$medium_gray_hover: rgb(150, 150, 150);
+$light_gray: rgb(170, 170, 170);
+$off_white: rgb(220, 220, 220);
+$white: rgb(240, 240, 240);
+$red: rgb(200, 0, 0);
+$green: rgb(0, 150, 0);
+
+.header_container {
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    background-color: $dark_gray;
+    align-items: center;
+    padding-left: 5%;
+    padding-right: 5%;
+    overflow: hidden;
+    // &.menu_open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    // }
+    > .header {
+        display: block;
+        width: 100vw;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        > i {
+            color: $white;
+            font-size: 5vh;
+        }
+        > img {
+            height: 4vh;
+            position: absolute;
+            transform: translateX(40%);
+            opacity: 1;
+            transition: 0.2s ease-in-out;
+            &.menu_open {
+                transform: translateX(70%);
+                opacity: 0.4;
+            }
+        }
+    }
+}

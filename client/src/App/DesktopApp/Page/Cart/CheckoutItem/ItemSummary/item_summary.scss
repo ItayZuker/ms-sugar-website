@@ -1,0 +1,118 @@
+$dark_gray: rgb(20, 20, 20);
+$dark_gray_hover: rgb(30, 30, 30);
+$medium_dark_gray: rgb(50, 50, 50);
+$medium_gray: rgb(100, 100, 100);
+$medium_gray_hover: rgb(150, 150, 150);
+$light_gray: rgb(170, 170, 170);
+$off_white: rgb(220, 220, 220);
+$white: rgb(240, 240, 240);
+$red: rgb(200, 0, 0);
+$green: rgb(0, 150, 0);
+
+.desktop_item_summary_container {
+    width: 25vh;
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    > .quantity_container {
+        width: 10vh;
+        height: inherit;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        > button {
+            height: 2.5vh;
+            width: 2.5vh;
+            border: none;
+            border-radius: 3px;
+            background-color: $dark_gray;
+            color: $off_white;
+            font-size: 1vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:focus {
+                outline: none;
+            }
+            &:active {
+                background-color: $light_gray;
+                color: $off_white;
+            }
+        }
+        > h4 {
+            font-size: 2.5vh;
+            font-weight: 500;
+            color: $medium_gray;
+            margin-left: 1vh;
+            margin-right: 1vh;
+        }
+    }
+    > .price_container {
+        width: fit-content;
+        height: inherit;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        > h3 {
+            color: $medium_gray;
+            font-weight: 400;
+            font-size: 2vh;
+        }
+    }
+}
+
+@media (max-aspect-ratio: 16 / 9) {
+    .desktop_item_summary_container {
+        width: 25vh;
+        height: 5vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        > .quantity_container {
+            width: 10vh;
+            height: inherit;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            > button {
+                height: 2.5vh;
+                width: 2.5vh;
+                border: none;
+                border-radius: 3px;
+                background-color: $dark_gray;
+                color: $off_white;
+                font-size: 1vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &:focus {
+                    outline: none;
+                }
+                &:active {
+                    background-color: $light_gray;
+                    color: $off_white;
+                }
+            }
+            > h4 {
+                font-size: 2.5vh;
+                font-weight: 500;
+                color: $medium_gray;
+                margin-left: 1vh;
+                margin-right: 1vh;
+            }
+        }
+        > .price_container {
+            width: fit-content;
+            height: inherit;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            > h3 {
+                color: $medium_gray;
+                font-weight: 400;
+                font-size: 2vh;
+            }
+        }
+    }
+}

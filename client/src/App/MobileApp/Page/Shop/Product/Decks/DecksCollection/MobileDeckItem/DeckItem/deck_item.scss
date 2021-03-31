@@ -1,0 +1,82 @@
+$dark_gray: rgb(20, 20, 20);
+$dark_gray_hover: rgb(30, 30, 30);
+$medium_dark_gray: rgb(50, 50, 50);
+$medium_gray: rgb(100, 100, 100);
+$medium_gray_hover: rgb(150, 150, 150);
+$light_gray: rgb(170, 170, 170);
+$off_white: rgb(220, 220, 220);
+$white: rgb(240, 240, 240);
+$red: rgb(200, 0, 0);
+$green: rgb(0, 150, 0);
+
+    .deck_item_container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+        margin: 0;
+        &.hide {
+            display: none;
+        }
+        > img {
+            transition: opacity 0.2s;
+            height: 50vh;
+        }
+        > .item_data_container {
+            height: fit-content;
+            width: 35vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 3vh;
+            > h3 {
+                color: $medium_gray;
+                font-size: 7vw;
+                font-weight: 400;
+                border-bottom: 2px solid $medium_gray;
+            }
+            > .options_container {
+                margin-top: 2vh;
+                width: 100%;
+                height: fit-content;
+                &.hide {
+                    display: none;
+                }
+            }
+            > h4.price {
+                font-size: 4vw;
+                font-weight: 400;
+                color: $red;
+                margin-top: 0.5vh;
+                margin-right: auto;
+                &.active {
+                    color: $medium_gray;
+                }
+            }
+            > button {
+                width: 30vw;
+                height: 6vh;
+                background-color: $light_gray;
+                border: none;
+                margin-top: 27vh;
+                border-radius: 3px;
+                margin-left: auto;
+                margin-right: auto;
+                font-size: 4vw;
+                color: $off_white;
+                display: none;
+                &.active {
+                    margin-top: 5vw;
+                    background-color: $dark_gray;
+                    color: $white;
+                    display: block;
+                    &:active {
+                        background-color: $medium_gray;
+                    }
+                }
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }

@@ -1,0 +1,38 @@
+$dark_gray: rgb(20, 20, 20);
+$dark_gray_hover: rgb(30, 30, 30);
+$medium_dark_gray: rgb(50, 50, 50);
+$medium_gray: rgb(100, 100, 100);
+$medium_gray_hover: rgb(150, 150, 150);
+$light_gray: rgb(170, 170, 170);
+$off_white: rgb(220, 220, 220);
+$white: rgb(240, 240, 240);
+$red: rgb(200, 0, 0);
+$green: rgb(0, 150, 0);
+
+.discount_form_container {
+    width: 80vw;
+    height: fit;
+    margin-top: 3vh;
+    margin-bottom: 9vh;
+    > .buttons_container {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+        > button {
+            width: 35vw;
+            height: 6vh;
+            background-color: $light_gray;
+            border: none;
+            color: $medium_gray;
+            border-radius: 3px;
+            font-size: 5vw;
+            transition: 0.2s;
+            &.selected {
+                background-color: $dark_gray;
+                color: $off_white;
+                outline: 2px solid $light_gray;
+                outline-offset: 1vw;
+            }
+        }
+    }
+}

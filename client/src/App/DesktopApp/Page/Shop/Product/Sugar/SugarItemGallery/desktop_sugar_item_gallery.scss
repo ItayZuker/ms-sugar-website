@@ -1,0 +1,312 @@
+$dark_gray: rgb(20, 20, 20);
+$dark_gray_hover: rgb(30, 30, 30);
+$medium_dark_gray: rgb(50, 50, 50);
+$medium_gray: rgb(100, 100, 100);
+$medium_gray_hover: rgb(150, 150, 150);
+$light_gray: rgb(170, 170, 170);
+$off_white: rgb(220, 220, 220);
+$white: rgb(240, 240, 240);
+$red: rgb(200, 0, 0);
+$green: rgb(0, 150, 0);
+
+.desktop_sugar_item_gallery_container {
+    display: flex;
+    justify-content: space-between;
+    height: 50vh;
+    padding-left: 15vw;
+    > .back_button {
+        font-size: 2vh;
+        font-weight: 400;
+        color: $medium_gray;
+        position: absolute;
+        transform: translate(2vw, -5vh);
+        transition: color 0.2s;
+        &.hide {
+            display: none;
+        }
+        &:hover {
+            cursor: pointer;
+            color: $dark_gray;
+        }
+        &:active {
+            color: $light_gray;
+        }
+    }
+    > .sugar_picture_gallery_container {
+        width: 20vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        > .left_button {
+            width: 1vw;
+            height: 20vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            color: $light_gray;
+            transition: color 0.2s;
+            transform: translateX(1.5vw);
+            &.hide {
+                display: none;
+            }
+            &:hover {
+                cursor: pointer;
+                color: $dark_gray;
+            }
+            > i {
+                font-size: 3vh;
+            }
+        }
+        > .right_button {
+            width: 1vw;
+            height: 20vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            color: $light_gray;
+            transition: color 0.2s;
+            transform: translateX(-1.5vw);
+            &.hide {
+                display: none;
+            }
+            &:hover {
+                cursor: pointer;
+                color: $dark_gray;
+            }
+            > i {
+                font-size: 3vh;
+            }
+        }
+        > img {
+            height: 70%;
+        }
+    }
+}
+
+@media (max-aspect-ratio: 16 / 9) {
+    .desktop_sugar_item_gallery_container {
+        display: flex;
+        justify-content: space-between;
+        height: 50vh;
+        padding-left: 15vw;
+        > .back_button {
+            font-size: 2vh;
+            font-weight: 400;
+            color: $medium_gray;
+            position: absolute;
+            transform: translate(2vw, -5vh);
+            transition: color 0.2s;
+            &.hide {
+                display: none;
+            }
+            &:hover {
+                cursor: pointer;
+                color: $dark_gray;
+            }
+            &:active {
+                color: $light_gray;
+            }
+        }
+        > .sugar_picture_gallery_container {
+            width: 25vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            > .left_button {
+                width: 3.5vw;
+                height: 20vh;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                color: $light_gray;
+                transition: color 0.2s;
+                transform: translateX(2vw);
+                &.hide {
+                    display: none;
+                }
+                &:hover {
+                    cursor: pointer;
+                    color: $dark_gray;
+                }
+                > i {
+                    font-size: 3vh;
+                }
+            }
+            > .right_button {
+                width: 3.5vw;
+                height: 20vh;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                color: $light_gray;
+                transition: color 0.2s;
+                transform: translateX(-2vw);
+                &.hide {
+                    display: none;
+                }
+                &:hover {
+                    cursor: pointer;
+                    color: $dark_gray;
+                }
+                > i {
+                    font-size: 3vh;
+                }
+            }
+            > img {
+                height: 70%;
+            }
+        }
+    }
+}
+
+@media (max-aspect-ratio: 4 / 3) {
+    .desktop_sugar_item_gallery_container {
+        display: flex;
+        justify-content: space-between;
+        height: 50vh;
+        padding-left: 20vw;
+        > .back_button {
+            font-size: 2vh;
+            font-weight: 400;
+            color: $medium_gray;
+            position: absolute;
+            transform: translate(2vw, -5vh);
+            transition: color 0.2s;
+            &.hide {
+                display: none;
+            }
+            &:hover {
+                cursor: pointer;
+                color: $dark_gray;
+            }
+            &:active {
+                color: $light_gray;
+            }
+        }
+        > .sugar_picture_gallery_container {
+            width: 30vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            > .left_button {
+                width: 4vw;
+                height: 20vh;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                color: $light_gray;
+                transition: color 0.2s;
+                transform: translateX(3vw);
+                &.hide {
+                    display: none;
+                }
+                &:hover {
+                    cursor: pointer;
+                    color: $dark_gray;
+                }
+                > i {
+                    font-size: 3vh;
+                }
+            }
+            > .right_button {
+                width: 4vw;
+                height: 20vh;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                color: $light_gray;
+                transition: color 0.2s;
+                transform: translateX(-3vw);
+                &.hide {
+                    display: none;
+                }
+                &:hover {
+                    cursor: pointer;
+                    color: $dark_gray;
+                }
+                > i {
+                    font-size: 3vh;
+                }
+            }
+            > img {
+                height: 60%;
+            }
+        }
+    }
+}
+
+@media (max-aspect-ratio: 1 / 1) {
+    .desktop_sugar_item_gallery_container {
+        display: flex;
+        justify-content: space-between;
+        height: 50vh;
+        padding-left: 20vw;
+        > .back_button {
+            font-size: 2vh;
+            font-weight: 400;
+            color: $medium_gray;
+            position: absolute;
+            transform: translate(2vw, -5vh);
+            transition: color 0.2s;
+            &.hide {
+                display: none;
+            }
+            &:hover {
+                cursor: pointer;
+                color: $dark_gray;
+            }
+            &:active {
+                color: $light_gray;
+            }
+        }
+        > .sugar_picture_gallery_container {
+            width: 30vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            > .left_button {
+                width: 5.5vw;
+                height: 20vh;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                color: $light_gray;
+                transition: color 0.2s;
+                transform: translateX(3.5vw);
+                &.hide {
+                    display: none;
+                }
+                &:hover {
+                    cursor: pointer;
+                    color: $dark_gray;
+                }
+                > i {
+                    font-size: 3vh;
+                }
+            }
+            > .right_button {
+                width: 5.5vw;
+                height: 20vh;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                color: $light_gray;
+                transition: color 0.2s;
+                transform: translateX(-3.5vw);
+                &.hide {
+                    display: none;
+                }
+                &:hover {
+                    cursor: pointer;
+                    color: $dark_gray;
+                }
+                > i {
+                    font-size: 3vh;
+                }
+            }
+            > img {
+                height: 60%;
+            }
+        }
+    }
+}

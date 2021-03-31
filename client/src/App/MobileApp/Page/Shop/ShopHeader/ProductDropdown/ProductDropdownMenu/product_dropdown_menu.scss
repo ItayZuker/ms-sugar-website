@@ -1,0 +1,38 @@
+$dark_gray: rgb(20, 20, 20);
+$dark_gray_hover: rgb(30, 30, 30);
+$medium_dark_gray: rgb(50, 50, 50);
+$medium_gray: rgb(100, 100, 100);
+$medium_gray_hover: rgb(150, 150, 150);
+$light_gray: rgb(170, 170, 170);
+$off_white: rgb(220, 220, 220);
+$white: rgb(240, 240, 240);
+$red: rgb(200, 0, 0);
+$green: rgb(0, 150, 0);
+
+.product_dropdown_menu_container {
+    width: 100vw;
+    height: 84vh;
+    background-color: $dark_gray;
+    position: fixed;
+    z-index: 4;
+    top: 16vh;
+    left: 0;
+    display: none;
+    &.menu_open {
+        display: block;
+    }
+    > .dropdown_item_container {
+        width: 100vw;
+        height: 8vh;
+        display: flex;
+        align-items: flex-end;
+        padding-left: 30px;
+        > h3 {
+            font-size: 3vh;
+            font-weight: 400;
+            &.selected {
+                color: $medium_gray;
+            }
+        }
+    }
+}

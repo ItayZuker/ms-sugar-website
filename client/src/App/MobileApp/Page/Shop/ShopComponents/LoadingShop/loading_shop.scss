@@ -1,0 +1,31 @@
+$dark_gray: rgb(20, 20, 20);
+$dark_gray_hover: rgb(30, 30, 30);
+$medium_dark_gray: rgb(50, 50, 50);
+$medium_gray: rgb(100, 100, 100);
+$medium_gray_hover: rgb(150, 150, 150);
+$light_gray: rgb(170, 170, 170);
+$off_white: rgb(220, 220, 220);
+$white: rgb(240, 240, 240);
+$red: rgb(200, 0, 0);
+$green: rgb(0, 150, 0);
+
+.loading_shop_container {
+    width: 100vw;
+    height: 90vh;
+    background-color: $dark_gray;
+    position: fixed;
+    top: 10vh;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    > h3 {
+        color: $medium_dark_gray;
+        font-size: 6vw;
+        font-weight: 400;
+        transition: color 1s ease-in-out;
+        &.bright {
+            color: $off_white
+        }
+    }
+}

@@ -1,0 +1,45 @@
+$dark_gray: rgb(20, 20, 20);
+$dark_gray_hover: rgb(30, 30, 30);
+$medium_dark_gray: rgb(50, 50, 50);
+$medium_gray: rgb(100, 100, 100);
+$medium_gray_hover: rgb(150, 150, 150);
+$light_gray: rgb(170, 170, 170);
+$off_white: rgb(220, 220, 220);
+$white: rgb(240, 240, 240);
+$red: rgb(200, 0, 0);
+$green: rgb(0, 150, 0);
+
+.test_desktop_currency_dropdown_container {
+    // width: 200px;
+    max-height: 0px;
+    overflow: hidden;
+    background-color: $off_white;
+    border-radius: 3px;
+    position: fixed;
+    top: 6vh;
+    transition: max-height 0.2s ease-out;
+    margin-top: 0.5vh;
+    &.open {
+        max-height: 10vh;
+        padding-bottom: 0.5vh;
+    }
+    > .desktop_currency_container {
+        &:hover {
+            cursor: pointer;
+            > h3 {
+                color: $dark_gray;
+            }
+        }
+        > h3 {
+            color: $medium_gray;
+            font-size: 1.8vh;
+            font-weight: 400;
+            padding-left: 1vh;
+            padding-right: 1vh;
+            padding-top: 0.5vh;
+            &.selected {
+                color: $light_gray;
+            }
+        }
+    }
+}

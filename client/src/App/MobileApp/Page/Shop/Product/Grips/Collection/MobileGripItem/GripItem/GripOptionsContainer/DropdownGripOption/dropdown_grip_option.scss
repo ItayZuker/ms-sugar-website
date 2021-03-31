@@ -1,0 +1,40 @@
+$dark_gray: rgb(20, 20, 20);
+$dark_gray_hover: rgb(30, 30, 30);
+$medium_dark_gray: rgb(50, 50, 50);
+$medium_gray: rgb(100, 100, 100);
+$medium_gray_hover: rgb(150, 150, 150);
+$light_gray: rgb(170, 170, 170);
+$off_white: rgb(220, 220, 220);
+$white: rgb(240, 240, 240);
+$red: rgb(200, 0, 0);
+$green: rgb(0, 150, 0);
+
+.dropdown_grip_option_container {
+    max-height: 0px;
+    overflow: hidden;
+    width: 35vw;
+    background-color: $dark_gray;
+    transition: max-height 0.1s ease-out;
+    &.dropdown_open {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        border-radius: 3px;
+        padding-bottom: 3vh;
+        max-height: 30vh;
+    }
+    > .variant_container {
+        margin-top: 2vh;
+        display: flex;
+        align-items: center;
+        > h3 {
+            margin-left: 5vw;
+            color: $off_white;
+            font-weight: 400;
+            &.selected_variant {
+                color: $medium_gray;
+            }
+        }
+
+    }
+}
