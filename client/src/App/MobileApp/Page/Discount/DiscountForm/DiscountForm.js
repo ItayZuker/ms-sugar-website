@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import PictureForm from './PictureForm/PictureForm'
 import TextForm from './TextForm/TextForm'
 import './discount_form.scss'
+import { ShopContext } from '../../../../../Context/shopContext'
 
 const DiscountForm = () => {
 
+    const { appState } = useContext( ShopContext )
     const [ selectedArt, setSelectedArt ] = useState( 'picture' )
 
     const selectArtForm = ( e, selection ) => {
@@ -17,10 +19,14 @@ const DiscountForm = () => {
             <div className='buttons_container'>
                 <button 
                     className={ selectedArt === 'picture' ? 'selected' : '' }
-                    onClick={ e => selectArtForm( e, 'picture' ) }>Visual</button>
+                    onClick={ e => selectArtForm( e, 'picture' ) }>
+                        { appState.language === 'english' ? 'Visual' : 'תמונה' }
+                </button>
                 <button 
                     className={ selectedArt === 'text' ? 'selected' : '' }
-                    onClick={ e => selectArtForm( e, 'text' ) }>Text</button>
+                    onClick={ e => selectArtForm( e, 'text' ) }>
+                        { appState.language === 'english' ? 'Text' : 'טקסט' }
+                </button>
             </div>
             { selectedArt === 'picture' ? <PictureForm /> : <TextForm /> }
         </div>

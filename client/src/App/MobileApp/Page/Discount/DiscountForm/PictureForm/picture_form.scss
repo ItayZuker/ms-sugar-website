@@ -9,7 +9,7 @@ $white: rgb(240, 240, 240);
 $red: rgb(200, 0, 0);
 $green: rgb(0, 150, 0);
 
-.picture_form_container {
+.mobile_picture_form_container {
     width: 80vw;
     height: fit-content;
     margin-top: 3vh;
@@ -125,6 +125,12 @@ $green: rgb(0, 150, 0);
             flex-direction: row;
             justify-content: flex-start;
             margin-top: 2vh;
+            &.hebrew {
+                > .checkbox {
+                    margin-right: 0;
+                    margin-left: 2vw;
+                }
+            }
             > .checkbox {
                 width: 5vw;
                 height: 5vw;
@@ -164,6 +170,10 @@ $green: rgb(0, 150, 0);
             color: $white;
             margin-top: 2vh;
             margin-left: auto;
+            &.hebrew {
+                margin-left: 0;
+                margin-right: auto;
+            }
             &:focus {
                 outline: none;
             }

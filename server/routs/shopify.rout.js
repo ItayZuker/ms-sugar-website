@@ -64,7 +64,7 @@ const validatePictureFileSize = ( file ) => {
         } else {
             resolve( true )
         }
-    }) 
+    })
 }
 
 router.post('/get-discount-coupon-text', async( req, res ) => {
@@ -104,6 +104,7 @@ router.delete('/delete-text', async( req, res ) => {
 })
 
 router.post('/get-discount-coupon-picture', async( req, res ) => {
+    console.log(req.body)
     try {
         await validatePictureFileSize( req.body.fileSize )
         const priceRuleId = process.env.REACT_APP_STORE_FRONT_PRICE_RULE_ID

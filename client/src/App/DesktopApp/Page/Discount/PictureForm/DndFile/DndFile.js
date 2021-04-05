@@ -22,12 +22,12 @@ const DndFile = ( props ) => {
         if ( appState.language === 'english' ) {
             setInfo( '5MB Max' )
         } else {
-            setInfo( 'עד 5 מגה ביט' )
+            setInfo( 'עד 5MB' )
         }
     }, [ appState.language ])
 
     const trigerSizeNotification = () => {
-        setErrMessage( appState.language === 'english' ? 'Max size 5MB' : 'מקסימום 5 מגה ביט' )
+        setErrMessage( appState.language === 'english' ? 'Max size 5MB' : 'מקסימום 5MB' )
         setTimeout(() => {
             setErrMessage()
         }, 2000)

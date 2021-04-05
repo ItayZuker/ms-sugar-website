@@ -5,7 +5,7 @@ import { ShopContext } from '../../../../Context/shopContext'
 
 const Discount = () => {
 
-    const { setAppState } = useContext( ShopContext )
+    const { setAppState, appState } = useContext( ShopContext )
 
     useEffect(() => {
         const html = document.querySelector('html')
@@ -16,9 +16,9 @@ const Discount = () => {
     }, [])
 
     return (
-        <div className='discount_container'>
+        <div className={ 'discount_container ' + ( appState.language === 'english' ? '' : 'hebrew ' ) }>
             <div className='title_container'>
-                <h3>10% DISCOUNT</h3>
+                <h3>{ appState.language === 'english' ? '10% DISCOUNT' : '10% הנחה' }</h3>
             </div>
             <DiscountForm />
         </div>

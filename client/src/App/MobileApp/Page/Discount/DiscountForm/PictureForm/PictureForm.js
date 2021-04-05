@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import axios from 'axios'
 import { ShopContext } from '../../../../../../Context/shopContext'
 import emailjs from 'emailjs-com';
@@ -14,18 +14,45 @@ const PictureForm = () => {
     const [ errMessage, setErrMessage ] = useState( '' )
     const [ anonymous, setAnonymous ] = useState( false )
     const [ agreeTerms, setAgreeTerms ] = useState( false )
-    const { setKeyboardOpen } = useContext( ShopContext )
+    const { setKeyboardOpen, appState } = useContext( ShopContext )
     const [ file, setFile ] = useState()
     const [ loading, setLoading ] = useState( false )
     const [ confirmation, setConfirmation ] = useState( false )
     const [ problem, setProblem ] = useState( false )
-    const [ fileName, setFileName ] = useState( '5MB Max' )
-    const [ termsBody ] = useState(  
-        `I agree that Ms. Sugar publish my art with a commercial purpose,
-        and I understand that If Ms. Sugar publish my art, 
-        my name will be published as the artist,
-        unless I choose to be anonymous.` 
+    const [ fileName, setFileName ] = useState()
+    const [ userNamePlaceholder, setUserNamePlaceholder ] = useState()
+    const [ termsBody, setTermsBody ] = useState()
+    const [ pictureENG ] = useState(  
+        `Send us a visual you made, and you will get a 10% discount coupon. 
+        It can be a sketch, a picture, a drawing, a painting or any other visual you made. 
+        As long as you'r the artist, you can send us anything.` 
         )
+    const [ pictureHEB ] = useState(  
+        `שילחו תמונה של יצירה שכנתם, וקבלו קופון של 10% הנחה.
+        זה יכול להיות שרבוט מעניין במחברת, תמונה, איור, ציור או כל דבר אחר.
+        כל עוד אתם היוצרים, אפשר לשלוח הכל.` 
+        )
+
+    useEffect(() => {
+        if ( appState.language === 'english') {
+            setFileName( '5MB Max' )
+            setUserNamePlaceholder( 'your name' )
+            setTermsBody( `
+                    I agree that Ms. Sugar publish my art with a commercial purpose,
+                    and I understand that If Ms. Sugar publish my art, 
+                    my name will be published as the artist,
+                    unless I choose to be anonymous.
+                    ` )
+        } else {
+            setFileName( 'עד 5MB' )
+            setUserNamePlaceholder( 'השם שלך' )
+            setTermsBody( `
+                    אני מסכים ל "מיס שוגר" לפרסם את האומנות שלי ולהשתמש בא למטרות מסחריות,
+                    ואני מבין שאם היצירה שלי תתפרסם,
+                    השם שלי יופיע לצד היצירה בתור היוצר אלא אם בחרתי להשאר אנונימי.
+                    ` )
+        }
+    }, [ appState.language ])
 
     const trigerNotification = ( err, triger ) => {
         switch ( triger ) {
@@ -68,7 +95,7 @@ const PictureForm = () => {
         } )
     }
 
-    const uploadFile = async() => {
+    const uploadFile = () => {
         return new Promise(( resolve, reject ) => {
             const formData = new FormData()
             formData.append( 'file', file )
@@ -77,6 +104,7 @@ const PictureForm = () => {
             if ( res ) {
                 resolve( res )
             } else {
+                console.log('456')
                 reject( 'bad_file' )
             }
         })
@@ -184,18 +212,22 @@ const PictureForm = () => {
             console.log(err)
             switch ( err ) {
                 case 'bad_file':
+                    if ( appState.language !== 'english' ) err = 'בעיה בקובץ'
                     trigerNotification( err, 'file' )
                     break
                 case 'Please add file':
+                    if ( appState.language !== 'english' ) err = 'לא בחרת קובץ'
                     trigerNotification( err, 'file' )
                     break
                 case 'about':
                     trigerNotification( err, 'about' )
                     break
                 case 'Please enter name':
+                    if ( appState.language !== 'english' ) err = 'לא כתבת שם'
                     trigerNotification( err, 'name' )
                     break
                 case 'Please enter email':
+                    if ( appState.language !== 'english' ) err = 'לא כתבת דוא"ל'
                     trigerNotification( err, 'email' )
                     break
                 case 'terms':
@@ -233,7 +265,7 @@ const PictureForm = () => {
     const removeFile = () => {
         document.getElementById('inputFileId').value = null
         setFile()
-        setFileName( '5MB Max' )
+        { appState.language === 'english' ? setFileName( '5MB Max' ) : setFileName( 'עד 5MB' )}
     }
 
     const onChange = async ( e ) => {
@@ -260,7 +292,7 @@ const PictureForm = () => {
     if ( problem ) return <Problem setProblem={ setProblem }/>
 
     return (
-        <div className='picture_form_container'>
+        <div className='mobile_picture_form_container'>
             <form onSubmit={ submit }>
                 <input 
                     type='file' 
@@ -268,23 +300,24 @@ const PictureForm = () => {
                     hidden='hidden'
                     id='inputFileId'
                     onChange={ onChange }/>
-                <p>Send us a visual you made, and you will get a 10% discount coupon. 
-                    It can be a sketch, a picture, a drawing, a painting or any other visual you made. 
-                    As long as you'r the artist, you can send us anything.</p>
+                <p>{ appState.language === 'english' ? pictureENG : pictureHEB }</p>
                 <button 
                     type="button"
                     className='choose_file_button'
-                    onClick={ clickInputFileButton }>Upload File</button>  
+                    onClick={ clickInputFileButton }>
+                    { appState.language === 'english' ? 'Upload File' : 'לבחור קובץ' }    
+                </button>  
                 <div className='files_container'>
-                    <h3 className={ notification === 'file' ? 'notification' : '' }
-                        >{ notification === 'file' ? errMessage : fileName }</h3>
+                    <h3 className={ notification === 'file' ? 'notification' : '' }>
+                    { notification === 'file' ? errMessage : fileName }
+                    </h3>
                     { file ? <i onClick={ removeFile } className="fas fa-times"></i> : null }
                 </div>
                 <textarea
                     className={ notification === 'about' ? 'notifocation' : '' }
                     name='about'
                     type='textarea'
-                    placeholder='Write about this art..'
+                    placeholder={ appState.language === 'english' ? 'Write about this art..' : 'כמה מילים על היצירה..'}
                     onBlur={ () => setKeyboardOpen( false ) }
                     onFocus={ () => setKeyboardOpen( true ) }
                     onClick={ () => {
@@ -293,13 +326,15 @@ const PictureForm = () => {
                     }}
                     ></textarea>
                 <div className='name_container'>
-                    <h4>Name:</h4>
+                    <h4>
+                        { appState.language === 'english' ? 'Name:' : 'שם:'}
+                    </h4>
                     <input
                     className={ 'name_input ' + ( notification  === 'name' ? 'notification ' : '' ) }
                     id='name'
                     name='name'
                     type='text'
-                    placeholder={ notification === 'name' ? errMessage : 'your name'}
+                    placeholder={ notification === 'name' ? errMessage : userNamePlaceholder }
                     onBlur={ () => setKeyboardOpen( false ) }
                     onFocus={ () => setKeyboardOpen( true ) }
                     onClick={ () => {
@@ -309,7 +344,9 @@ const PictureForm = () => {
                     </input>
                 </div>
                 <div className='email_container'>
-                    <h4>Email:</h4>
+                    <h4>
+                    { appState.language === 'english' ? 'Email:' : 'דוא"ל:'}
+                    </h4>
                     <input
                     className={ 'email_input ' + ( notification === 'email' ? 'notification' : '' )}
                     id='email'
@@ -325,21 +362,27 @@ const PictureForm = () => {
                     </input>
                 </div>
                 <div 
-                    className='checkbox_container'
+                    className={ 'checkbox_container ' + ( appState.language === 'english' ? '' : 'hebrew ' ) }
                     onClick={ checkAnonimus }>
-                    <div className='checkbox'>{ anonymous ? <i className="fas fa-check"></i> : '' }</div>
-                    <p>I would like to be anonimus.</p>
+                    <div className='checkbox'>
+                        { anonymous ? <i className="fas fa-check"></i> : '' }
+                    </div>
+                    <p>
+                        { appState.language === 'english' ? 'I would like to be anonimus.' : 'אני רוצה להשאר אנונימי.' }
+                    </p>
                 </div>
                 <div 
-                    className='checkbox_container'
+                                        className={ 'checkbox_container ' + ( appState.language === 'english' ? '' : 'hebrew ' ) }
                     onClick={ checkAgreeTerms }>
                     <div className={ 'checkbox ' + ( notification === 'terms' ? 'notification ' : '' )}>{ agreeTerms ? <i className="fas fa-check"></i> : '' }</div>
                     <p>{ termsBody }</p>
                 </div>
                 <button
-                    className='submit_button'
+                    className={ 'submit_button ' + ( appState.language === 'english' ? '' : 'hebrew ' ) }
                     type='submit'
-                    value='Send'>Send</button>
+                    value='Send'>
+                    { appState.language === 'english' ? 'Send' : 'שלח' }
+                </button>
             </form>
         </div>
     )
