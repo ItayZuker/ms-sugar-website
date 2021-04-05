@@ -22,6 +22,12 @@ $green: rgb(0, 150, 0);
         display: flex;
         position: absolute;
         left: 57vw;
+        &.hebrew {
+            left: 37vw;
+            > .value_container > h4 {
+                direction: ltr;
+            }
+        }
         > .value_container {
             display: flex;
             > h4 {

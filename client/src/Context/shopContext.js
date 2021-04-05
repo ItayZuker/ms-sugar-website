@@ -23,6 +23,7 @@ const ShopProvider = (props) => {
     const [ keyboardOpen, setKeyboardOpen ] = useState( false )
     const [ appState, setAppState ] = useState(() => {
         return {
+            language: 'hebrew',
             page: 'mission',
             loading: { active: false },
             mainMenu: { open: false },

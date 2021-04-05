@@ -7,7 +7,7 @@ import './preview_decks_gallery.scss'
 
 const PreviewDecksGallery = ( props ) => {
 
-    const { collections } = useContext( ShopContext )
+    const { collections, appState } = useContext( ShopContext )
     const [ allDecks, setAllDecks ] = useState()
 
     const { id } = useParams()
@@ -32,7 +32,7 @@ const PreviewDecksGallery = ( props ) => {
     if ( !allDecks ) return <LoadingShop />
 
     return (
-        <div className='preview_decks_gallery_container'>
+        <div className={ 'preview_decks_gallery_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
             { allDecks.map( deck => {
                 return <PreviewDeck 
                 key={ deck.id }

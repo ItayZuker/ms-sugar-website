@@ -25,6 +25,10 @@ $green: rgb(0, 150, 0);
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+        &.hebrew {
+            margin-left: 0;
+            margin-right: auto;
+        }
         &:hover {
             cursor: pointer;
             > img {

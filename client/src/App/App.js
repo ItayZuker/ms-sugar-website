@@ -6,13 +6,14 @@ import MobileApp from './MobileApp/MobileApp'
 
 const App = () => {
 
-  const { setClientInfo, setCurrency, currencyData } = useContext( ShopContext)
+  const { setClientInfo, setCurrency, changeCurrency, setAppState } = useContext( ShopContext)
 
   useEffect(() => {
-    setCurrency()
     const fetchData = async () => {
       const data = await   fetch(`https://geolocation-db.com/json/`)
       const geoData = await data.json()
+      selectCurrency( geoData )
+      selectLanguage( geoData )
       setClientInfo( () => {
         return {
           countyCode: geoData.country_code, 
@@ -22,6 +23,27 @@ const App = () => {
     }
     fetchData()
   }, [])
+
+  const selectCurrency = async ( geoData ) => {
+    if ( geoData.country_code = 'IL' ) {
+      await setCurrency()
+      changeCurrency( 'ILS' )
+    } else {
+      setCurrency()
+    }
+  }
+
+  const selectLanguage = ( geoData ) => {
+    if ( geoData.country_code = 'IL' ) {
+      setAppState( prevState => {
+        return { ...prevState, language: 'עברית' }
+      })
+    } else {
+      setAppState( prevState => {
+        return { ...prevState, language: 'english' }
+      })
+    }
+  }
 
   return (
     <>

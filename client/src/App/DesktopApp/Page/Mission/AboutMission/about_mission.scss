@@ -19,14 +19,24 @@ $green: rgb(0, 150, 0);
     padding-top: 15vh;
     padding-left: 15vw;
     padding-right: 15vw;
+    &.hebrew {
+        direction: rtl;
+    }
     > .section_container {
         width: 20vw;
         height: fit-content;
         > .title_container {
-            display: flex;
             margin-bottom: 2vh;
             display: flex;
             align-items: center;
+            &.hebrew {
+                flex-direction: row-reverse;
+                justify-content: flex-end;
+                i {
+                    margin-right: 0;
+                    margin-left: 1vw;
+                }
+            }
             i {
                 color: $medium_gray;
                 font-size: 4.5vh;
@@ -42,11 +52,17 @@ $green: rgb(0, 150, 0);
             font-size: 2vh;
             font-weight: 400;
             color: $light_gray;
+            &.hebrew {
+                text-align: right;
+            }
         }
         > .button_container {
             display: flex;
             justify-content: flex-end;
             margin-right: 2vw;
+            &.hebrew {
+                margin-left: 2vw;
+            }
             > button {
                 font-size: 2vh;
                 color: $medium_gray;

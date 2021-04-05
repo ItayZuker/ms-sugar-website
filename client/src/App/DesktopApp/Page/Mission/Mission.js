@@ -8,7 +8,7 @@ import './mission.scss'
 const Mission = () => {
 
     const [ loadComponent, setLoadComponent ] = useState( false )
-    const { setAppState } = useContext( ShopContext )
+    const { setAppState, appState } = useContext( ShopContext )
 
     useEffect(() => {
         const html = document.querySelector('html')
@@ -29,7 +29,7 @@ const Mission = () => {
                     className='button_container'
                     onClick={ () => goToAnchor('mission_section') }
                     >
-                    <h3>More</h3>
+                    <h3>{ appState.language === 'english' ? 'More' : 'למטה' }</h3>
                     <i className="fas fa-caret-down"></i>
                 </div>
             </div>

@@ -10,7 +10,7 @@ const SugarItemGallery = () => {
     const [ selectedSugar, setSelectedSugar ] = useState()
     const [ currentIndex, setCurrentIndex ] = useState()
     const [ allSugars, setAllSugars ] = useState()
-    const { collections } = useContext( ShopContext )
+    const { collections, appState } = useContext( ShopContext )
     const history = useHistory()
     const { id } = useParams()
 
@@ -101,10 +101,10 @@ const SugarItemGallery = () => {
     if ( !selectedSugar ) return <LoadingShop />
 
     return (
-        <div className='desktop_sugar_item_gallery_container'>
+        <div className={ 'desktop_sugar_item_gallery_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
             <h3 
                 className={ 'back_button ' + ( allSugars.length > 1 ? '' : 'hide ' ) }
-                onClick={ goBack }>Back</h3>
+                onClick={ goBack }>{ appState.language === 'english' ? 'Back' : 'חזרה' }</h3>
             <div className='sugar_picture_gallery_container'>
                 <div 
                     className={ 'left_button ' + ( allSugars.legth > 1 ? '' : 'hide ') }

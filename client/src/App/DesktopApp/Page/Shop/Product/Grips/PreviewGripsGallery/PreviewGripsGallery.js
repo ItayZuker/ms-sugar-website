@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect} from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { ShopContext } from '../../../../../../../Context/shopContext'
 import PreviewGrip from './PreviewGrip/PreviewGrip'
 import LoadingShop from '../../../ShopComponents/LoadingShop/LoadingShop'
@@ -7,9 +7,9 @@ import './preview_grips_gallery.scss'
 
 const PreviewGripsGallery = ( props ) => {
 
-    const { collections } = useContext( ShopContext )
+    const { collections, appState } = useContext( ShopContext )
     const [ allGrips, setAllGrips ] = useState()
-
+    const history = useHistory()
     const { id } = useParams()
 
     useEffect( async() => {
@@ -31,8 +31,10 @@ const PreviewGripsGallery = ( props ) => {
 
     if ( !allGrips ) return <LoadingShop />
 
+    if ( allGrips.length === 1 ) history.push(`/shop/grips/${allGrips[0].id}`)
+
     return (
-        <div className='preview_grips_gallery_container'>
+        <div className={ 'preview_grips_gallery_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
             { allGrips.map( grip => {
                 return <PreviewGrip 
                 key={ grip.id }

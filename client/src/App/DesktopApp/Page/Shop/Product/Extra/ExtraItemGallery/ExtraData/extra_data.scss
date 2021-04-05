@@ -10,7 +10,7 @@ $red: rgb(200, 0, 0);
 $green: rgb(0, 150, 0);
 
 .desktop_extra_data_container {
-    width: 30vw;
+    width: 35vw;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -60,6 +60,10 @@ $green: rgb(0, 150, 0);
             transition: 0.2s;
             background-color: $light_gray;
             color: $off_white;
+            &.hebrew {
+                margin-left: 0;
+                margin-right: auto;
+            }
             &.active {
                 background-color: $dark_gray;
                 color: $off_white;
@@ -81,7 +85,7 @@ $green: rgb(0, 150, 0);
 
 @media (max-aspect-ratio: 16 / 9) {
     .desktop_extra_data_container {
-        width: 30vw;
+        width: 40vw;
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -131,6 +135,10 @@ $green: rgb(0, 150, 0);
                 transition: 0.2s;
                 background-color: $light_gray;
                 color: $off_white;
+                &.hebrew {
+                    margin-left: 0;
+                    margin-right: auto;
+                }
                 &.active {
                     background-color: $dark_gray;
                     color: $off_white;
@@ -202,6 +210,10 @@ $green: rgb(0, 150, 0);
                 transition: 0.2s;
                 background-color: $light_gray;
                 color: $off_white;
+                &.hebrew {
+                    margin-left: 0;
+                    margin-right: auto;
+                }
                 &.active {
                     background-color: $dark_gray;
                     color: $off_white;
@@ -223,7 +235,7 @@ $green: rgb(0, 150, 0);
 
 @media (max-aspect-ratio: 1 / 1) {
     .desktop_extra_data_container {
-        width: 35vw;
+        width: 40vw;
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -273,6 +285,10 @@ $green: rgb(0, 150, 0);
                 transition: 0.2s;
                 background-color: $light_gray;
                 color: $off_white;
+                &.hebrew {
+                    margin-left: 0;
+                    margin-right: auto;
+                }
                 &.active {
                     background-color: $dark_gray;
                     color: $off_white;

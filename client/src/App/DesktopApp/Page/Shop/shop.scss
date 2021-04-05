@@ -19,6 +19,9 @@ $green: rgb(0, 150, 0);
     justify-content: space-between;
     opacity: 0;
     transition: opacity 0.2s;
+    &.hebrew {
+        direction: rtl;
+    }
     &.load_component {
         opacity: 1;
     }

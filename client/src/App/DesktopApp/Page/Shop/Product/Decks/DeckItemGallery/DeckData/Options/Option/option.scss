@@ -22,6 +22,13 @@ $green: rgb(0, 150, 0);
         display: flex;
         position: absolute;
         left: 57vw;
+        &.hebrew {
+            right: 57vw;
+            > .value_container > h4 {
+                direction: ltr;
+                width: fit-content;
+            }
+        }
         > .value_container {
             display: flex;
             > h4 {
@@ -30,6 +37,7 @@ $green: rgb(0, 150, 0);
                 color: $light_gray;
                 padding: 0.5vh 0.5vw 0.5vh 0.5vw;
                 transition: color 0.2s;
+                white-space: nowrap;
                 &.selected {
                     color: $dark_gray;
                     background-color: $dark_gray;
@@ -67,6 +75,12 @@ $green: rgb(0, 150, 0);
             display: flex;
             position: absolute;
             left: 55vw;
+            &.hebrew {
+                right: 55vw;
+                > .value_container > h4 {
+                    direction: ltr;
+                }
+            }
             > .value_container {
                 display: flex;
                 > h4 {
@@ -113,6 +127,12 @@ $green: rgb(0, 150, 0);
             display: flex;
             position: absolute;
             left: 65vw;
+            &.hebrew {
+                right: 65vw;
+                > .value_container > h4 {
+                    direction: ltr;
+                }
+            }
             > .value_container {
                 display: flex;
                 > h4 {

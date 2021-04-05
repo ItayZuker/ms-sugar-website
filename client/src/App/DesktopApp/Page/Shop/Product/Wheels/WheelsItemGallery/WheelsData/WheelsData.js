@@ -9,7 +9,8 @@ const WheelsData = ( props ) => {
     const [ product, setProduct ] = useState()
     const [ price, setPrice ] = useState()
     const { updateItem } = useGetItem()
-    const { currencyData, addItemToCheckout, getPrice } = useContext( ShopContext )
+    const { currencyData, addItemToCheckout, getPrice, appState } = useContext( ShopContext )
+    const [ stockNotification, setStockNotification ] = useState()
     const wheelsInfo_ref = useRef()
 
     useEffect(() => {
@@ -20,6 +21,7 @@ const WheelsData = ( props ) => {
             setProduct( data )
             props.setVariant( data.variant )
             wheelsInfo_ref.current.innerHTML = data.description
+            appState.language === 'english' ? setStockNotification( 'Out of stock' ) : setStockNotification( 'נגמר המלאי' )
         }
         fetchData()
     }, [ props.productAPI ])
@@ -43,7 +45,9 @@ const WheelsData = ( props ) => {
 
     const addToCart = (e) => {
         e.preventDefault()
-        addItemToCheckout( product.variant[0].id, 1 )
+        if ( props.productAPI.availableForSale ) {
+            addItemToCheckout( product.variant[0].id, 1 )
+        }
     }
 
     const capitalFirst = ( string ) => {
@@ -56,17 +60,17 @@ const WheelsData = ( props ) => {
 
     return (
         <div className='desktop_wheels_data_container'>
-            <h3 className='title'>{ capitalFirst( product.title ) }</h3>
+            <h3 className='title'>{ appState.language === 'english' ? capitalFirst( product.title ) : 'גלגלים' }</h3>
             <h4 className={ 'price ' + ( props.productAPI.availableForSale ? 'active' : '' )}>
-                { props.productAPI.availableForSale ? currencyData.currentCurrencySymbole + ' ' + price  : 'Out of stock' }
+                { props.productAPI.availableForSale ? currencyData.currentCurrencySymbole + ' ' + price  : stockNotification }
                 </h4>
-            <h3 className='inspiration_title'>Info</h3>
+            <h3 className='inspiration_title'>{ appState.language === 'english' ? 'Inspiration' : 'השראה' }</h3>
             <p ref={ wheelsInfo_ref }></p>
             <div className='bottom_section'>
                 { props.productAPI.availableForSale ? <Options product={ product } setProduct={ setProduct } productAPI={ props.productAPI } setVariant={ props.setVariant } /> : null }
                 <button 
-                    className={ props.productAPI.availableForSale ? 'active' : '' } 
-                    onClick={ e => addToCart(e) }>Add to cart</button>
+                    className={ ( props.productAPI.availableForSale ? 'active ' : '' ) + ( appState.language === 'english' ? '' : 'hebrew ' ) } 
+                    onClick={ e => addToCart(e) }>{ appState.language === 'english' ? 'Add to cart' : 'להוסיף לעגלה' }</button>
             </div>
         </div>
     )

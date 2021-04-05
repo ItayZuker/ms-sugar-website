@@ -10,7 +10,7 @@ const DeckItemGallery = () => {
     const [ selectedDeck, setSelectedDeck ] = useState()
     const [ currentIndex, setCurrentIndex ] = useState()
     const [ allDecks, setAllDecks ] = useState()
-    const { collections } = useContext( ShopContext )
+    const { collections, appState } = useContext( ShopContext )
     const history = useHistory()
     const { id } = useParams()
 
@@ -100,11 +100,11 @@ const DeckItemGallery = () => {
     if ( !selectedDeck ) return <LoadingShop />
 
     return (
-        <div className='desktop_deck_item_gallery_container'>
+        <div className={ 'desktop_deck_item_gallery_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
             <h3 
-                className='back_button'
-                onClick={ goBack }>Back</h3>
-            <div className='deck_picture_gallery_container'>
+                className={ 'back_button ' + ( appState.language === 'english' ? '' : 'hebrew' ) }
+                onClick={ goBack }>{ appState.language === 'english' ? 'Back' : 'חזרה' }</h3>
+            <div className={ 'deck_picture_gallery_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
                 <div 
                     className='left_button'
                     onClick={ () => changeSelection( 'left' ) } >

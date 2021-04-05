@@ -11,7 +11,7 @@ const WheelsItemGallery = () => {
     const [ selectedWheels, setSelectedWheels ] = useState()
     const [ currentIndex, setCurrentIndex ] = useState()
     const [ allWheels, setAllSugars ] = useState()
-    const { collections } = useContext( ShopContext )
+    const { collections, appState } = useContext( ShopContext )
     const history = useHistory()
     const { id } = useParams()
 
@@ -101,10 +101,10 @@ const WheelsItemGallery = () => {
     if ( !selectedWheels ) return <LoadingShop />
 
     return (
-        <div className='desktop_wheels_item_gallery_container'>
+        <div className={ 'desktop_wheels_item_gallery_container ' + ( appState.language === 'english' ? '' : 'hebrew ' ) }>
             <h3 
                 className={ 'back_button ' + ( allWheels.length > 1 ? '' : 'hide ' ) }
-                onClick={ goBack }>Back</h3>
+                onClick={ goBack }>{ appState.language === 'english' ? 'Back' : 'חזרה' }</h3>
             <div className='wheels_picture_gallery_container'>
                 <div 
                     className={ 'left_button ' + ( allWheels.legth > 1 ? '' : 'hide ') }

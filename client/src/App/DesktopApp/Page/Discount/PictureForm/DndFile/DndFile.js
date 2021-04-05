@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { ShopContext } from '../../../../../../Context/shopContext';
 import './dnd_file.scss'
 
 const DndFile = ( props ) => {
 
+    const { appState } = useContext( ShopContext )
     const [ file, setFile ] = useState( false )
     const [ errMessage, setErrMessage ] = useState()
     const [ fileName, setFileName ] = useState('Choose file..')
-
+    const [ info, setInfo ] = useState()
     let { acceptedFiles, getRootProps, getInputProps} = useDropzone( { maxFiles:1 } )
 
     const removeFile = () => {
@@ -16,8 +18,16 @@ const DndFile = ( props ) => {
         props.setFile()
     }
 
+    useEffect(() => {
+        if ( appState.language === 'english' ) {
+            setInfo( '5MB Max' )
+        } else {
+            setInfo( 'עד 5 מגה ביט' )
+        }
+    }, [ appState.language ])
+
     const trigerSizeNotification = () => {
-        setErrMessage( 'Max size 5MB' )
+        setErrMessage( appState.language === 'english' ? 'Max size 5MB' : 'מקסימום 5 מגה ביט' )
         setTimeout(() => {
             setErrMessage()
         }, 2000)
@@ -71,10 +81,11 @@ if ( file ) return (
     <section className="dnd_container">
       <div { ...getRootProps( { className: 'dropzone' } ) }>
         <input { ...getInputProps() } />
-        <p>Drag 'n' drop your file, or click to browse</p>
+        <p>
+            { appState.language === 'english' ? 'Drag & drop your file, or click to browse' : 'גרור את הקבצים, או לחץ כדי לבחור בתיקיות' }</p>
         <h3 
             className={ errMessage ? 'notification' : '' }
-            >{ errMessage ? errMessage : '5MB Max' }</h3>
+            >{ errMessage ? errMessage : info }</h3>
       </div>
     </section>
   );

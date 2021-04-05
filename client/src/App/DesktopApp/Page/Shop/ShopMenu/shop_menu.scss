@@ -22,6 +22,10 @@ $green: rgb(0, 100, 0);
         padding-left: 3vh;
         margin-top: 2.5vh;
         transition: color 0.2s;
+        &.hebrew {
+            padding-left: 0;
+            padding-right: 3vh;
+        }
         &:hover {
             cursor: pointer;
             color: $white;

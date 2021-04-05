@@ -11,7 +11,7 @@ const TrucksItemGallery = () => {
     const [ selectedTrucks, setSelectedTrucks ] = useState()
     const [ currentIndex, setCurrentIndex ] = useState()
     const [ allTrucks, setAllTrucks ] = useState()
-    const { collections } = useContext( ShopContext )
+    const { collections, appState } = useContext( ShopContext )
     const history = useHistory()
     const { id } = useParams()
 
@@ -101,10 +101,10 @@ const TrucksItemGallery = () => {
     if ( !selectedTrucks ) return <LoadingShop />
 
     return (
-        <div className='desktop_trucks_item_gallery_container'>
+        <div className={ 'desktop_trucks_item_gallery_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
             <h3 
                 className={ 'back_button ' + ( allTrucks.length > 1 ? '' : 'hide ' ) }
-                onClick={ goBack }>Back</h3>
+                onClick={ goBack }>{ appState.language === 'english' ? 'Back' : 'חזרה' }</h3>
             <div className='trucks_picture_gallery_container'>
                 <div 
                     className={ 'left_button ' + ( allTrucks.legth > 1 ? '' : 'hide ') }

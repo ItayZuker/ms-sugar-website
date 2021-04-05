@@ -9,7 +9,15 @@ const DeckData = ( props ) => {
     const [ product, setProduct ] = useState()
     const [ price, setPrice ] = useState()
     const { updateItem } = useGetItem()
-    const { currencyData, addItemToCheckout, getPrice } = useContext( ShopContext )
+    const { currencyData, addItemToCheckout, getPrice, appState } = useContext( ShopContext )
+    const [ stencil ] = useState( () => {
+        return `<p>
+                <span>
+                    אפשר לעשות גרפיטי עם הסטנסיל של "מיס שוגר",
+                    אבל ברוב המקומות זה לא חוקי.
+                    </span>
+                </p>`
+        })
     const extraInfo_ref = useRef()
 
     useEffect(() => {
@@ -19,10 +27,16 @@ const DeckData = ( props ) => {
             setPrice( price )
             setProduct( data )
             props.setVariant( data.variant )
-            extraInfo_ref.current.innerHTML = data.description
+            appState.language === 'english' ? extraInfo_ref.current.innerHTML = data.description :  extraInfo_ref.current.innerHTML = translate( data )
         }
         fetchData()
-    }, [ props.productAPI ])
+    }, [ props.productAPI, appState.language ])
+
+    const translate = ( data ) => {
+        switch ( data.title ) {
+            case 'stencil': return stencil
+        }
+    }
 
     useEffect( () => {
         if ( product ) {
@@ -52,21 +66,28 @@ const DeckData = ( props ) => {
         }
     }
 
+    const translateTitle = ( title ) => {
+        switch ( title ) {
+            case 'stencil': return 'סטנסיל'
+            default: return title
+        }
+    }
+
     if ( !product ) return <></>
 
     return (
         <div className='desktop_extra_data_container'>
-            <h3 className='title'>{ capitalFirst( product.title ) }</h3>
+            <h3 className='title'>{ appState.language === 'english' ? capitalFirst( product.title ) : translateTitle( product.title ) }</h3>
             <h4 className={ 'price ' + ( props.productAPI.availableForSale ? 'active' : '' )}>
                 { props.productAPI.availableForSale ? currencyData.currentCurrencySymbole + ' ' + price : 'Out of stock' }
                 </h4>
-            <h3 className='inspiration_title'>Info</h3>
+            <h3 className='inspiration_title'>{ appState.language === 'english' ? 'Inspiration' : 'השראה' }</h3>
             <p ref={ extraInfo_ref }></p>
             <div className='bottom_section'>
                 { props.productAPI.availableForSale ? <Options product={ product } setProduct={ setProduct } productAPI={ props.productAPI } setVariant={ props.setVariant } /> : null }
                 <button 
-                    className={ props.productAPI.availableForSale ? 'active' : '' } 
-                    onClick={ e => addToCart(e) }>Add to cart</button>
+                    className={ ( props.productAPI.availableForSale ? 'active ' : '' ) + ( appState.language === 'english' ? '' : 'hebrew' ) } 
+                    onClick={ e => addToCart(e) }>{ appState.language === 'english' ? 'Add to cart' : 'להוסיף לעגלה' }</button>
             </div>
         </div>
     )

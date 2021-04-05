@@ -14,6 +14,10 @@ $green: rgb(0, 150, 0);
     justify-content: space-between;
     height: 50vh;
     padding-left: 15vw;
+    &.hebrew {
+        padding-left: 0;
+        padding-right: 15vw;
+    }
     > .back_button {
         font-size: 2vh;
         font-weight: 400;
@@ -21,6 +25,12 @@ $green: rgb(0, 150, 0);
         position: absolute;
         transform: translate(2vw, -5vh);
         transition: color 0.2s;
+        &.hide {
+            display: none;
+        }
+        &.hebrew {
+            transform: translate(-2vw, -5vh);
+        }
         &:hover {
             cursor: pointer;
             color: $dark_gray;
@@ -34,6 +44,15 @@ $green: rgb(0, 150, 0);
         display: flex;
         justify-content: center;
         align-items: center;
+        &.hebrew {
+            flex-direction: row-reverse;
+            > .left_button {
+                justify-content: flex-end;
+            }
+            > .right_button {
+                justify-content: flex-start;
+            }
+        }
         > .left_button {
             width: 3vw;
             height: 20vh;
@@ -42,6 +61,9 @@ $green: rgb(0, 150, 0);
             justify-content: flex-start;
             color: $light_gray;
             transition: color 0.2s;
+            &.hide {
+                display: none;
+            }
             &:hover {
                 cursor: pointer;
                 color: $dark_gray;
@@ -58,6 +80,9 @@ $green: rgb(0, 150, 0);
             justify-content: flex-end;
             color: $light_gray;
             transition: color 0.2s;
+            &.hide {
+                display: none;
+            }
             &:hover {
                 cursor: pointer;
                 color: $dark_gray;
@@ -78,6 +103,10 @@ $green: rgb(0, 150, 0);
         justify-content: space-between;
         height: 50vh;
         padding-left: 15vw;
+        &.hebrew {
+            padding-left: 0;
+            padding-right: 15vw;
+        }
         > .back_button {
             font-size: 2vh;
             font-weight: 400;
@@ -143,6 +172,10 @@ $green: rgb(0, 150, 0);
         justify-content: space-between;
         height: 50vh;
         padding-left: 20vw;
+        &.hebrew {
+            padding-left: 0;
+            padding-right: 20vw;
+        }
         > .back_button {
             font-size: 2vh;
             font-weight: 400;
@@ -209,6 +242,10 @@ $green: rgb(0, 150, 0);
         justify-content: space-between;
         height: 50vh;
         padding-left: 20vw;
+        &.hebrew {
+            padding-left: 0;
+            padding-right: 20vw;
+        }
         > .back_button {
             font-size: 2vh;
             font-weight: 400;

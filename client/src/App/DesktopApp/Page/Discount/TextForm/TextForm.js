@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import axios from 'axios'
 import emailjs from 'emailjs-com';
 import LoadingCoupon from '../LoadingCoupon/LoadingCoupon'
 import ConfirmationCoupon from '../ConfirmationCoupon/ConfirmationCoupon'
 import Problem from '../Problem/Problem'
 import './text_form.scss'
+import { ShopContext } from '../../../../../Context/shopContext';
 
 const PictureForm = () => {
 
+    const { appState } = useContext( ShopContext )
     const [ notification, setNotification ] = useState( '' )
     const [ errMessage, setErrMessage ] = useState( '' )
     const [ anonymous, setAnonymous ] = useState( false )
@@ -15,25 +17,44 @@ const PictureForm = () => {
     const [ loading, setLoading ] = useState( false )
     const [ confirmation, setConfirmation ] = useState( false )
     const [ problem, setProblem ] = useState( false )
-    const [ termsBody ] = useState(  
-        `I agree that Ms. Sugar publish my art with a commercial purpose,
-        and I understand that If Ms. Sugar publish my art, 
-        my name will be published as the artist,
-        unless I choose to be anonymous.` 
-        )
+    const [ namePlaceholder, setNamePlaceholder ] = useState()
+    const [ termsBody, setTermsBody ] = useState()
+    const [ textareaPlaceholder, setTextareaPlaceholder ] = useState()
+
+    useEffect(() => {
+        if ( appState.language === 'english' ) {
+            setNamePlaceholder( 'your name' )
+            setTermsBody( `
+                I agree that Ms. Sugar publish my art with a commercial purpose,
+                and I understand that If Ms. Sugar publish my art, 
+                my name will be published as the artist,
+                unless I choose to be anonymous.
+                ` )
+            setTextareaPlaceholder( `Your text:` )
+        } else {
+            setNamePlaceholder( 'השם שלך' )
+            setTermsBody( `
+                אני מסכים ל "מיס שוגר" לפרסם את האומנות שלי ולהשתמש בא למטרות מסחריות,
+                ואני מבין שאם היצירה שלי תתפרסם,
+                השם שלי יופיע לצד היצירה בתור היוצר אלא אם בחרתי להשאר אנונימי.
+                ` )
+            setTextareaPlaceholder( `הטקסט שכתבת:` )
+        }
+
+    }, [ appState.language ])
 
     const trigerNotification = ( err, triger ) => {
         switch ( triger ) {
             case 'text':
-                setErrMessage( err )
+                setErrMessage( appState.language === 'english' ? err : 'לא כתבת..' )
                 setNotification( 'text' )
                 break
             case 'name':
-                setErrMessage( err )
+                setErrMessage( appState.language === 'english' ? err : 'לא כתבת שם' )
                 setNotification( 'name' )
                 break
             case 'email':
-                setErrMessage( err )
+                setErrMessage( appState.language === 'english' ? err : 'לא כתבת דוא"ל' )
                 setNotification( 'email' )
                 break
             case 'terms':
@@ -201,28 +222,30 @@ const PictureForm = () => {
             className='text_form'
             onSubmit={ submit }>
             <div className='left_container'>
-                <div className='name_container'>
-                    <h4>* Name:</h4>
+                <div className={ 'name_container ' + ( appState.language === 'english' ? '' : 'hebrew ' ) }>
+                    <h4>
+                        { appState.language === 'english' ? '* Name:' : '* שם:' }</h4>
                     <input
                     className={ 'name_input ' + ( notification  === 'name' ? 'notification ' : '' ) }
                     id='name'
                     name='name'
                     type='text'
-                    placeholder={ notification === 'name' ? errMessage : 'your name'}
+                    placeholder={ notification === 'name' ? errMessage : namePlaceholder }
                     onClick={ () => {
                         setNotification( '' )
                         setErrMessage( '' )
                     }}>
                     </input>
                 </div>
-                <div className='email_container'>
-                    <h4>* Email:</h4>
+                <div className={ 'email_container ' + ( appState.language === 'english' ? '' : 'hebrew ' ) }>
+                    <h4>
+                        { appState.language === 'english' ? '* Email:' : '* דוא"ל:' }</h4>
                     <input
                     className={ 'email_input ' + ( notification === 'email' ? 'notification' : '' )}
                     id='email'
                     name='email'
                     type='email'
-                    placeholder={ notification === 'email' ? errMessage : 'example@mail.com'}
+                    placeholder={ notification === 'email' ? errMessage : 'example@mail.com' }
                     onClick={ () => {
                         setNotification( '' )
                         setErrMessage( '' )
@@ -230,13 +253,14 @@ const PictureForm = () => {
                     </input>
                 </div>
                 <div 
-                    className='checkbox_container'
+                    className={ 'checkbox_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }
                     onClick={ checkAnonimus }>
                     <div className='checkbox'>{ anonymous ? <i className="fas fa-check"></i> : '' }</div>
-                    <p>I would like to be anonimus.</p>
+                    <p>
+                        { appState.language === 'english' ? 'I would like to be anonimus.' : 'אני רוצה להשאר אנונימי' }</p>
                 </div>
                 <div 
-                    className='checkbox_container'
+                    className={ 'checkbox_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }
                     onClick={ checkAgreeTerms }>
                     <div className={ 'checkbox ' + ( notification === 'terms' ? 'notification ' : '' )}>{ agreeTerms ? <i className="fas fa-check"></i> : '' }</div>
                     <p>{ termsBody }</p>
@@ -244,14 +268,16 @@ const PictureForm = () => {
                 <button
                     className='submit_button'
                     type='submit'
-                    value='Send'>Send</button>
+                    value='Send'>
+                    { appState.language === 'english' ? 'Send' : 'שלח' }
+                </button>
             </div>
             <div className='right_container'>
                 <textarea
-                    className={ notification === 'text' ? 'notification' : '' }
+                    className={ ( appState.language === 'english' ? '' : 'hebrew ' ) + ( notification === 'text' ? 'notification ' : '' ) }
                     name='text'
                     type='textarea'
-                    placeholder={ notification === 'text' ? errMessage : 'Your text:' }
+                    placeholder={ notification === 'text' ? errMessage : textareaPlaceholder }
                     onClick={ () => {
                             setNotification( '' )
                             setErrMessage( '' )

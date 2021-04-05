@@ -8,7 +8,7 @@ import './shop.scss'
 const Shop = () => {
 
     const [ loadComponent, setLoadComponent ] = useState( false )
-    const { fetchAllCollections, collections, setAppState } = useContext( ShopContext )
+    const { fetchAllCollections, collections, setAppState, appState } = useContext( ShopContext )
 
     useEffect(() => {
         const html = document.querySelector('html')
@@ -21,7 +21,7 @@ const Shop = () => {
     }, [])
 
     return (
-        <div className={ 'desktop_shop_container ' + ( loadComponent ? 'load_component ' : '' ) }>
+        <div className={ 'desktop_shop_container ' + ( loadComponent ? 'load_component ' : '' ) + ( appState.language === 'english' ? '' : 'hebrew ' ) }>
                 <ShopMenu />
                 <Switch>
                     <Route path='/shop' exact component={ Product }/>

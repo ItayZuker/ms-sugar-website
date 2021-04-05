@@ -60,12 +60,16 @@ $green: rgb(0, 150, 0);
             transition: 0.2s;
             background-color: $light_gray;
             color: $off_white;
+            &.hebrew {
+                margin-left: 0;
+                margin-right: auto;
+            }
+            &:focus {
+                outline: none;
+            }
             &.active {
                 background-color: $dark_gray;
                 color: $off_white;
-                &:focus {
-                    outline: none;
-                }
                 &:hover {
                     background-color: $medium_dark_gray;
                     cursor: pointer;
@@ -131,12 +135,16 @@ $green: rgb(0, 150, 0);
                 transition: 0.2s;
                 background-color: $light_gray;
                 color: $off_white;
+                &.hebrew {
+                    margin-left: 0;
+                    margin-right: auto;
+                }
+                &:focus {
+                    outline: none;
+                }
                 &.active {
                     background-color: $dark_gray;
                     color: $off_white;
-                    &:focus {
-                        outline: none;
-                    }
                     &:hover {
                         background-color: $medium_dark_gray;
                         cursor: pointer;
@@ -202,12 +210,16 @@ $green: rgb(0, 150, 0);
                 transition: 0.2s;
                 background-color: $light_gray;
                 color: $off_white;
+                &.hebrew {
+                    margin-left: 0;
+                    margin-right: auto;
+                }
+                &:focus {
+                    outline: none;
+                }
                 &.active {
                     background-color: $dark_gray;
                     color: $off_white;
-                    &:focus {
-                        outline: none;
-                    }
                     &:hover {
                         background-color: $medium_dark_gray;
                         cursor: pointer;
@@ -273,12 +285,16 @@ $green: rgb(0, 150, 0);
                 transition: 0.2s;
                 background-color: $light_gray;
                 color: $off_white;
+                &.hebrew {
+                    margin-left: 0;
+                    margin-right: auto;
+                }
+                &:focus {
+                    outline: none;
+                }
                 &.active {
                     background-color: $dark_gray;
                     color: $off_white;
-                    &:focus {
-                        outline: none;
-                    }
                     &:hover {
                         background-color: $medium_dark_gray;
                         cursor: pointer;

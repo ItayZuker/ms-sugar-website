@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { ShopContext } from '../../../../../../../../../../Context/shopContext'
 import { useGetItem } from '../../../../../../../../../../customHooks/useGetItem'
 import './option.scss'
 
 const Option = ( props ) => {
 
+    const { appState } = useContext( ShopContext )
     const [ selectedVariant, setSelectedVariant ] = useState()
     const { updateItem } = useGetItem()
 
@@ -60,10 +62,29 @@ const Option = ( props ) => {
         }
     }
 
+    const translateValue = ( value ) => {
+        switch ( value ) {
+            case 'large': return 'גדול'
+            case 'medium': return 'בינוני'
+            case 'small': return 'שטוח'
+            case 'maple wood': return 'עץ מייפל'
+            default: return value
+        }
+    }
+
+    const translateOptionName = ( name ) => {
+        switch ( name ) {
+            case 'size': return 'מידה'
+            case 'concave': return 'זווית'
+            case 'material': return 'חומר'
+            default: return name
+        }
+    }
+
     return (
         <div className='desktop_option_container'>
-            <h4>{ capitalFirst( props.option.name ) }:</h4>
-            <div className='option_values_container'>
+            <h4>{ appState.language === 'english' ? capitalFirst( props.option.name ) : translateOptionName( props.option.name ) }:</h4>
+            <div className={ 'option_values_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
                 { props.option.values.map( ( value, index ) => {
                     return (
                         <div
@@ -72,7 +93,7 @@ const Option = ( props ) => {
                             <h4 
                             className={ selectedVariant === value ? 'selected' : '' }
                             onClick={ () => selectDeckVariant( value ) }> 
-                            { value } </h4>
+                            { appState.language === 'english' ? value : translateValue( value ) } </h4>
                             { index === props.option.values.length - 1 ? '' : <span>/</span> }
                         </div>
                     )

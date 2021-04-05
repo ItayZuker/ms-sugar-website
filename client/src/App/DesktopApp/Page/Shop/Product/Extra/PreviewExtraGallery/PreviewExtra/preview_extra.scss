@@ -24,6 +24,10 @@ $green: rgb(0, 150, 0);
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        &.hebrew {
+            margin-left: 0;
+            margin-right: auto;
+        }
         &:hover {
             cursor: pointer;
             > img {
@@ -65,7 +69,6 @@ $green: rgb(0, 150, 0);
         display: flex;
         flex-direction: column;
         align-items: center;
-        // justify-content: space-between;
         > .inner_container {
             width: 25vh;
             height: 100%;
@@ -74,6 +77,10 @@ $green: rgb(0, 150, 0);
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            &.hebrew {
+                margin-left: 0;
+                margin-right: auto;
+            }
             &:hover {
                 cursor: pointer;
                 > img {
@@ -124,6 +131,10 @@ $green: rgb(0, 150, 0);
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            &.hebrew {
+                margin-left: 0;
+                margin-right: auto;
+            }
             &:hover {
                 cursor: pointer;
                 > img {
@@ -175,6 +186,10 @@ $green: rgb(0, 150, 0);
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            &.hebrew {
+                margin-left: 0;
+                margin-right: auto;
+            }
             &:hover {
                 cursor: pointer;
                 > img {

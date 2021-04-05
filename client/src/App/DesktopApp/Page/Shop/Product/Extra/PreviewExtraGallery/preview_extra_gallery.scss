@@ -14,6 +14,10 @@ $green: rgb(0, 150, 0);
     justify-content: space-between;
     flex-wrap: wrap;
     padding-left: 15vw;
+    &.hebrew {
+        padding-left: 0;
+        padding-right: 15vw;
+    }
 }
 
 @media (max-aspect-ratio: 16 / 9) {
@@ -22,6 +26,10 @@ $green: rgb(0, 150, 0);
         justify-content: space-between;
         flex-wrap: wrap;
         padding-left: 15vw;
+        &.hebrew {
+            padding-left: 0;
+            padding-right: 15vw;
+        }
     }
 }
 
@@ -31,6 +39,10 @@ $green: rgb(0, 150, 0);
         justify-content: space-between;
         flex-wrap: wrap;
         padding-left: 20vw;
+        &.hebrew {
+            padding-left: 0;
+            padding-right: 20vw;
+        }
     }
 }
 
@@ -40,5 +52,9 @@ $green: rgb(0, 150, 0);
         justify-content: space-between;
         flex-wrap: wrap;
         padding-left: 20vw;
+        &.hebrew {
+            padding-left: 0;
+            padding-right: 20vw;
+        }
     }
 }

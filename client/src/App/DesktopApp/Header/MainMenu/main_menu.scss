@@ -12,9 +12,19 @@ $green: rgb(0, 150, 0);
 .main_menu_containet {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 50%;
     margin-left: 5%;
     .nav_item {
+        &.hebrew {
+            direction: rtl;
+            > h4 {
+                > i {
+                    margin-right: 0;
+                    margin-left: 1vh;
+                }
+            }
+        }
         &:focus {
             outline: none;
         }
@@ -33,12 +43,20 @@ $green: rgb(0, 150, 0);
             &:hover {
                 color: $off_white;
             }
-            &.currency {
-                position: absolute;
-            }
             > i {
-                margin-left: 1vh;
-                position: absolute;
+                margin-right: 1vh;
+            }
+            &.language {
+                font-size: 1.4vh;
+                color: $light_gray;
+                margin-top: 0.5vh;
+                margin-bottom: 0.5vh;
+                &.selected {
+                    color: $medium_gray;
+                    &:hover {
+                        cursor: default,
+                    }
+                }
             }
         }
     }

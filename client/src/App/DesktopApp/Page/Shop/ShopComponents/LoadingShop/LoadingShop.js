@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
+import { ShopContext } from '../../../../../../Context/shopContext'
 import './loading_shop.scss'
 
 const LoadingShop = () => {
+
+    const { appState } = useContext( ShopContext )
 
     useEffect(() => {
         loading()
@@ -22,7 +25,7 @@ const LoadingShop = () => {
 
     return (
         <div className='desktop_loading_shop_container'>
-            <h3 id='loading_shop'>Loading Shop...</h3>
+            <h3 id='loading_shop'>{ appState.language === 'english' ? 'Loading Shop...' : 'החנות בטעינה...' }</h3>
         </div>
     )
 }

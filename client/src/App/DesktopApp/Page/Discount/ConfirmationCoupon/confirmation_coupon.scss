@@ -39,6 +39,11 @@ $green: rgb(0, 150, 0);
         transition: color 0.2s;
         > i {
             margin-left: 10px;
+            &.hebrew {
+                margin-left: 0;
+                margin-right: 10px;
+
+            }
         }
         &:hover {
             cursor: pointer;

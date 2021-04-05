@@ -8,8 +8,9 @@ const DeckData = ( props ) => {
 
     const [ product, setProduct ] = useState()
     const [ price, setPrice ] = useState()
+    const [ stockNotification, setStockNotification ] = useState()
     const { updateItem } = useGetItem()
-    const { currencyData, addItemToCheckout, getPrice } = useContext( ShopContext )
+    const { currencyData, addItemToCheckout, getPrice, appState } = useContext( ShopContext )
     const gripInfo_ref = useRef()
 
     useEffect(() => {
@@ -19,6 +20,7 @@ const DeckData = ( props ) => {
             setPrice( price )
             setProduct( data )
             gripInfo_ref.current.innerHTML = data.description
+            appState.language === 'english' ? setStockNotification( 'Out of stock' ) : setStockNotification( 'נגמר המלאי' )
         }
         fetchData()
     }, [ props.productAPI ])
@@ -51,21 +53,28 @@ const DeckData = ( props ) => {
         }
     }
 
+    const translateTitle = ( title ) => {
+        switch ( title ) {
+            case 'grip #1': return 'גריפ #1'
+            default: return title
+        }
+    }
+
     if ( !product ) return <></>
 
     return (
         <div className='desktop_grip_data_container'>
-            <h3 className='title'>{ capitalFirst( product.title ) }</h3>
+            <h3 className='title'>{ appState.language === 'english' ? capitalFirst( product.title ) : translateTitle( product.title ) }</h3>
             <h4 className={ 'price ' + ( props.productAPI.availableForSale ? 'active' : '' )}>
-                { props.productAPI.availableForSale ? currencyData.currentCurrencySymbole + ' ' + price : 'Out of stock' }
+                { props.productAPI.availableForSale ? currencyData.currentCurrencySymbole + ' ' + price : stockNotification }
                 </h4>
-            <h3 className='inspiration_title'>Inspiration</h3>
+            <h3 className='inspiration_title'>{ appState.language === 'english' ? 'Inspiration' : 'השראה' }</h3>
             <p ref={ gripInfo_ref }></p>
             <div className='bottom_section'>
                 { props.productAPI.availableForSale ? <Options product={ product } setProduct={ setProduct } productAPI={ props.productAPI } /> : null }
                 <button 
-                    className={ props.productAPI.availableForSale ? 'active' : '' } 
-                    onClick={ e => addToCart(e) }>Add to cart</button>
+                    className={ ( props.productAPI.availableForSale ? 'active ' : '' ) + ( appState.language === 'english' ? '' : 'hebrew' ) } 
+                    onClick={ e => addToCart(e) }>{ appState.language === 'english' ? 'Add to cart' : 'להוסיף לעגלה' }</button>
             </div>
         </div>
     )

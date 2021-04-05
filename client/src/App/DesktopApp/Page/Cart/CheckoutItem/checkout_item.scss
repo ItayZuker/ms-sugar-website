@@ -33,6 +33,10 @@ $green: rgb(0, 150, 0);
         width: 100%;
         height: 17vh;
         margin-left: 5vh;
+        &.hebrew {
+            margin-left: 0;
+            margin-right: 5vh;
+        }
         > .product_data {
             > h3 {
                 font-size: 2vh;
@@ -54,6 +58,9 @@ $green: rgb(0, 150, 0);
                         color: $light_gray;
                         font-size: 1.8vh;
                         font-weight: 300;
+                        &.hebrew {
+                            direction: ltr;
+                        }
                     }
     
                 }
@@ -87,6 +94,10 @@ $green: rgb(0, 150, 0);
             width: 100%;
             height: 17vh;
             margin-left: 5vh;
+            &.hebrew {
+                margin-left: 0;
+                margin-right: 5vh;
+            }
             > .product_data {
                 > h3 {
                     font-size: 2vh;
@@ -142,6 +153,10 @@ $green: rgb(0, 150, 0);
             width: 100%;
             height: 17vh;
             margin-left: 5vh;
+            &.hebrew {
+                margin-left: 0;
+                margin-right: 5vh;
+            }
             > .product_data {
                 > h3 {
                     font-size: 2vh;

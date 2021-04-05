@@ -11,7 +11,7 @@ const BearingsItemGallery = () => {
     const [ selectedBearings, setSelectedBearings ] = useState()
     const [ currentIndex, setCurrentIndex ] = useState()
     const [ allBearings, setAllBearings ] = useState()
-    const { collections } = useContext( ShopContext )
+    const { collections, appState } = useContext( ShopContext )
     const history = useHistory()
     const { id } = useParams()
 
@@ -101,10 +101,10 @@ const BearingsItemGallery = () => {
     if ( !selectedBearings ) return <LoadingShop />
 
     return (
-        <div className='desktop_bearings_item_gallery_container'>
+        <div className={ 'desktop_bearings_item_gallery_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
             <h3 
                 className={ 'back_button ' + ( allBearings.length > 1 ? '' : 'hide ' ) }
-                onClick={ goBack }>Back</h3>
+                onClick={ goBack }>{ appState.language === 'english' ? 'Back' : 'חזרה' }</h3>
             <div className='bearings_picture_gallery_container'>
                 <div 
                     className={ 'left_button ' + ( allBearings.legth > 1 ? '' : 'hide ') }

@@ -10,7 +10,7 @@ const DeckItemGallery = () => {
     const [ selectedGrip, setSelectedGrip ] = useState()
     const [ currentIndex, setCurrentIndex ] = useState()
     const [ allGrips, setAllGrips ] = useState()
-    const { collections } = useContext( ShopContext )
+    const { collections, appState } = useContext( ShopContext )
     const history = useHistory()
     const { id } = useParams()
 
@@ -100,19 +100,19 @@ const DeckItemGallery = () => {
     if ( !selectedGrip ) return <LoadingShop />
 
     return (
-        <div className='desktop_grip_item_gallery_container'>
+        <div className={ 'desktop_grip_item_gallery_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
             <h3 
-                className='back_button'
-                onClick={ goBack }>Back</h3>
-            <div className='grip_picture_gallery_container'>
+                className={ 'back_button ' + ( appState.language === 'english' ? '' : 'hebrew ' ) + ( allGrips.length > 1 ? '' : 'hide ' ) }
+                onClick={ goBack }>{ appState.language === 'english' ? 'Back' : 'חזרה' }</h3>
+            <div className={ 'grip_picture_gallery_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
                 <div 
-                    className='left_button'
+                    className={ 'left_button ' + ( allGrips.length > 1 ? '' : 'hide' ) }
                     onClick={ () => changeSelection( 'left' ) } >
                     <i className="fas fa-chevron-left"></i>
                 </div>
                 <img src={ selectedGrip.images[0].src } />
                 <div 
-                    className='right_button'
+                    className={ 'right_button ' + ( allGrips.length > 1 ? '' : 'hide' ) }
                     onClick={ () => changeSelection( 'right' ) } >
                     <i className="fas fa-chevron-right"></i>
                 </div>

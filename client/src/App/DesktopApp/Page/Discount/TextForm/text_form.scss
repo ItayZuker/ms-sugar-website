@@ -28,6 +28,9 @@ $green: rgb(0, 150, 0);
                 justify-content: flex-start;
                 overflow: hidden;
                 margin-top: 2vh;
+                &.hebrew {
+                    direction: rtl;
+                }
                 > h4 {
                     color: $medium_gray;
                     font-size: 1.7vh;
@@ -67,6 +70,13 @@ $green: rgb(0, 150, 0);
                 flex-direction: row;
                 justify-content: flex-start;
                 margin-top: 2vh;
+                &.hebrew {
+                    direction: rtl;
+                    > .checkbox {
+                        margin-right: 0;
+                        margin-left: 1vw;
+                    }
+                }
                 > .checkbox {
                     width: 1.8vh;
                     height: 1.8vh;
@@ -134,6 +144,9 @@ $green: rgb(0, 150, 0);
             color: $medium_gray;
             font-size: 1.8vh;
             padding: 15px 20px 15px 20px;
+            &.hebrew {
+                direction: rtl;
+            }
             &.notification::placeholder {
                 color: $red;
             }

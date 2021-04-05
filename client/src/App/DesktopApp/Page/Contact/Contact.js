@@ -12,11 +12,14 @@ const Contact = () => {
     const [ loadComponent, setLoadComponent ] = useState( false )
     const [ notification, setNotification ] = useState( false )
     const [ textareaNotification, setTextareaNotification ] = useState( false )
-    const { setAppState } = useContext( ShopContext )
+    const { setAppState, appState } = useContext( ShopContext )
     const [ loadingMessage, setLoadingMessage ] = useState( false )
     const [ confirmation, setConfirmation ] = useState( false )
     const [ badMessage, setBadMessage ] = useState( false )
-
+    const [ textereaPlaceholder, setTextereaPlaceholder ] = useState()
+    const [ textereaNotification, setTextereaNotification ] = useState()
+    const [ emailNotification, setEmailNotification ] = useState()
+    
     useEffect(() => {
         const html = document.querySelector( 'html' )
         html.scrollTop = 0
@@ -25,6 +28,12 @@ const Contact = () => {
             return { ...prevState, page: 'contact' }
         })
     }, [])
+
+    useEffect(() => {
+        appState.language === 'english' ? setTextereaPlaceholder( 'Write here...' ) : setTextereaPlaceholder( 'מקום לכתוב...' )
+        appState.language === 'english' ? setTextereaNotification( "You didn't write" ) : setTextereaNotification( 'לא כתבת' )
+        appState.language === 'english' ? setEmailNotification( 'please enter email' ) : setEmailNotification( 'לא כתבת דוא"ל' )
+    }, [ appState.language ])
 
     const submitForm = e => {
         e.preventDefault()
@@ -76,33 +85,33 @@ const Contact = () => {
     if ( badMessage ) return <ProblemWithMessage setBadMessage={ setBadMessage }/>
 
     return (
-        <div className={ 'desktop_contact_container ' + ( loadComponent ? 'load_component' : '' ) }>
+        <div className={ 'desktop_contact_container ' + ( loadComponent ? 'load_component ' : '' ) + ( appState.language === 'english' ? '' : 'hebrew ') }>
             <form
                 className='contact_form'
                 onSubmit={ submitForm }>
-                <h3>Tell me everything</h3>
+                <h3>{ appState.language === 'english' ? 'Tell me everything' : 'מה על הלב?' }</h3>
                 <textarea
                     className={ textareaNotification ? 'notification' : '' }
                     name='message'
                     type='textarea'
-                    placeholder={ textareaNotification ? "You didn't write" : 'Write here...' }
+                    placeholder={ textareaNotification ? textereaNotification : textereaPlaceholder }
                     ></textarea>
                 <div className='lower_section'>
                     <div className='email_container'>
                         <h4>
-                            Email:
+                            { appState.language === 'english' ? 'Email:' : 'דוא"ל:' }
                         </h4>
                         <input
                         className={ 'email_input ' + ( notification ? 'notification' : '' ) }
                         id='email'
                         name='email'
                         type='email'
-                        placeholder={ notification ? 'please enter email' : 'example@mail.com' }
+                        placeholder={ notification ? emailNotification : 'example@mail.com' }
                         ></input>
                     </div>
                     <button
                         className='submit_button'
-                        type='submit'>Send</button>
+                        type='submit'>{ appState.language === 'english' ? 'Send' : 'שליחה' }</button>
                 </div>
             </form>
         </div>

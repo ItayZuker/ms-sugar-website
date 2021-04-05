@@ -9,8 +9,62 @@ const DeckData = ( props ) => {
     const [ product, setProduct ] = useState()
     const [ price, setPrice ] = useState()
     const { updateItem } = useGetItem()
-    const { currencyData, addItemToCheckout, getPrice } = useContext( ShopContext )
+    const [ stockNotification, setStockNotification ] = useState()
+    const { currencyData, addItemToCheckout, getPrice, appState } = useContext( ShopContext )
     const deckInfo_ref = useRef()
+    const [ deckOne ] = useState( () => {
+        return `<p>
+                <span>
+                כפטריה עולה בין גבעולי הדשא. עולמה אפור, בהיר ונעלם. בין כל הפטריות אני נרדם.
+                </span>
+                <p>&nbsp;</p>
+                <p>עיצוב: 'שוגר'</p>
+                </p>`
+            
+        })
+    const [ deckTwo ] = useState( () => {
+        return `<p>
+                <span>
+                כמים הזורמים באדמה של המדבר, היום אתה הגשם ומחר תהיה נהר.
+                </span>
+                <p>&nbsp;</p>
+                <p>עיצוב: 'שוגר'</p>
+                </p>`
+            
+        })
+    const [ deckThree ] = useState( () => {
+        return `<p>
+                <span>
+                אני עף בחללית מעל כל מה שמזויף, מותגים שמנסים להתחבב על המדף.
+                אבל כל מה שחיקוי גם אם מאוד יצירתי, אף פעם לא קרוב להיות - סקייטר אמיתי.
+                </span>
+                <p>&nbsp;</p>
+                <p>עיצוב: 'שוגר'</p>
+                </p>`
+            
+        })
+    const [ deckFour ] = useState( () => {
+        return `<p>
+                <span>
+                אני שולח לך מסר בבקבוק, שגם את אתה קפטן הוק.
+                הסקייטרים כפיטר-פן, כולם יודעים לעוף, ויום אחד גם הסירה שלך כבר לא תוכל לצוף.
+                כדאי לך ללמוד עכשיו לעוף.
+                </span>
+                <p>&nbsp;</p>
+                <p>עיצוב: 'שוגר'</p>
+                </p>`
+            
+        })
+    const [ deckFive ] = useState( () => {
+        return `<p>
+                <span>
+                אני חושב שעדיף לאבד את הדעת, כי בתוך התפוח תמיד יש תולעת.
+                </span>
+                <p>&nbsp;</p>
+                <p>עיצוב: 'שוגר'</p>
+                </p>`
+            
+        })
 
     useEffect(() => {
         const fetchData = async () => {
@@ -19,9 +73,22 @@ const DeckData = ( props ) => {
             setPrice( price )
             setProduct( data )
             deckInfo_ref.current.innerHTML = data.description
+            appState.language === 'english' ? deckInfo_ref.current.innerHTML = data.description :  deckInfo_ref.current.innerHTML = translate( data )
+            appState.language === 'english' ? setStockNotification( 'Out of stock' ) : setStockNotification( 'נגמר המלאי' )
         }
         fetchData()
-    }, [ props.productAPI ])
+    }, [ props.productAPI, appState.language ])
+
+    const translate = ( data ) => {
+        switch ( data.title ) {
+            case 'deck #1': return deckOne
+            case 'deck #2': return deckTwo
+            case 'deck #3': return deckThree
+            case 'deck #4': return deckFour
+            case 'deck #5': return deckFive
+        }
+    }
+
 
     useEffect( () => {
         if ( product ) {
@@ -42,7 +109,9 @@ const DeckData = ( props ) => {
 
     const addToCart = (e) => {
         e.preventDefault()
-        addItemToCheckout( product.variant[0].id, 1 )
+        if ( props.productAPI.availableForSale ) {
+            addItemToCheckout( product.variant[0].id, 1 )
+        }
     }
 
     const capitalFirst = ( string ) => {
@@ -51,21 +120,32 @@ const DeckData = ( props ) => {
         }
     }
 
+    const translateTitle = ( title ) => {
+        switch ( title ) {
+            case 'deck #1': return 'קרש #1'
+            case 'deck #2': return 'קרש #2'
+            case 'deck #3': return 'קרש #3'
+            case 'deck #4': return 'קרש #4'
+            case 'deck #5': return 'קרש #5'
+            default: return title
+        }
+    }
+
     if ( !product ) return <></>
 
     return (
         <div className='desktop_deck_data_container'>
-            <h3 className='title'>{ capitalFirst( product.title ) }</h3>
+            <h3 className='title'>{ appState.language === 'english' ? capitalFirst( product.title ) : translateTitle( product.title ) }</h3>
             <h4 className={ 'price ' + ( props.productAPI.availableForSale ? 'active' : '' )}>
-                { props.productAPI.availableForSale ? currencyData.currentCurrencySymbole + ' ' + price : 'Out of stock' }
+                { props.productAPI.availableForSale ? currencyData.currentCurrencySymbole + ' ' + price : stockNotification }
                 </h4>
-            <h3 className='inspiration_title'>Inspiration</h3>
+            <h3 className='inspiration_title'>{ appState.language === 'engliah' ? 'Inspiration' : 'השראה' }</h3>
             <p ref={ deckInfo_ref }></p>
             <div className='bottom_section'>
                 { props.productAPI.availableForSale ? <Options product={ product } setProduct={ setProduct } productAPI={ props.productAPI } /> : null }
                 <button 
-                    className={ props.productAPI.availableForSale ? 'active' : '' } 
-                    onClick={ e => addToCart(e) }>Add to cart</button>
+                    className={ ( props.productAPI.availableForSale ? 'active ' : '' ) + ( appState.language === 'english' ? '' : 'hebrew' ) } 
+                    onClick={ e => addToCart(e) }>{ appState.language === 'english' ? 'Add to cart' : 'להוסיף לעגלה' }</button>
             </div>
         </div>
     )

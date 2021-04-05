@@ -11,7 +11,7 @@ const DeckItemGallery = () => {
     const [ selectedExtra, setSelectedExtra ] = useState()
     const [ currentIndex, setCurrentIndex ] = useState()
     const [ allExtras, setAllExtras ] = useState()
-    const { collections } = useContext( ShopContext )
+    const { collections, appState } = useContext( ShopContext )
     const history = useHistory()
     const { id } = useParams()
 
@@ -101,19 +101,19 @@ const DeckItemGallery = () => {
     if ( !selectedExtra ) return <LoadingShop />
 
     return (
-        <div className='desktop_extra_item_gallery_container'>
+        <div className={ 'desktop_extra_item_gallery_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
             <h3 
-                className='back_button'
-                onClick={ goBack }>Back</h3>
-            <div className='extra_picture_gallery_container'>
+                className={ 'back_button ' + ( appState.language === 'english' ? '' : 'hebrew ' ) + ( allExtras.length > 1 ? '' : 'hide ') }
+                onClick={ goBack }>{ appState.language === 'english' ? 'Back' : 'חזרה' }</h3>
+            <div className={ 'extra_picture_gallery_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
                 <div 
-                    className='left_button'
+                    className={ 'left_button ' + ( allExtras.length > 1 ? '' : 'hide' ) }
                     onClick={ () => changeSelection( 'left' ) } >
                     <i className="fas fa-chevron-left"></i>
                 </div>
                 <img src={ variant ? variant[0].image.src : selectedExtra.images[0].src } />
                 <div 
-                    className='right_button'
+                    className={ 'right_button ' +  ( allExtras.length > 1 ? '' : 'hide' ) }
                     onClick={ () => changeSelection( 'right' ) } >
                     <i className="fas fa-chevron-right"></i>
                 </div>

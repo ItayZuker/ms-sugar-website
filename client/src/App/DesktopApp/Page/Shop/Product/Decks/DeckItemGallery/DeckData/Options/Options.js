@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { ShopContext } from '../../../../../../../../../Context/shopContext'
 import Option from './Option/Option'
 import './options.scss'
 
 const Options = ( props ) => {
 
+    const { appState } = useContext( ShopContext )
+
     return (
         <div className='desktop_options_container'>
-            <h3>Choose Configuration:</h3>
+            <h3>{ appState.language === 'english' ? 'Choose Configuration:' : 'אפשרויות:' }</h3>
             { props.product.options.map( option => {
                 return (
                     <Option 
