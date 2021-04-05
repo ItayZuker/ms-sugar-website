@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import ScrollableAnchor from 'react-scrollable-anchor'
 
@@ -7,8 +7,60 @@ import './about_mission.scss'
 
 const AboutMission = () => {
 
-    const { setAppState } = useContext( ShopContext )
+    const { setAppState, appState } = useContext( ShopContext )
     const history = useHistory()
+
+    const [ missionENG ] = useState( `
+        Ms. Sugar thinks that skaters are the most creative people on the planet,
+        and our mission is to celebrate this talent.
+        To do that, we publish skaters art on social platforms,
+        and we also publish a selected skaters art collection on our Sugar book.
+        Share your art and celebrate your talent, we promise that we treat it with respect.
+        Come up on the stage and join the Ms. Sugar Mission. This is why we're here.
+    ` )
+    const [ missionHEB ] = useState( `
+        סקייטרים הם האנשים המוכשרים ביותר על כדור הארץ,
+        והמשימה שלנו היא לתת במה לכישרון.
+        חלק מהיצירות אנחנו מפרסמים בעמודי הרשת החברתית שלנו ובנוסף,
+        אנחנו מוציאים לאור את הספר "שוגר"
+        שכולל בתוכו אוסף יצירות נבחרות של סקייטרים שאנחנו מקבלים כאן אתר.
+        אנחנו מבטיחים להתייחס ליצירות בכבוד.
+        שתפו אותנו ועלו על הבמה, זו המשימה שבגללה אנחנו כאן.
+    ` )
+    const [ disscountENG ] = useState( `
+        Use your creativity to make a work of art, 
+        and get a one time 10% discount for any purchase on the website.
+        You can send us anything you want. 
+        It can be a sketch, a poem or something else,
+        and you can also choose to be anonymous.
+        as long as you're the artist, you can send us anything.
+    ` )
+    const [ disscountHEB ] = useState( `
+        אנחנו מזמינים אתכם להשתמש בכישרון, ולשתף אותנו ביצירות אומנות שהכנתם.
+        בתמורה, תקבלו למייל קופון של 10% הנחה על כל המוצרים באתר.
+        אפשר לשלוח כל דבר.
+        זה יכול להיות שיר שכתבתם, שרבוט מעניין במחברת, תמונה, ציור או כל דבר אחר.
+        למי שמעוניין, אפשר לבחור להישאר אנונימי.
+        כל עוד אתם היוצרים של היצירה ששלכתם, אפשר לשלוח כל דבר.
+    
+    ` )
+    const [ sugarENG ] = useState( `
+        Sugar is a book with a selected skaters art collection, 
+        That we publish when we feel it's right.
+        For now, because we're young, there's only one edition with the art of Itay Zuker.
+        Itay is the creator of the Ms. Sugar company.
+        If you're interested in skaters art, the book is on for sale.
+        In the future, we will have a lot more books with skaters art collections from all around the world.
+    ` )
+    const [ sugarHEB ] = useState( `
+        "שוגר" הוא ספר אומנות של סקייטרים.
+        המטרה היא להוציא לאור ספר "שוגר" חדש, בכל פעם שאנחנו אוספים מספיק יצירות אומנות של סקייטרים.
+        בינתיים, בגלל שאנחנו חדשים בעולם, יש רק מהדורה אחת עם האומנות של איתי צוקר.
+        איתי הוא היוצר של מותג הסקייטבורד "מיס שוגר".
+        אם אתם מתעניינים באומנות של סקייטרים או אומנות בכלל, הספר מוצע למכירה באתר.
+        בעתיד יהיו עוד עותקים רבים של "שוגר" עם אוסף אומנות של סקייטרים מכל העולם. 
+
+    ` )
 
     const goToShop = ( product ) => {
         setAppState( prevState => {
@@ -30,53 +82,50 @@ const AboutMission = () => {
 
     return (
         <ScrollableAnchor id={ 'mission_section' }>
-        <div className='about_mission_container'>
+        <div className={ 'about_mission_container ' + ( appState.language === 'english' ? '' : 'hebrew ' ) }>
             <div className='bullet_section'>
-                <div className='title_container'>
+                <div className={ 'title_container ' + ( appState.language === 'english' ? '' : 'hebrew ' ) }>
                     <i className="far fa-heart"></i>
-                    <h3>Mission</h3>
+                    <h3>{ appState.language === 'english' ? 'Mission' : 'משימה' }</h3>
                 </div>
-                <p>
-                    Ms. Sugar thinks that skaters are the most creative people on the planet,
-                    and our mission is to celebrate this talent.
-                    We publish skaters art on our social platform,
-                    And we also publish on our Sugar skaters art collection.
-                    Share your art and celebrate your talent.
-                    We encourage you to join the Ms. Sugar mission.</p>
+                <p>{ appState.language === 'english' ? missionENG : missionHEB }</p>
                 <div className='button_container'>
-                    <button onClick={ () => goToShop( '' ) }>Shop <i className="fas fa-caret-right"></i></button>
+                    <button
+                        className={ appState.language === 'english' ? '' : 'hebrew ' }
+                        onClick={ () => goToShop( '' ) }>
+                        { appState.language === 'english' ? 'Shop' : 'חנות' }
+                        { appState.language === 'english' ? <i className="fas fa-caret-right"></i> : <i className="fas fa-caret-left"></i> }
+                    </button>
                 </div>
             </div>
             <div className='bullet_section'>
-                <div className='title_container'>
+                <div className={ 'title_container ' + ( appState.language === 'english' ? '' : 'hebrew ' ) }>
                     <i className="fas fa-percentage"></i>
-                    <h3>Disscount</h3>
+                    <h3>{ appState.language === 'english' ? 'Disscount' : 'הנחות' }</h3>
                 </div>
-                <p>
-                    Use your creativity to make a work of art, 
-                    and get a one time 10% discount for any purchase on the website.
-                    You can send us anything you want. 
-                    It can be a sketch, a poem or something else,
-                    and you can also choose to be anonymous.
-                    as long as you're the artist, you can send us anything.</p>
+                <p>{ appState.language === 'english' ? disscountENG : disscountHEB }</p>
                 <div className='button_container'>
-                    <button onClick={ () => selectPage('discount') }>Discount <i className="fas fa-caret-right"></i></button>
+                    <button 
+                        className={ appState.language === 'english' ? '' : 'hebrew ' }
+                        onClick={ () => selectPage('discount') }>
+                        { appState.language === 'english' ? 'Discount' : 'הנחות'}
+                        { appState.language === 'english' ? <i className="fas fa-caret-right"></i> : <i className="fas fa-caret-left"></i> }
+                    </button>
                 </div>
             </div>
             <div className='bullet_section'>
-                <div className='title_container'>
+                <div className={ 'title_container ' + ( appState.language === 'english' ? '' : 'hebrew ' ) }>
                     <i className="fas fa-skull-crossbones"></i>
-                    <h3>Sugar</h3>
+                    <h3>{ appState.language === 'english' ? 'Sugar' : 'שוגר' }</h3>
                 </div>
-                <p>
-                    Sugar is meant to be a collection book,
-                    with skaters art from all around the world.
-                    For now there's only one edition, with the art of Ms. Sugar creator: Itay Zuker.
-                    In the future we will publish more and more editions,
-                    with the art we get here on the website.
-                    Feel free to check it out, if you are interested in skaters art.</p>
+                <p>{ appState.language === 'english' ? sugarENG : sugarHEB }</p>
                 <div className='button_container'>
-                    <button onClick={ () => goToShop('sugar') }>Sugar <i className="fas fa-caret-right"></i></button>
+                    <button 
+                        className={ appState.language === 'english' ? '' : 'hebrew ' }
+                        onClick={ () => goToShop('sugar') }>
+                        { appState.language === 'english' ? 'Sugar' : 'שוגר' } 
+                        { appState.language === 'english' ? <i className="fas fa-caret-right"></i> : <i className="fas fa-caret-left"></i> }
+                    </button>
                 </div>
             </div>
         </div>

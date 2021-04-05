@@ -3,6 +3,7 @@ import CurrencyDropdown from './CurrencyDropdown/CurrencyDropdown'
 import { ShopContext } from '../../../Context/shopContext'
 import staticLogo from '../../../images/Logo_White.png'
 import HeaderDropdown from './HeaderDropdown/HeaderDropdown'
+import LanguageButton from './LanguageButton/LanguageButton'
 import './header.scss'
 
 const Header = () => {
@@ -43,6 +44,7 @@ const Header = () => {
                 <CurrencyDropdown />
             </div>
             <HeaderDropdown />
+            <LanguageButton />
         </div>
     )
 }

@@ -29,8 +29,20 @@ $green: rgb(0, 150, 0);
             font-size: 4vh;
             font-weight: 400;
             margin-left: 10%;
+            &.hebrew {
+                margin-left: auto;
+                margin-right: 20%;
+                direction: rtl;
+                > i {
+                    margin-right: 0;
+                    margin-left: 2vw;
+                }
+            }
             &.selected {
                 color: $medium_gray;
+            }
+            > i {
+                margin-right: 2vw;
             }
         }
     }
