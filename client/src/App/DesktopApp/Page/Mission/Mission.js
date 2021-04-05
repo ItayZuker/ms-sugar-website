@@ -29,7 +29,7 @@ const Mission = () => {
                     className='button_container'
                     onClick={ () => goToAnchor('mission_section') }
                     >
-                    <h3>{ appState.language === 'english' ? 'More' : 'למטה' }</h3>
+                    <h3>{ appState.language === 'english' ? 'Down' : 'למטה' }</h3>
                     <i className="fas fa-caret-down"></i>
                 </div>
             </div>
