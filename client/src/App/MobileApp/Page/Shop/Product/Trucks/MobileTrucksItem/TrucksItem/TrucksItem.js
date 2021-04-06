@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, useRef } from 'react'
 import TrucksOptionsContainer from './TrucksOptionsContainer/TrucksOptionsContainer'
 import { useGetItem } from '../../../../../../../../customHooks/useGetItem'
 import { ShopContext } from '../../../../../../../../Context/shopContext'
@@ -9,17 +9,28 @@ const TrucksItem = ( props ) => {
     const [ product, setProduct ] = useState()
     const [ price, setPrice ] = useState()
     const { updateItem } = useGetItem()
-    const { addItemToCheckout, currencyData, getPrice } = useContext( ShopContext)
+    const [ stockNotification, setStockNotification ] = useState()
+    const { addItemToCheckout, currencyData, getPrice, appState } = useContext( ShopContext)
+    const trucksInfo_ref = useRef()
 
     useEffect(() => {
         getProduct()
     }, [])
+
+    useEffect(() => {
+        if ( appState.language === 'english' ) {
+            setStockNotification( 'Out of stock' )
+        } else {
+            setStockNotification( 'נגמר המלאי' )
+        }
+    }, [ appState.language ])
 
     const getProduct = async() => {
         const data = await updateItem( props.trucksAPI )
         const price = await getPrice( data )
         setPrice( price )
         setProduct( data )
+        trucksInfo_ref.current.innerHTML = data.description
     }
 
     useEffect( () => {
@@ -45,7 +56,7 @@ const TrucksItem = ( props ) => {
         }
     }
 
-    if ( !product ) return <div>loading</div>
+    if ( !product ) return <></>
 
     return (
         <div className='trucks_item_container'>
@@ -55,9 +66,11 @@ const TrucksItem = ( props ) => {
                     alt='product' />
             </div>
             <div className='selection_container'>
-                <h3>{ capitalFirst( product.title ) }</h3>
-                <h4 className={ 'price ' + ( product.variant ? '' : 'out_of_stock' ) }>
-                    { product.variant ? currencyData.currentCurrencySymbole + ' ' + price : 'Out of stock' }
+                <h3>
+                    { appState.language === 'english' ? capitalFirst( product.title ) : 'צירים' }
+                </h3>
+                <h4 className={ 'price ' + ( product.variant ? '' : 'out_of_stock ' ) + ( appState.language === 'english' ? '' : 'hebrew ' ) }>
+                    { product.variant ? currencyData.currentCurrencySymbole + ' ' + price : stockNotification }
                 </h4>
                 <div className='options_container'>
                     { product.options.map( option => {
@@ -72,7 +85,7 @@ const TrucksItem = ( props ) => {
                 <button
                     className={ product.variant ? 'active' : '' } 
                     onClick={ e => addToCart(e) }>Add to cart</button>
-                <p>Text about the trucks Text about the trucks Text about the trucks Text about the trucks</p>
+                <p ref={ trucksInfo_ref }></p>
             </div>
         </div>
     )

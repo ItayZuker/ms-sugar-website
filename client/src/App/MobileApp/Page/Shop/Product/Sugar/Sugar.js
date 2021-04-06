@@ -1,9 +1,7 @@
 import React, { useContext, useState, useEffect, useRef } from 'react'
-import LoadingShop from '../../ShopComponents/LoadingShop/LoadingShop'
-import { useParams, useHistory } from 'react-router-dom'
-import './sugar.scss'
 import { ShopContext } from '../../../../../../Context/shopContext'
 import { useGetItem } from '../../../../../../customHooks/useGetItem'
+import './sugar.scss'
 
 const Sugar = () => {
 
@@ -13,8 +11,27 @@ const Sugar = () => {
     const { collections } = useContext( ShopContext )
     const [ product, setProduct ] = useState()
     const { updateItem } = useGetItem()
-    const { currencyData, addItemToCheckout, getPrice } = useContext( ShopContext )
+    const [ stockNotification, setstockNotification ] = useState()
+    const { currencyData, addItemToCheckout, getPrice, appState } = useContext( ShopContext )
     const description_ref = useRef()
+
+    const [ sugarOne ] = useState( () => {
+        return `<p>
+                <span>
+                    הספר "שוגר #1" נכתב על ידי איתי צוקר.
+                    איתי הוא היוצר של מותג הסקייטבורד "מיס שוגר", 
+                    והספר הוא אוסף של שירים ואיורים שהוא כתב,
+                    תוך כדי כתיבת הספר, התבשל הרעיון להקמת מותג הסקייטבורד "מיס שוגר" ובסוף המסע,
+                    הבשיל הרעיון לנקודה שבא נמצא היום.
+                </span>
+                <p>&nbsp;</p>
+                <p>דפים: 76</p>
+                <p>עברית: 37</p>
+                <p>אנגלית: 6</p>
+                <p>איורים: 14</p>
+                </p>`
+        })
+
 
     useEffect(() => {
         const updateSugar = async () => {
@@ -28,6 +45,14 @@ const Sugar = () => {
         }
         updateSugar()
     }, [])
+
+    useEffect(() => {
+        if ( appState.language === 'english' ) {
+            setstockNotification( 'Out of stock' )
+        } else {
+            setstockNotification( 'נגמר המלאי' )
+        }
+    }, [ appState.language ])
 
     useEffect( () => {
         if ( product ) {
@@ -69,9 +94,10 @@ const Sugar = () => {
 
     useEffect(() => {
         if( product ) {
-            description_ref.current.innerHTML = product.description
+            appState.language === 'english' ? description_ref.current.innerHTML = product.description : description_ref.current.innerHTML = sugarOne
+
         }
-    }, [ product ])
+    }, [ product, appState.language ])
 
 
     useEffect(() => {
@@ -114,7 +140,14 @@ const Sugar = () => {
         }
     }
 
-    if ( !product ) return <LoadingShop />
+    const translateTitle = ( title ) => {
+        switch ( title ) {
+            case 'sugar #1': return 'שוגר #1'
+            default: return title
+        }
+    }
+
+    if ( !product ) return <></>
 
     return (
         <div className='sugar_container'>
@@ -131,16 +164,20 @@ const Sugar = () => {
                         onClick={ () => changeSelection( 'right' ) }></i>
                 </div>
                 <div className='selection_container'>
-                    <h3>{ capitalFirst( product.title ) }</h3>
-                    <h4 className={ 'price ' + ( product.variant ? '' : 'out_of_stock' ) }>
-                        { product.variant ? currencyData.currentCurrencySymbole + ' ' + price : 'Out of stock' }
+                    <h3>
+                        { appState.language === 'english' ? capitalFirst( product.title ) : translateTitle( product.title ) }
+                    </h3>
+                    <h4 className={ 'price ' + ( product.variant ? '' : 'out_of_stock ' ) + ( appState.language === 'english' ? '' : 'hebrew ' ) }>
+                        { product.variant ? currencyData.currentCurrencySymbole + ' ' + price : stockNotification }
                     </h4>
                     <div className='product_description'>
                         <p ref={ description_ref }></p>
                     </div>
                     <button
                         className={ product.variant ? 'active' : '' } 
-                        onClick={ e => addToCart( e ) }>Add to cart</button>
+                        onClick={ e => addToCart( e ) }>
+                        { appState.language === 'english' ? 'Add to cart' : 'להוסיף לעגלה' }
+                    </button>
                 </div>
             </div>
         </div>

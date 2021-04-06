@@ -32,6 +32,13 @@ $green: rgb(0, 150, 0);
                     font-size: 3vh;
                     color: $medium_gray;
                     margin-left: 2vw;
+                    &.hebrew {
+                        margin-left: 0;
+                        margin-right: 2vw;
+                        &.size {
+                            direction: ltr;
+                        }
+                    }
                 }
             }
         }

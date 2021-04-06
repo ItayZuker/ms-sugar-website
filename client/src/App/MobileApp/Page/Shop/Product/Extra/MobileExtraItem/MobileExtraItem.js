@@ -9,12 +9,29 @@ const MobileDeckItem = ( props ) => {
     const [ product, setProduct ] = useState()
     const [ price, setPrice ] = useState()
     const { updateItem } = useGetItem()
-    const { addItemToCheckout, currencyData, getPrice } = useContext( ShopContext)
+    const [ stockNotification, setStockNotification ] = useState()
+    const { addItemToCheckout, currencyData, getPrice, appState } = useContext( ShopContext)
     const description_ref = useRef()
+    const [ stencil ] = useState( () => {
+        return `<p>
+                <span>
+                    אפשר לעשות גרפיטי עם הסטנסיל של "מיס שוגר",
+                    אבל ברוב המקומות זה לא חוקי.
+                    </span>
+                </p>`
+        })
     
     useEffect(() => {
         getProduct()
     }, [])
+
+    useEffect(() => {
+        if ( appState.language === 'english' ) {
+            setStockNotification( 'Out of stock' )
+        } else {
+            setStockNotification( 'נגמר המלאי' )
+        }
+    }, [ appState.language ])
 
     const getProduct = async() => {
         const data = await updateItem( props.product )
@@ -35,9 +52,9 @@ const MobileDeckItem = ( props ) => {
 
     useEffect(() => {
         if( product ) {
-            description_ref.current.innerHTML = product.description
+            appState.language === 'english' ? description_ref.current.innerHTML = product.description : description_ref.current.innerHTML = stencil
         }
-    }, [ product ])
+    }, [ product, appState.language ])
 
     const addToCart = (e) => {
         e.preventDefault()
@@ -62,10 +79,12 @@ const MobileDeckItem = ( props ) => {
                     alt='product' />
             </div>
             <div className='selection_container'>
-                <h3>{ capitalFirst( product.title ) }</h3>
-                <h4 className={ 'price ' + ( product.variant ? '' : 'out_of_stock' ) }>
-                    { product.variant ? currencyData.currentCurrencySymbole + ' ' + price : 'Out of stock' }
-                    </h4>
+                <h3>
+                    { appState.language === 'english' ? capitalFirst( product.title ) : 'סטנסיל' }
+                </h3>
+                <h4 className={ 'price ' + ( product.variant ? '' : 'out_of_stock ' ) + ( appState.language === 'english' ? '' : 'hebrew ' ) }>
+                    { product.variant ? currencyData.currentCurrencySymbole + ' ' + price : stockNotification }
+                </h4>
                 <div className='product_description'>
                     <p ref={ description_ref }></p>
                 </div>
@@ -81,7 +100,9 @@ const MobileDeckItem = ( props ) => {
                 </div>
                 <button
                     className={ product.variant ? 'active' : '' } 
-                    onClick={ e => addToCart(e) }>Add to cart</button>
+                    onClick={ e => addToCart(e) }>
+                        { appState.language === 'english' ? 'Add to cart' : 'להוסיף לעגלה' }
+                    </button>
             </div>
         </div>
     )

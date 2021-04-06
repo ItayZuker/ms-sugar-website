@@ -5,7 +5,7 @@ import './mobile_grip_item.scss'
 
 const MobileGripItem = ( props ) => {
 
-    const [ product, setProduct ] = useState( '' )
+    const [ product, setProduct ] = useState()
     const { updateItem } = useGetItem()
     
     useEffect(() => {
@@ -17,7 +17,7 @@ const MobileGripItem = ( props ) => {
         setProduct( data )
     }
 
-    if ( product === '' ) return <div>loading</div>
+    if ( !product ) return <></>
 
     return (
         <div className='mobile_grip_item_container'>

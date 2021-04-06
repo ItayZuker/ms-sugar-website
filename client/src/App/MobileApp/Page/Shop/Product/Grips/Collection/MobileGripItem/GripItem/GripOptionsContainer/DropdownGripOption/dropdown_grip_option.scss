@@ -27,6 +27,13 @@ $green: rgb(0, 150, 0);
         margin-top: 2vh;
         display: flex;
         align-items: center;
+        &.hebrew {
+            direction: ltr;
+            > h3 {
+                margin-left: auto;
+                margin-right: 5vw;
+            }
+        }
         > h3 {
             margin-left: 5vw;
             color: $off_white;
@@ -35,6 +42,5 @@ $green: rgb(0, 150, 0);
                 color: $medium_gray;
             }
         }
-
     }
 }

@@ -5,7 +5,7 @@ import './dropdown_grip_option.scss'
 
 const DropdownGripOption = ( props ) => {
 
-    const { setAppState } = useContext( ShopContext )
+    const { setAppState, appState } = useContext( ShopContext )
     const { updateItem } = useGetItem()
 
     const selectGripVariant = async( value ) => {
@@ -39,15 +39,24 @@ const DropdownGripOption = ( props ) => {
         }
     }
 
+    const translateValue = ( value ) => {
+        switch ( value ) {
+            case 'pro': return 'מקצועי'
+            case 'standard': return 'רגיל'
+            default: return value
+        }
+    }
+
     return (
         <div className={ 'dropdown_grip_option_container ' + ( props.dropdownOpen ? 'dropdown_open ' : '' ) }>
             { props.option.values.map( ( variant, index ) => {
                 return <div 
                     key={ index }
-                    className='variant_container' 
+                    className={ 'variant_container ' + ( appState.language === 'english' ? '' : 'hebrew ' ) } 
                     onClick={ () => selectGripVariant( variant ) }>
                     <h3 className={ variant === props.selectedVariant ? 'selected_variant ' : '' }>
-                    { capitalFirst( variant ) }</h3>
+                    { appState.language === 'english' ? capitalFirst( variant ) : translateValue( variant ) }
+                    </h3>
                 </div>
             }) }
         </div>

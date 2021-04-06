@@ -9,12 +9,21 @@ const MobileWheelItem = ( props ) => {
     const [ product, setProduct ] = useState()
     const [ price, setPrice ] = useState()
     const { updateItem } = useGetItem()
-    const { addItemToCheckout, currencyData, getPrice } = useContext( ShopContext )
+    const [ stockNotification, setStockNotification ] = useState()
+    const { addItemToCheckout, currencyData, getPrice, appState } = useContext( ShopContext )
     const wheelsInfo_ref = useRef()
     
     useEffect(() => {
         getProduct()
     }, [ props.wheelsAPI ])
+
+    useEffect(() => {
+        if ( appState.language === 'english' ) {
+            setStockNotification( 'Out of stock' )
+        } else {
+            setStockNotification( 'נגמר המלאי' )
+        }
+    }, [ appState.language ])
 
     const getProduct = async() => {
         const data = await updateItem( props.wheelsAPI )
@@ -47,9 +56,7 @@ const MobileWheelItem = ( props ) => {
         }
     }
 
-    if ( !product ) return <div>loading</div>
-
-    console.log(product)
+    if ( !product ) return <></>
 
     return (
         <div className='wheels_item_container'>
@@ -59,9 +66,11 @@ const MobileWheelItem = ( props ) => {
                     alt='product' />
             </div>
             <div className='selection_container'>
-                <h3>{ capitalFirst( product.title ) }</h3>
-                <h4 className={ 'price ' + ( product.variant ? '' : 'out_of_stock' ) }>
-                    { product.variant ? currencyData.currentCurrencySymbole + ' ' + price : 'Out of stock' }
+                <h3>
+                    { appState.language === 'english' ? capitalFirst( product.title ) : 'גלגלים' }
+                </h3>
+                <h4 className={ 'price ' + ( product.variant ? '' : 'out_of_stock ' ) + ( appState.language === 'english' ? '' : 'hebrew ') }>
+                    { product.variant ? currencyData.currentCurrencySymbole + ' ' + price : stockNotification }
                 </h4>
                 <div className='options_container'>
                     { product.options.map( option => {

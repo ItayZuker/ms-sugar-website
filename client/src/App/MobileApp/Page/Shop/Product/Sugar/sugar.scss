@@ -73,6 +73,9 @@ $green: rgb(0, 150, 0);
                 color: $medium_gray;
                 margin-top: 0.5vh;
                 margin-right: auto;
+                &.hebrew {
+                    direction: ltr;
+                }
                 &.out_of_stock {
                     color: $red;
                 }

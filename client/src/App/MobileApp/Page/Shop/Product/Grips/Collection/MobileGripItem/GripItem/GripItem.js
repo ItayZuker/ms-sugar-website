@@ -9,11 +9,20 @@ const GripItem = ( props ) => {
     const [ product, setProduct ] = useState()
     const [ price, setPrice ] = useState()
     const { updateItem } = useGetItem()
-    const { addItemToCheckout, currencyData, getPrice } = useContext( ShopContext)
+    const [ stockNotification, setStockNotification ] = useState()
+    const { addItemToCheckout, currencyData, getPrice, appState } = useContext( ShopContext)
     
     useEffect(() => {
         getProduct()
     }, [])
+
+    useEffect(() => {
+        if ( appState.language === 'english' ) {
+            setStockNotification( 'Out of stock' )
+        } else {
+            setStockNotification( 'נגמר המלאי' )
+        }
+    }, [ appState.language ])
 
     const getProduct = async() => {
         const data = await updateItem( props.product )
@@ -45,6 +54,13 @@ const GripItem = ( props ) => {
         }
     }
 
+    const translateTitle = ( title ) => {
+        switch ( title ) {
+            case 'grip #1': return 'גריפ #1'
+            default: return title
+        }
+    }
+
     if ( !product ) return <></>
 
     return (
@@ -53,9 +69,11 @@ const GripItem = ( props ) => {
                 src={ product.images[0].src }
                 alt='product'></img>
             <div className='item_data_container'>
-                <h3>{ capitalFirst( product.title ) }</h3>
-                <h4 className={ 'price ' + ( product.variant ? '' : 'out_of_stock' ) }>
-                    { product.variant ? currencyData.currentCurrencySymbole + ' ' + price : 'Out of stock' }
+                <h3>
+                    { appState.language === 'english' ? capitalFirst( product.title ) : translateTitle( product.title ) }
+                </h3>
+                <h4 className={ 'price ' + ( product.variant ? '' : 'out_of_stock ' ) + ( appState.language === 'english' ? '' : 'hebrew ' ) }>
+                    { product.variant ? currencyData.currentCurrencySymbole + ' ' + price : stockNotification }
                     </h4>
                 <div className='options_container'>
                     { product.options.map( option => {
@@ -69,7 +87,9 @@ const GripItem = ( props ) => {
                 </div>
                 <button
                     className={ product.variant ? 'active' : '' } 
-                    onClick={ e => addToCart(e) }>Add to cart</button>
+                    onClick={ e => addToCart(e) }>
+                    { appState.language === 'english' ? 'Add to cart' : 'להוסיף לעגלה' }
+                </button>
             </div>
         </div>
     )

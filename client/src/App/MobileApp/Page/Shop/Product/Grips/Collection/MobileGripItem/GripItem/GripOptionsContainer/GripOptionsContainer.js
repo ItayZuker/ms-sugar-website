@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react'
-// import DropdownOption from './DropdownOption/DropdownOption'
+import React, { useEffect, useState, useRef, useContext } from 'react'
+import { ShopContext } from '../../../../../../../../../../Context/shopContext'
 import DropdownGripOption from './DropdownGripOption/DropdownGripOption'
 import './grip_options_container.scss'
 
 const GripOptionsContainer = ( props ) => {
 
+    const { appState } = useContext( ShopContext)
     const [ selectedVariant, setSelectedVariant ] = useState( '' )
     const [ dropdownOpen, setDropdownOpen ] = useState( false )
     const selectedVariantContainer_ref = useRef()
@@ -42,6 +43,22 @@ const GripOptionsContainer = ( props ) => {
         }
     }
 
+    const translateName = ( optionName ) => {
+        switch ( optionName ) {
+            case 'size': return 'מידה'
+            case 'technology': return 'טכנולוגיה'
+            default: return optionName
+        }
+    }
+
+    const translateValue = ( value ) => {
+        switch ( value ) {
+            case 'pro': return 'מקצועי'
+            case 'standard': return 'רגיל'
+            default: return value
+        }
+    }
+
     return (
         <div className='grip_options_container'>
             <div 
@@ -54,9 +71,11 @@ const GripOptionsContainer = ( props ) => {
                 ref={ selectedVariantContainer_ref }
                 >
                 <div className='variant'>
-                    <h3 className='title'>{ capitalFirst( props.option.name ) }:</h3>
-                    <h3 className={ 'selected_variant ' + ( props.option.name )}>
-                        { capitalFirst( selectedVariant ) }
+                    <h3 className='title'>
+                        { appState.language === 'english' ? capitalFirst( props.option.name ) : translateName( props.option.name ) }:
+                    </h3>
+                    <h3 className={ 'selected_variant ' + ( props.option.name ) + ( appState.language === 'english' ? '' : ' hebrew ' ) + ( props.option.name === 'size'? ' size ' : '' ) }>
+                        { appState.language === 'english' ? capitalFirst( selectedVariant ) : translateValue( selectedVariant ) }
                     </h3>
                 </div>
                 <i className={ ( dropdownOpen ? "fas fa-times dropdown_open" : "fas fa-caret-down " ) + ( props.option.values.length > 1 ? '' : 'no_dropdown ' ) }></i>
