@@ -34,6 +34,15 @@ $green: rgb(0, 150, 0);
         color: $medium_gray;
         font-size: 5vw;
         font-weight: 500;
+        display: flex;
+        align-items: center;
+        > i {
+            margin-left: 2vw;
+            &.hebrew {
+                margin-left: 0;
+                margin-right: 2vw;
+            }
+        }
         &:active {
             color: $off_white;
         }

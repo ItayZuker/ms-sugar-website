@@ -11,7 +11,7 @@ const LoadingMessage = () => {
     }, [])
 
     const loading = () => {
-    let HTMLItem = document.getElementById('sending_message');
+    let HTMLItem = document.getElementById('loading_message');
     HTMLItem.classList.add('bright')
         setInterval( () => {
             if (HTMLItem.classList.contains('bright')) {
@@ -22,12 +22,9 @@ const LoadingMessage = () => {
         }, 1000);
     }
 
-
     return (
-        <div className='desktop_loading_message_container'>
-            <h3 id='sending_message'>
-                { appState.language === 'english' ? 'Sending Message' : 'הודעה בדרך'}
-            </h3>
+        <div className='loading_message_container'>
+            <h3 id='loading_message'>{ appState.language === 'english' ? 'Sending Message' : 'הודעה נשלחת'}</h3>
         </div>
     )
 }

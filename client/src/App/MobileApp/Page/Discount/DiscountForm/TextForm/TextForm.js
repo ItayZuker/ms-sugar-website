@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import emailjs from 'emailjs-com'
 import LoadingCoupon from '../../LoadingCoupon/LoadingCoupon'
 import ConfirmationCoupon from '../../ConfirmationCoupon/ConfirmationCoupon'
@@ -13,28 +13,60 @@ const TextForm = () => {
     const [ errMessage, setErrMessage ] = useState( '' )
     const [ anonymous, setAnonymous ] = useState( false )
     const [ agreeTerms, setAgreeTerms ] = useState( false )
-    const { setKeyboardOpen } = useContext( ShopContext )
+    const { setKeyboardOpen, appState } = useContext( ShopContext )
     const [ loading, setLoading ] = useState( false )
     const [ confirmation, setConfirmation ] = useState( false )
     const [ problem, setProblem ] = useState( false )
-    const [ termsBody ] = useState(  
-        `I agree that Ms. Sugar publish my art with a commercial purpose,
-        and I understand that If Ms. Sugar publish my art, 
-        my name will be published as the artist,
-        unless I choose to be anonymous.` 
+    const [ termsBody, setTermsBody ] = useState()
+    const [ textereaPlaceholder, setTextereaPlaceholder ] = useState()
+    const [ namePlaseholder, setNamePlaseholder ] = useState()
+    const [ textENG ] = useState(  
+        `Send us a visual you made, and you will get a 10% discount coupon. 
+        It can be a sketch, a picture, a drawing, a painting or any other visual you made. 
+        As long as you'r the artist, you can send us anything.` 
         )
+    const [ textHEB ] = useState(  
+        `שילחו תמונה של יצירה שכנתם, וקבלו קופון של 10% הנחה.
+        זה יכול להיות שרבוט מעניין במחברת, תמונה, איור, ציור או כל דבר אחר.
+        כל עוד אתם היוצרים, אפשר לשלוח הכל.` 
+        )
+
+    useEffect(() => {
+        if ( appState.language === 'english' ) {
+            setNamePlaseholder( 'your name' )
+            setTextereaPlaceholder( 'Your text:' )
+            setTermsBody( `
+                    I agree that Ms. Sugar publish my art with a commercial purpose,
+                    and I understand that If Ms. Sugar publish my art, 
+                    my name will be published as the artist,
+                    unless I choose to be anonymous.
+                    ` )
+        } else {
+            setNamePlaseholder( 'השם שלך' )
+            setTextereaPlaceholder( 'הטקסט שכתבת:' )
+            setTermsBody( `
+                    אני מסכים ל "מיס שוגר" לפרסם את האומנות שלי ולהשתמש בא למטרות מסחריות,
+                    ואני מבין שאם היצירה שלי תתפרסם,
+                    השם שלי יופיע לצד היצירה בתור היוצר אלא אם בחרתי להשאר אנונימי.
+                    ` )
+        }
+    }, [ appState.language ])
+
 
     const trigerNotification = ( err, triger ) => {
         switch ( triger ) {
             case 'text':
+                if ( appState.language !== 'english' ) err = 'לא כתבת טקסט'
                 setErrMessage( err )
                 setNotification( 'text' )
                 break
             case 'name':
+                if ( appState.language !== 'english' ) err = 'לא כתבת שם'
                 setErrMessage( err )
                 setNotification( 'name' )
                 break
             case 'email':
+                if ( appState.language !== 'english' ) err = 'לא כתבת דוא"ל'
                 setErrMessage( err )
                 setNotification( 'email' )
                 break
@@ -187,16 +219,13 @@ const TextForm = () => {
              <form 
                 onSubmit={ submit }
                 encType="multipart/form-data">
-                <p>Send us a poem, a short story or a thought, 
-                    and you will get a 10% discount coupon.
-                    Give your mind a place to be. 
-                    Anything you write is great.</p>
+                <p>{ appState.language === 'english' ? textENG : textHEB }</p>
                 <textarea
                     className={ notification === 'text' ? 'notifocation' : '' }
                     maxLength="2000"
                     name='text'
                     type='textarea'
-                    placeholder={ notification === 'text' ? errMessage : 'Your text:' }
+                    placeholder={ notification === 'text' ? errMessage : textereaPlaceholder }
                     onBlur={ () => setKeyboardOpen( false ) }
                     onFocus={ () => setKeyboardOpen( true ) }
                     onClick={ () => {
@@ -205,13 +234,15 @@ const TextForm = () => {
                     }}
                     ></textarea>
                 <div className='name_container'>
-                    <h4>Name:</h4>
+                    <h4>
+                        { appState.language === 'english' ? 'Name:' : 'שם:' }
+                    </h4>
                     <input
                     className={ 'name_input ' + ( notification  === 'name' ? 'notification ' : '' ) }
                     id='name'
                     name='name'
                     type='text'
-                    placeholder={ notification === 'name' ? errMessage : 'your name'}
+                    placeholder={ notification === 'name' ? errMessage : namePlaseholder }
                     onBlur={ () => setKeyboardOpen( false ) }
                     onFocus={ () => setKeyboardOpen( true ) }
                     onClick={ () => {
@@ -221,7 +252,9 @@ const TextForm = () => {
                     </input>
                 </div>
                 <div className='email_container'>
-                    <h4>Email:</h4>
+                    <h4>
+                        { appState.language === 'english' ? 'Email:' : 'דוא"ל:' }
+                    </h4>
                     <input
                     className={ 'email_input ' + ( notification === 'email' ? 'notification' : '' )}
                     id='email'
@@ -237,13 +270,15 @@ const TextForm = () => {
                     </input>
                 </div>
                 <div 
-                    className='checkbox_container'
+                    className={ 'checkbox_container ' + ( appState.language === 'english' ? '' : 'hebrew ' ) }
                     onClick={ checkAnonimus }>
                     <div className='checkbox'>{ anonymous ? <i className="fas fa-check"></i> : '' }</div>
-                    <p>I would like to be anonimus.</p>
+                    <p>
+                        { appState.language === 'english' ? 'I would like to be anonimus.' : 'אני רוצה להשאר אנונימי' }
+                    </p>
                 </div>
                 <div 
-                    className='checkbox_container'
+                    className={ 'checkbox_container ' + ( appState.language === 'english' ? '' : 'hebrew ' ) }
                     onClick={ checkAgreeTerms }>
                     <div className={ 'checkbox ' + ( notification === 'terms' ? 'notification ' : '' )}>{ agreeTerms ? <i className="fas fa-check"></i> : '' }</div>
                     <p>{ termsBody }</p>

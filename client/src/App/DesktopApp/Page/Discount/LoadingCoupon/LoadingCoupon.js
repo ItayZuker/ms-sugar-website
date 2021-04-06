@@ -24,7 +24,7 @@ const LoadingCoupon = () => {
 
     return (
         <div className='desktop_loading_coupon_container'>
-            <h3 id='loading_coupon'>{ appState.lenguage === 'english' ? 'Sending Coupon' : 'שולח קופון'}</h3>
+            <h3 id='loading_coupon'>{ appState.language === 'english' ? 'Sending Coupon' : 'שולח קופון'}</h3>
         </div>
     )
 }

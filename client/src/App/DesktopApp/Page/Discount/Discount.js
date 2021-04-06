@@ -16,8 +16,8 @@ const Discount = () => {
         appState.language === 'english' ? setLenguage( 'english' ) : setLenguage( 'hebrew' )
     }, [ appState.language ])
 
-    const setLenguage = ( lenguage ) => {
-        if ( lenguage === 'english' ) {
+    const setLenguage = ( language ) => {
+        if ( language === 'english' ) {
             setPictureText( `
                 Send us a visual you made, and you will get a 10% discount coupon. 
                 It can be a sketch, a picture, a drawing, a painting or any other visual you made. 

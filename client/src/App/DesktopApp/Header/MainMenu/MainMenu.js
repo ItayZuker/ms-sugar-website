@@ -17,9 +17,9 @@ const MainMenu = () => {
         history.push( `/${page}` )
     }
 
-    const changeLenguage = ( lenguage ) => {
+    const changeLenguage = ( language ) => {
         setAppState( prevState => {
-            return { ...prevState, language: lenguage }
+            return { ...prevState, language: language }
         })
     }
 

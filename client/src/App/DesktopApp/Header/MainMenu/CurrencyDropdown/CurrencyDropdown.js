@@ -9,8 +9,6 @@ const CurrencyDropdown = ( props ) => {
     const changeShopCurrency = ( currensyCode ) => {
         changeCurrency( currensyCode )
     }
-    
-    console.log(currencyData.currencyCodeList)
 
     if ( !currencyData.currencyCodeList ) return <></>
 

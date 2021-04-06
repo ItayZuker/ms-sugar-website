@@ -9,8 +9,8 @@ const Problem = ( props ) => {
     return (
         <div className='desktop_problem_container'>
             <h3><i className="far fa-frown"></i></h3>
-            <h3>{ appState.lenguage === 'english' ? 'Something went wrong' : 'משהו לא בסדר' }</h3>
-            <h4 onClick={ () => props.setProblem( false ) }>{ appState.lenguage === 'english' ? 'Try again' : 'נסה שוב' }</h4>
+            <h3>{ appState.language === 'english' ? 'Something went wrong' : 'משהו לא בסדר' }</h3>
+            <h4 onClick={ () => props.setProblem( false ) }>{ appState.language === 'english' ? 'Try again' : 'נסה שוב' }</h4>
         </div>
     )
 }

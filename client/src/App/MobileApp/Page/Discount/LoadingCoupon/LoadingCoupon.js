@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
+import { ShopContext } from '../../../../../Context/shopContext'
 import './loading_coupon.scss'
 
 const LoadingCoupon = () => {
 
+    const { appState } = useContext( ShopContext )
+    
     useEffect(() => {
         loading()
     }, [])
@@ -21,7 +24,7 @@ const LoadingCoupon = () => {
 
     return (
         <div className='loading_coupon_container'>
-            <h3 id='loading_coupon'>Sending Coupon</h3>
+            <h3 id='loading_coupon'>{ appState.language === 'english' ? 'Sending Coupon' : 'שולח קופון'}</h3>
         </div>
     )
 }

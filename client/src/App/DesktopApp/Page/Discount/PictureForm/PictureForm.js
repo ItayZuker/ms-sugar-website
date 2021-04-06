@@ -297,10 +297,10 @@ const PictureForm = () => {
                     setFile={ setFile }
                     errMessage={ errMessage }/>
                 <textarea
-                    className={ ( appState.lenguage === 'english' ? '' : 'hebrew ' ) + ( notification === 'about' ? 'notification ' : '' ) }
+                    className={ ( appState.language === 'english' ? '' : 'hebrew ' ) + ( notification === 'about' ? 'notification ' : '' ) }
                     name='about'
                     type='textarea'
-                    placeholder={ appState.lenguage === 'english' ? 'Write about this art..' : 'כמה מילים על היצירה..' }
+                    placeholder={ appState.language === 'english' ? 'Write about this art..' : 'כמה מילים על היצירה..' }
                     onClick={ () => {
                             setNotification( '' )
                             setErrMessage( '' )

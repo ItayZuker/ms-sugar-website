@@ -125,6 +125,12 @@ $green: rgb(0, 150, 0);
             flex-direction: row;
             justify-content: flex-start;
             margin-top: 2vh;
+            &.hebrew {
+                > .checkbox {
+                    margin-right: 0;
+                    margin-left: 2vw;
+                }
+            }
             > .checkbox {
                 width: 5vw;
                 height: 5vw;
