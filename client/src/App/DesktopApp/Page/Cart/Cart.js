@@ -47,7 +47,7 @@ const Cart = () => {
                     { appState.language === 'english' ? 'Subtotal:' : 'סיכום ביניים:' } { currencyData.currentCurrencySymbole } { totalPrice }</h3>
                 <CheckoutButton setNotificationOn={ setNotificationOn } />
                 <h3 className={ checkout.lineItems.length > 0 ? 'active ' : '' }>
-                    { appState.language === 'english' ? 'Apply coupon next step' : 'שימוש בקופון בשלב הבא' }</h3>
+                    { appState.language === 'english' ? 'Apply coupon next step' : 'הוסף קופון בשלב הבא' }</h3>
             </div>
         </div>
     )

@@ -7,7 +7,7 @@ import './cart.scss'
 
 const Cart = () => {
 
-    const { checkout, currencyData, setAppState, getTotalPriceAmount } = useContext( ShopContext )
+    const { checkout, currencyData, setAppState, getTotalPriceAmount, appState } = useContext( ShopContext )
     const [ totalPrice, setTotalPrice ] = useState('')
     const [ notificationOn, setNotificationOn ] = useState( false )
 
@@ -20,7 +20,6 @@ const Cart = () => {
     }, [])
 
     useEffect(() => {
-        console.log('123')
         const fetchData = async () => {
             const totalPrice = await getTotalPriceAmount()
             setTotalPrice( totalPrice )
@@ -31,9 +30,11 @@ const Cart = () => {
     if ( !checkout.lineItems ) return <LoadingCart />
 
     return (
-        <div className='cart_container'>
+        <div className={ 'cart_container ' + ( appState.language === 'english' ? '' : 'hebrew ' ) }>
             <div className={ 'empty_cart ' + ( checkout.lineItems.length > 0 ? 'hide ' : '' ) }>
-                <h3 className={ notificationOn ? 'notificationOn' : '' }>No items</h3>
+                <h3 className={ notificationOn ? 'notificationOn' : '' }>
+                    { appState.language === 'english' ? 'No items' : 'אין מוצרים' }
+                </h3>
             </div>
             <div className='items_container'>
                 { checkout.lineItems.map( item => {
@@ -42,11 +43,19 @@ const Cart = () => {
                     item={ item }/>
                 } ) }
             </div>
-            <div className='subtotal_container'>
-                <h3 className={ checkout.lineItems.length > 0 ? '' : 'no_items ' }>Subtotal: { currencyData.currentCurrencySymbole } { totalPrice }</h3>
+            <div className={ 'subtotal_container ' + ( appState.language === 'hebrew ') }>
+                <h3 className={ checkout.lineItems.length > 0 ? '' : 'no_items ' }>
+                    { appState.language === 'english' ? currencyData.currentCurrencySymbole + totalPrice : null } 
+                    { appState.language === 'english' ? ' :' : '' }               
+                    { appState.language === 'english' ? 'Subtotal' : 'סיכום ביניים' }
+                    { appState.language === 'english' ? '' : ': ' }
+                    { appState.language === 'english' ? null : currencyData.currentCurrencySymbole + totalPrice }
+                </h3>
             </div>
             <CheckoutButton setNotificationOn={ setNotificationOn }/>
-            <h3 className={ checkout.lineItems.length > 0 ? '' : 'no_items ' }>Apply coupon next step</h3>
+            <h3 className={ checkout.lineItems.length > 0 ? '' : 'no_items ' }>
+                { appState.language === 'english' ? 'Apply coupon next step' : 'הוסף קופון בשלב הבא' }
+            </h3>
         </div>
     )
 }

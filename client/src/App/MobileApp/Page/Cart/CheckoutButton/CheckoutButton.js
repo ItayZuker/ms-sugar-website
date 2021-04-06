@@ -4,7 +4,7 @@ import './checkout_button.scss'
 
 const CheckoutButton = ( props ) => {
 
-    const { checkout } = useContext( ShopContext )
+    const { checkout, appState } = useContext( ShopContext )
 
     const goToCheckout = (e) => {
         e.preventDefault()
@@ -26,7 +26,9 @@ const CheckoutButton = ( props ) => {
         <div className={ 'checkout_button_container ' + ( checkout.lineItems.length > 0 ? 'active ' : '' )}>
             <button
                 onClick={ goToCheckout }
-                target='_blank'>Checkout</button>
+                target='_blank'>
+                    { appState.language === 'english' ? 'Checkout' : 'לשלב הבא' }
+                </button>
         </div>
     )
 }

@@ -4,13 +4,7 @@ import './loading_shop.scss'
 
 const LoadingShop = () => {
 
-    const { setAppState } = useContext( ShopContext )
-
-    // useEffect(() => {
-    //     setAppState( prevState => {
-    //         return { ...prevState, loading: { active: true }}
-    //     })
-    // }, [])
+    const { appState } = useContext( ShopContext )
 
     useEffect(() => {
         loading()
@@ -30,7 +24,9 @@ const LoadingShop = () => {
 
     return (
         <div className='loading_shop_container'>
-            <h3 id='loading_shop'>Loading Shop...</h3>
+            <h3 id='loading_shop'>
+            { appState.language === 'english' ? 'Loading Shop...' : 'החנות בטעינה...'}
+            </h3>
         </div>
     )
 }

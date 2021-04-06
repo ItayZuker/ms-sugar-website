@@ -13,11 +13,26 @@ const ShopHeader = () => {
         }
     }
     
+    const translateProduct = ( product ) => {
+        switch ( product ) {
+            case 'decks': return 'קרשים'
+            case 'grips': return 'גריפים'
+            case 'wheels': return 'גלגלים'
+            case 'bearings': return 'לאגרים'
+            case 'trucks': return 'צירים'
+            case 'extra': return 'אקסטרה'
+            case 'sugar': return 'Sugar'
+            default: return product
+        }
+    }
+
     return (
         <div className={ 'shop_header_container ' + (appState.productMenu.open ? 'menu_open' : '') }>
             <ProductDropdown />
             <div className={ 'selected_product_container ' + ( appState.productMenu.open ? 'menu_open' : ''  ) }>
-                <h3>{ capitalFirst( appState.currentProductType ) }</h3>
+                <h3>
+                    { appState.language === 'english' ? capitalFirst( appState.currentProductType ) : translateProduct( appState.currentProductType ) }
+                </h3>
             </div>
         </div>
         

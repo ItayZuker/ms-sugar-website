@@ -9,15 +9,19 @@ $white: rgb(240, 240, 240);
 $red: rgb(200, 0, 0);
 $green: rgb(0, 150, 0);
 
-.product_container {
-    width: 100vw;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 14vh;
-    &.hebrew {
-        direction: rtl;
+.mobile_footer_language_button_container {
+    &.hide {
+        display: none;
+    }
+    > h3 {
+        color: $light_gray;
+        font-weight: 400;
+        font-size: 2.5vh;
+        > span {
+            transition: color 0.2s;
+            &.selected {
+            color: $medium_gray;
+            }
+        }
     }
 }
-

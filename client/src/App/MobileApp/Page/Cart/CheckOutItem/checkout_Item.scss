@@ -37,6 +37,7 @@ $green: rgb(0, 150, 0);
                 color: $light_gray;
                 border-bottom: 2px solid $light_gray;
                 width: fit-content;
+                // background-color: red;
             }
         }
         > .options_container {
@@ -45,6 +46,7 @@ $green: rgb(0, 150, 0);
             // background-color: blue;
             margin-top: 1vh;
             margin-bottom: 1vh;
+
             > .option_container {
                 width: inherit;
                 height: 20px;
@@ -55,6 +57,11 @@ $green: rgb(0, 150, 0);
                     color: $light_gray;
                     font-size: 4vw;
                     font-weight: 300;
+                    // color: red;
+                    &.hebrew {
+                        // color: red;
+                        direction: ltr;
+                    }
                 }
 
             }

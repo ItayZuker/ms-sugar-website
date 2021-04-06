@@ -52,6 +52,19 @@ const ProductDropdownMenu = ( props ) => {
         }
     }
 
+    const translateProduct = ( product ) => {
+        switch ( product ) {
+            case 'decks': return 'קרשים'
+            case 'grips': return 'גריפים'
+            case 'wheels': return 'גלגלים'
+            case 'bearings': return 'לאגרים'
+            case 'trucks': return 'צירים'
+            case 'extra': return 'אקסטרה'
+            case 'sugar': return 'Sugar'
+            default: return product
+        }
+    }
+
     return (
         <div className={ 'product_dropdown_menu_container ' + ( appState.productMenu.open ? 'menu_open' : '' ) }>
             { products.map( ( product, index ) => {
@@ -61,8 +74,9 @@ const ProductDropdownMenu = ( props ) => {
                         { addIcon( product ) }
                         <h3
                             className={ appState.currentProductType === product ? 'selected' : '' }
-                            onClick={ () => selectProduct( product ) }
-                            >{ capitalFirst( product ) }</h3>
+                            onClick={ () => selectProduct( product ) }>
+                            { appState.language === 'english' ? capitalFirst( product ) : translateProduct( product ) }
+                        </h3>
                     </div>
                 }
             )}   

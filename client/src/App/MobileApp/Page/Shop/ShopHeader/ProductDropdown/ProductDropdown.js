@@ -22,8 +22,9 @@ const ProductDropdown = () => {
     return (
         <div className={ 'product_dropdown_container ' + ( appState.productMenu.open ? 'menu_open' : '' )}>
             <h3
-                onClick={ handleClick }
-                >Shop</h3>
+                onClick={ handleClick }>
+                { appState.language === 'english' ? 'Shop' : 'חנות' }
+            </h3>
                 <i className={ appState.productMenu.open ? "fas fa-times" : "fas fa-caret-down" }></i>
             <ProductDropdownMenu />
         </div>

@@ -16,6 +16,16 @@ $green: rgb(0, 150, 0);
         margin-top: 5vh;
         padding: 5vw;
         border-radius: 5px;
+        &.hebrew {
+            > .info_button_container {
+                transform: translate(-68vw,-8vw);
+            }
+            &.info_open {
+                > .info_button_container {
+                    transform: translate(-73vw,-3vw);
+                }
+            }
+        }
         > .info_button_container {
             width: 10vw;
             height: 10vw;

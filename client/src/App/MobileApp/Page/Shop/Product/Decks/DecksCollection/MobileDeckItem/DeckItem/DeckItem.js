@@ -9,11 +9,20 @@ const DeckItem = ( props ) => {
     const [ product, setProduct ] = useState()
     const [ price, setPrice ] = useState()
     const { updateItem } = useGetItem()
-    const { addItemToCheckout, currencyData, getPrice } = useContext( ShopContext )
+    const [ stockNotification, setStockNotification ] = useState()
+    const { addItemToCheckout, currencyData, getPrice, appState } = useContext( ShopContext )
     
     useEffect(() => {
         getProduct()
     }, [])
+
+    useEffect(() => {
+        if ( appState.language === 'english' ) {
+            setStockNotification( 'Out of stock' )
+        } else {
+            setStockNotification( 'נגמר המלאי' )
+        }
+    }, [ appState.language ])
 
     const getProduct = async() => {
         const data = await updateItem( props.product )
@@ -30,6 +39,7 @@ const DeckItem = ( props ) => {
             }
             fetchData()
         }
+
     }, [ getPrice ])
 
     const addToCart = (e) => {
@@ -45,6 +55,16 @@ const DeckItem = ( props ) => {
         }
     }
 
+    const translateTitle = ( title ) => {
+        switch ( title ) {
+            case 'deck #1': return 'קרש #1'
+            case 'deck #2': return 'קרש #2'
+            case 'deck #3': return 'קרש #3'
+            case 'deck #4': return 'קרש #4'
+            case 'deck #5': return 'קרש #5'
+            default: return title
+        }
+    }
 
     if ( !product ) return <></>
 
@@ -54,10 +74,11 @@ const DeckItem = ( props ) => {
                 src={ product.images[0].src }
                 alt='product'></img>
             <div className='item_data_container'>
-                <h3>{ capitalFirst( product.title ) }</h3>
-                <h4 className={ 'price ' + ( props.product.availableForSale ? 'active' : '') }>
-                    { props.product.availableForSale ? currencyData.currentCurrencySymbole + ' ' + price  : 'Out of stock'}
-                    
+                <h3>
+                    { appState.language === 'english' ? capitalFirst( product.title ) : translateTitle( product.title ) }
+                </h3>
+                <h4 className={ 'price ' + ( props.product.availableForSale ? 'active ' : '' ) + ( appState.language === 'english' ? '' : 'hebrew ') }>
+                    { props.product.availableForSale ? currencyData.currentCurrencySymbole + ' ' + price : stockNotification }
                 </h4>
                 <div className={ 'options_container ' + ( props.product.availableForSale ? '' : 'hide ' ) }>
                     { product.options.map( option => {
@@ -71,7 +92,9 @@ const DeckItem = ( props ) => {
                 </div>
                 <button
                     className={ props.product.availableForSale ? 'active' : '' } 
-                    onClick={ e => addToCart(e) }>Add to cart</button>
+                    onClick={ e => addToCart(e) }>
+                    { appState.language === 'english' ? 'Add to cart' : 'להוסיף לעגלה' }
+                    </button>
             </div>
         </div>
     )

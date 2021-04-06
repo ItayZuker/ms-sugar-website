@@ -1,21 +1,23 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import DeckItem from './DeckItem/DeckItem'
 import DeckInfo from './DeckInfo/DeckInfo'
 import './mobile_deck_item.scss'
+import { ShopContext } from '../../../../../../../../Context/shopContext'
 
 const MobileDeckItem = ( props ) => {
 
+    const { appState } = useContext( ShopContext )
     const [ infoOpen, setInfoOpen ] = useState( false )
 
-    const clickDropdown = () => {
+    const clickInfo = () => {
         infoOpen ? setInfoOpen( false ) : setInfoOpen( true )
     }
 
     return (
-        <div className={ 'mobile_deck_item_container ' + ( infoOpen ? 'info_open ' : '' )}>
+        <div className={ 'mobile_deck_item_container ' + ( infoOpen ? 'info_open ' : '' ) + ( appState.language === 'english' ? '' : 'hebrew ' ) }>
             <div 
                 className='info_button_container'
-                onClick={ clickDropdown }>
+                onClick={ clickInfo }>
                 <i className="fas fa-star"></i>
             </div>
             <DeckInfo

@@ -5,7 +5,7 @@ import './item_summary.scss'
 const ItemSummary = ( props ) => {
 
     const [ price, setPrice ] = useState()
-    const { updateItemQuantityForCheckout, currencyData, getPrice } = useContext( ShopContext )
+    const { updateItemQuantityForCheckout, currencyData, getPrice, appState } = useContext( ShopContext )
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,8 +32,14 @@ const ItemSummary = ( props ) => {
                 <h4>{ props.item.quantity }</h4>
                 <button onClick={ removeFromCart }><i className="fas fa-minus"></i></button>
             </div>
-            <div className='price_container'>
-                <h3>Price: { currencyData.currentCurrencySymbole } { props.item.quantity * price }</h3>
+            <div className={ 'price_container ' + ( appState.language === 'english' ? '' : 'hebrew ') }>
+                <h3>
+                    { appState.language === 'english' ? currencyData.currentCurrencySymbole + props.item.quantity * price : null } 
+                    { appState.language === 'english' ? ' :' : '' }               
+                    { appState.language === 'english' ? 'Price' : 'מחיר' }
+                    { appState.language === 'english' ? '' : ': ' }
+                    { appState.language === 'english' ? null : currencyData.currentCurrencySymbole + props.item.quantity * price }
+                </h3>
             </div>
         </div>
     )

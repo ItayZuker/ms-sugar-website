@@ -49,6 +49,9 @@ $green: rgb(0, 150, 0);
                 color: $red;
                 margin-top: 0.5vh;
                 margin-right: auto;
+                &.hebrew {      
+                    direction: ltr;
+                }
                 &.active {
                     color: $medium_gray;
                 }

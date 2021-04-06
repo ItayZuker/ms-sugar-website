@@ -12,14 +12,14 @@ $green: rgb(0, 150, 0);
 .cart_footer_container {
     width: 100vw;
     height: 6vh;
-    background-color: $dark_gray;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: fixed;
     bottom: 0;
     left: 0;
     z-index: 3;
+    background-color: $dark_gray;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     > h4 {
         color: $light_gray;
         font-weight: 400;

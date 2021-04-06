@@ -50,8 +50,12 @@ $green: rgb(0, 150, 0);
         width: 30vw;
         height: inherit;
         display: flex;
-        justify-content: flex-end;
+        justify-content: flex-start;
         align-items: center;
+        direction: rtl;
+        &.hebrew {
+            direction: ltr;
+        }
         > h3 {
             color: $medium_gray;
             font-weight: 400;

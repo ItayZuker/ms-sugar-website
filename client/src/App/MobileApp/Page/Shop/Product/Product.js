@@ -13,7 +13,7 @@ import './product.scss'
 const Product = () => {
 
     const { product } = useParams()
-    const { setAppState } = useContext( ShopContext )
+    const { setAppState, appState } = useContext( ShopContext )
 
     useEffect(() => {
         const html = document.querySelector( 'html' )
@@ -25,7 +25,7 @@ const Product = () => {
     }, [])
 
     return (
-        <div className='product_container'>
+        <div className={ 'product_container ' + ( appState.language === 'english' ? '' : 'hebrew ' ) }>
             { product === undefined ?  <Decks /> : null }
             { product === 'decks' ? <Decks /> : null }
             { product === 'trucks' ? <Trucks /> : null }

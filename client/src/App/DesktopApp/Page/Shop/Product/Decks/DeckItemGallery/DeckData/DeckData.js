@@ -89,7 +89,6 @@ const DeckData = ( props ) => {
         }
     }
 
-
     useEffect( () => {
         if ( product ) {
             const fetchData = async () => {

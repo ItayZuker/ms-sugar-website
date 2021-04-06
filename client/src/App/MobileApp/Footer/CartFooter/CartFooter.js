@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
+import LanguageButton from './LanguageButton/LanguageButton'
 import { ShopContext } from '../../../../Context/shopContext'
 import './cart_footer.scss'
 
@@ -23,9 +24,11 @@ const CartFooter = () => {
 
     return (
         <div className='cart_footer_container'>
+            <LanguageButton />
             <h4
                 onClick={ () => { goTo( 'shop' )} }
-                >Shop <i className="fas fa-store"></i></h4>
+                >Shop <i className="fas fa-store"></i>
+            </h4>
         </div>
     )
 }

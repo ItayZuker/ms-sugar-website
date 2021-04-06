@@ -5,7 +5,7 @@ import './dropdown_deck_option.scss'
 
 const DropdownDeckOption = ( props ) => {
 
-    const { setAppState } = useContext( ShopContext )
+    const { setAppState, appState } = useContext( ShopContext )
     const { updateItem } = useGetItem()
 
     const selectDeckVariant = async( value ) => {
@@ -44,15 +44,24 @@ const DropdownDeckOption = ( props ) => {
         }
     }
 
+    const translateValue = ( value ) => {
+        switch ( value ) {
+            case 'large': return 'גדול'
+            case 'medium': return 'בינוני'
+            case 'small': return 'שטוח'
+            default: return value
+        }
+    }
+
     return (
         <div className={ 'dropdown_deck_option_container ' + ( props.dropdownOpen ? 'dropdown_open ' : '' ) }>
             { props.option.values.map( ( variant, index ) => {
                 return <div 
                     key={ index }
-                    className='variant_container' 
+                    className={ 'variant_container ' + ( appState.language === 'english' ? '' : 'hebrew ' ) }
                     onClick={ () => selectDeckVariant( variant ) }>
                     <h3 className={ variant === props.selectedVariant ? 'selected_variant ' : '' }>
-                    { capitalFirst( variant ) }</h3>
+                    { appState.language === 'english' ? capitalFirst( variant ) : translateValue( variant ) }</h3>
                 </div>
             }) }
         </div>
