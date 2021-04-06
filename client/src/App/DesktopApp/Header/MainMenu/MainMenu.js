@@ -98,8 +98,8 @@ const MainMenu = () => {
                     onClick={ () => changeLenguage( 'english' ) }
                     >English</h4>
                 <h4
-                    className={ 'language ' + ( appState.language === 'עברית' ? 'selected ' : '' ) }
-                    onClick={ () => changeLenguage( 'עברית' ) }
+                    className={ 'language ' + ( appState.language === 'hebrew' ? 'selected ' : '' ) }
+                    onClick={ () => changeLenguage( 'hebrew' ) }
                     >עברית</h4>
             </div>
         </div>

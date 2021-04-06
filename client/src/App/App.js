@@ -25,18 +25,19 @@ const App = () => {
   }, [])
 
   const selectCurrency = async ( geoData ) => {
-    if ( geoData.country_code = 'IL' ) {
+    if ( geoData.country_code === 'IL' ) {
       await setCurrency()
       changeCurrency( 'ILS' )
+      console.log(geoData.country_code)
     } else {
       setCurrency()
     }
   }
 
   const selectLanguage = ( geoData ) => {
-    if ( geoData.country_code = 'IL' ) {
+    if ( geoData.country_code === 'IL' ) {
       setAppState( prevState => {
-        return { ...prevState, language: 'עברית' }
+        return { ...prevState, language: 'hebrew' }
       })
     } else {
       setAppState( prevState => {
