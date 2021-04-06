@@ -28,7 +28,6 @@ const App = () => {
     if ( geoData.country_code === 'IL' ) {
       await setCurrency()
       changeCurrency( 'ILS' )
-      console.log(geoData.country_code)
     } else {
       setCurrency()
     }
@@ -49,10 +48,10 @@ const App = () => {
   return (
     <>
       <BrowserView>
-        <DesktopApp />
+        {/* <DesktopApp /> */}
+        <MobileApp />
       </BrowserView>
       <MobileView>
-        <MobileApp />
       </MobileView>
     </>
   )

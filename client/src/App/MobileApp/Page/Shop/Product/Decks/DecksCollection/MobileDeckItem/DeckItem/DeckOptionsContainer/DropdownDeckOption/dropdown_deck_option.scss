@@ -29,9 +29,8 @@ $green: rgb(0, 150, 0);
         align-items: center;
         direction: ltr;
         &.hebrew {
-            direction: rtl;
             > h3 {
-                margin-left: 0;
+                margin-left: auto;
                 margin-right: 5vw;
             }
         }
