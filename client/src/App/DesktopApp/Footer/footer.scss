@@ -67,7 +67,7 @@ $green: rgb(0, 150, 0);
         grid-auto-flow: column;
         width: auto;
         height: fit-content;
-        margin-left: 100px;
+        margin-left: 5vw;
         > .navbar_item {
             height: fit-content;
             padding: 10px 30px 0 0;
@@ -87,10 +87,9 @@ $green: rgb(0, 150, 0);
         }
     }
     > .copyright_container {
-        align-self: flex-end;
-        margin-bottom: 2vh;
-        margin-left: 100px;
+        margin-left: 5vw;
         > p {
+            font-size: 1.8vh;
             color: $medium_dark_gray;
         }
         

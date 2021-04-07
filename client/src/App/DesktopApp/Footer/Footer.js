@@ -99,8 +99,8 @@ const Footer = () => {
             </div>
 
             <div className='copyright_container'>
-                { appState.language === 'english' ? <p>Copyright <i className="far fa-copyright"></i> Ms. Sugar Inc. All rights reserved</p> : null }
-                { appState.language === 'english' ? null : <p><i className="far fa-copyright"></i> כל הזכויות שמורות ל  "מיס שוגר"</p> }
+                { appState.language === 'english' ? <p>Copyright <i className="far fa-copyright"></i> Ms. Sugar All rights reserved</p> : null }
+                { appState.language === 'english' ? null : <p><i className="far fa-copyright"></i> כל הזכויות שמורות ל - 'מיס שוגר'</p> }
             </div>
         </div>
     )

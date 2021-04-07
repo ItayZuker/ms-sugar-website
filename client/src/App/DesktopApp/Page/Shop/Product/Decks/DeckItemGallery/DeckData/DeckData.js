@@ -138,7 +138,7 @@ const DeckData = ( props ) => {
             <h4 className={ 'price ' + ( props.productAPI.availableForSale ? 'active' : '' )}>
                 { props.productAPI.availableForSale ? currencyData.currentCurrencySymbole + ' ' + price : stockNotification }
                 </h4>
-            <h3 className='inspiration_title'>{ appState.language === 'engliah' ? 'Inspiration' : 'השראה' }</h3>
+            <h3 className='inspiration_title'>{ appState.language === 'english' ? 'Inspiration' : 'השראה' }</h3>
             <p ref={ deckInfo_ref }></p>
             <div className='bottom_section'>
                 { props.productAPI.availableForSale ? <Options product={ product } setProduct={ setProduct } productAPI={ props.productAPI } /> : null }
