@@ -20,10 +20,12 @@ $green: rgb(0, 150, 0);
     bottom: 0;
     left: 0;
     z-index: 3;
-    > i {
-        color: $light_gray;
-        font-weight: 400;
-        font-size: 2.5vh;
+    > a {
+        > i {
+            color: $light_gray;
+            font-weight: 400;
+            font-size: 2.5vh;
+        }
     }
     &.keyboard_open {
         position: relative;

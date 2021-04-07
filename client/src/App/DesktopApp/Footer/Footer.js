@@ -61,39 +61,43 @@ const Footer = () => {
             </div>
             <div className='social_container'>
                 <div
-                    className='navbar_item'
-                    onClick={() => selectPage('mission')}>
+                    className='navbar_item'>
                     <h3
                         className={ appState.page === 'mission' ? 'selected' : '' }>
-                        <i className="fab fa-twitter"></i>
-                        { appState.language === 'english' ? 'Twitter' : 'טוויטר' }
+                        <a href="https://twitter.com/Sugar_Skateshop" target="_blank">
+                            <i className="fab fa-twitter"></i>
+                            { appState.language === 'english' ? 'Twitter' : 'טוויטר' }
+                        </a>
                     </h3>
                 </div>
                 <div
-                    className='navbar_item'
-                    onClick={() => selectPage('mission')}>
+                    className='navbar_item'>
                     <h3
                         className={ appState.page === 'mission' ? 'selected' : '' }>
-                        <i className="fab fa-instagram"></i>
-                        { appState.language === 'english' ? 'Instagram' : 'אינסטגרם' }
+                        <a href="https://www.instagram.com/ms_sugar_skateshop/" target="_blank">
+                            <i className="fab fa-instagram"></i>
+                            { appState.language === 'english' ? 'Instagram' : 'אינסטגרם' }
+                        </a>
                     </h3>
                 </div>
                 <div
-                    className='navbar_item'
-                    onClick={() => selectPage('mission')}>
+                    className='navbar_item'>
                     <h3
                         className={ appState.page === 'mission' ? 'selected' : '' }>
-                        <i class="fab fa-facebook-square"></i>
-                        { appState.language === 'english' ? 'Facebook' : 'פייסבוק' }
+                        <a href="https://www.facebook.com/mssugarskateshop" target="_blank">
+                            <i class="fab fa-facebook-square"></i>
+                           { appState.language === 'english' ? 'Facebook' : 'פייסבוק' }
+                        </a>
                     </h3>
                 </div>
                 <div
-                    className='navbar_item'
-                    onClick={() => selectPage('mission')}>
+                    className='navbar_item'>
                     <h3
                         className={ appState.page === 'mission' ? 'selected' : '' }>
-                        <i class="fab fa-youtube"></i>
-                        { appState.language === 'english' ? 'YouTube' : 'יוטיוב' }
+                        <a href="https://www.youtube.com/channel/UC8hV-7QTBwNbOuV2i4dxIHg" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                            { appState.language === 'english' ? 'YouTube' : 'יוטיוב' }
+                        </a>
                     </h3>
                 </div>
             </div>

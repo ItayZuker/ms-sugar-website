@@ -71,17 +71,19 @@ $green: rgb(0, 150, 0);
         > .navbar_item {
             height: fit-content;
             padding: 10px 30px 0 0;
-            > h3 {
+            > h3 > a {
+                text-decoration: none;
                 color: $medium_gray;
                 font-size: 1.8vh;
                 font-weight: 400;
                 transition: color 0.2s;
+                > i {
+                    margin-right: 1vh;
+                    margin-left: 1vh;
+                }
                 &:hover {
                     color: $off_white;
                     cursor: pointer;
-                }
-                > i {
-                    margin-right: 1vh;
                 }
             }
         }
