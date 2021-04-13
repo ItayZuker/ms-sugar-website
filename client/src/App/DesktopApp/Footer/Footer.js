@@ -21,49 +21,56 @@ const Footer = () => {
                 <div
                     className='navbar_item'
                     onClick={() => selectPage('mission')}>
-                    <h3
-                        className={ appState.page === 'mission' ? 'selected' : '' }
-                        >{ appState.language === 'english' ? 'Mission' : 'משימה' }</h3>
+                    <h3>
+                        <a className={ appState.page === 'mission' ? 'selected' : '' }>
+                            { appState.language === 'english' ? 'Mission' : 'משימה' }
+                        </a>
+                    </h3>
                 </div>
                 <div
                     className='navbar_item'
                     onClick={() => selectPage('shop')}>
-                    <h3
-                        className={ appState.page === 'shop' ? 'selected' : '' }>
-                        <i className="fas fa-store"></i>
-                        { appState.language === 'english' ? 'Shop' : 'חנות' }
+                    <h3>
+                        <a className={ appState.page === 'shop' ? 'selected' : '' }>
+                            <i className="fas fa-store"></i>
+                            { appState.language === 'english' ? 'Shop' : 'חנות' }
+                        </a>
                     </h3>
                 </div>
                 <div
                     className='navbar_item'
                     onClick={() => selectPage('discount')}>
-                    <h3
-                        className={ appState.page === 'discount' ? 'selected' : '' }
-                        >{ appState.language === 'english' ? 'Discount' : 'הנחות' }</h3>
+                    <h3>
+                        <a className={ appState.page === 'discount' ? 'selected' : '' }>{
+                            appState.language === 'english' ? 'Discount' : 'הנחות' }
+                        </a>
+                    </h3>
                 </div>
                 <div
                     className='navbar_item'
                     onClick={() => selectPage('cart')}>
-                    <h3
-                        className={ appState.page === 'cart' ? 'selected' : '' }>
-                        <i className="fas fa-shopping-cart"></i>
-                        ({itemsInCart})
-                        { appState.language === 'english' ? ' Cart' : ' עגלה' } 
+                    <h3>
+                        <a className={ appState.page === 'cart' ? 'selected' : '' }>
+                            <i className="fas fa-shopping-cart"></i>
+                            ({itemsInCart})
+                            { appState.language === 'english' ? ' Cart' : ' עגלה' }
+                        </a> 
                     </h3>
                 </div>
                 <div
                     className='navbar_item'
                     onClick={() => selectPage('contact')}>
-                    <h3
-                        className={ appState.page === 'contact' ? 'selected' : '' }
-                        >{ appState.language === 'english' ? 'Contact' : 'צור קשר' }</h3>
+                    <h3>
+                        <a className={ appState.page === 'contact' ? 'selected' : '' }>
+                            { appState.language === 'english' ? 'Contact' : 'צור קשר' }
+                        </a>
+                    </h3>
                 </div>
             </div>
-            <div className='social_container'>
+            <div className='desktop_social_container'>
                 <div
                     className='navbar_item'>
-                    <h3
-                        className={ appState.page === 'mission' ? 'selected' : '' }>
+                    <h3>
                         <a href="https://twitter.com/Sugar_Skateshop" target="_blank">
                             <i className="fab fa-twitter"></i>
                             { appState.language === 'english' ? 'Twitter' : 'טוויטר' }
@@ -72,8 +79,7 @@ const Footer = () => {
                 </div>
                 <div
                     className='navbar_item'>
-                    <h3
-                        className={ appState.page === 'mission' ? 'selected' : '' }>
+                    <h3>
                         <a href="https://www.instagram.com/ms_sugar_skateshop/" target="_blank">
                             <i className="fab fa-instagram"></i>
                             { appState.language === 'english' ? 'Instagram' : 'אינסטגרם' }
@@ -82,8 +88,7 @@ const Footer = () => {
                 </div>
                 <div
                     className='navbar_item'>
-                    <h3
-                        className={ appState.page === 'mission' ? 'selected' : '' }>
+                    <h3>
                         <a href="https://www.facebook.com/mssugarskateshop" target="_blank">
                             <i class="fab fa-facebook-square"></i>
                            { appState.language === 'english' ? 'Facebook' : 'פייסבוק' }
@@ -92,14 +97,23 @@ const Footer = () => {
                 </div>
                 <div
                     className='navbar_item'>
-                    <h3
-                        className={ appState.page === 'mission' ? 'selected' : '' }>
+                    <h3>
                         <a href="https://www.youtube.com/channel/UC8hV-7QTBwNbOuV2i4dxIHg" target="_blank">
                             <i class="fab fa-youtube"></i>
                             { appState.language === 'english' ? 'YouTube' : 'יוטיוב' }
                         </a>
                     </h3>
                 </div>
+                {/* <div
+                    className='navbar_item'> */}
+                    {/* <h3
+                        className={ appState.page === 'mission' ? 'selected' : '' }> */}
+                        {/* <a href="https://www.youtube.com/channel/UC8hV-7QTBwNbOuV2i4dxIHg" target="_blank"> */}
+                            {/* <i class="fab fa-youtube"></i>
+                            { appState.language === 'english' ? 'YouTube' : 'יוטיוב' } */}
+                        {/* </a> */}
+                    {/* </h3> */}
+                {/* </div> */}
             </div>
 
             <div className='copyright_container'>

@@ -38,30 +38,33 @@ $green: rgb(0, 150, 0);
         display: grid;
         grid-template-columns: repeat(2, auto);
         width: auto;
-        height: fit-content;
+        // height: fit-content;
         margin-left: 100px;
+        // background-color: yellow;
         > .navbar_item {
             height: fit-content;
             padding: 10px 30px 0 0;
-            > h3 {
-                color: $medium_gray;
-                font-size: 1.8vh;
-                font-weight: 400;
-                transition: color 0.2s;
-                &.selected {
-                    color: $light_gray;
-                }
-                &:hover {
-                    color: $off_white;
-                    cursor: pointer;
-                }
-                > i {
-                    margin-right: 1vh;
-                }
+            > h3 > a {
+                    color: $medium_gray;
+                    font-size: 1.8vh;
+                    font-weight: 400;
+                    transition: color 0.2s;
+                    &.selected {
+                        color: $light_gray;
+                    }
+                    &:hover {
+                        color: $off_white;
+                        cursor: pointer;
+                    }
+                    > i {
+                        margin-right: 1vh;
+                        margin-left: 1vh;
+
+                    }
             }
         }
     }
-    > .social_container {
+    > .desktop_social_container {
         display: grid;
         grid-template-rows: repeat(3, auto);
         grid-auto-flow: column;
@@ -69,7 +72,6 @@ $green: rgb(0, 150, 0);
         height: fit-content;
         margin-left: 5vw;
         > .navbar_item {
-            height: fit-content;
             padding: 10px 30px 0 0;
             > h3 > a {
                 text-decoration: none;
