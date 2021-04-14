@@ -8,7 +8,9 @@ import './mobile_app.scss'
 
 const MobileApp = () => {
 
-  const { keyboardOpen } = useContext( ShopContext)
+  const { keyboardOpen, currencyData } = useContext( ShopContext)
+
+  if ( !currencyData.currentCurrencyCode ) return <></>
 
   return (
       <div className={ 'mobile_app_container ' + ( keyboardOpen ? 'keyboard_open ' : '' )}>

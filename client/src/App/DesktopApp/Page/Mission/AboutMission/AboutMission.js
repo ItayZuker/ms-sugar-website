@@ -93,7 +93,7 @@ const AboutMission = () => {
                 <div className={ 'button_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
                     <button onClick={ () => goToShop( '' ) }>
                         { appState.language === 'english' ? 'Shop ' : 'חנות '} 
-                        { appState.language === 'english' ? <i className="fas fa-caret-right"></i> : <i class="fas fa-caret-left"></i> }
+                        { appState.language === 'english' ? <i className="fas fa-caret-right"></i> : <i className="fas fa-caret-left"></i> }
                     </button>
                 </div>
             </div>
@@ -108,7 +108,7 @@ const AboutMission = () => {
                 <div className={ 'button_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
                     <button onClick={ () => selectPage('discount') }>
                         { appState.language === 'english' ? 'Discount ' : 'הנחות '}
-                        { appState.language === 'english' ? <i className="fas fa-caret-right"></i> : <i class="fas fa-caret-left"></i> }
+                        { appState.language === 'english' ? <i className="fas fa-caret-right"></i> : <i className="fas fa-caret-left"></i> }
                     </button>
                 </div>
             </div>
@@ -125,7 +125,7 @@ const AboutMission = () => {
                 <div className={ 'button_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
                     <button onClick={ () => goToShop('sugar') }>  
                         { appState.language === 'english' ? 'Sugar ' : 'שוגר '}
-                        { appState.language === 'english' ? <i className="fas fa-caret-right"></i> : <i class="fas fa-caret-left"></i> }
+                        { appState.language === 'english' ? <i className="fas fa-caret-right"></i> : <i className="fas fa-caret-left"></i> }
                     </button>
                 </div>
             </div>

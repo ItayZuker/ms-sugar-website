@@ -8,8 +8,9 @@ import './desktop_app.scss'
 
 const DesktopApp = () => {
 
-  const { keyboardOpen } = useContext( ShopContext)
+  const { currencyData } = useContext( ShopContext)
 
+  if ( !currencyData.currentCurrencyCode ) return <></>
 
   return (
       <div className='desktop_app_container'>

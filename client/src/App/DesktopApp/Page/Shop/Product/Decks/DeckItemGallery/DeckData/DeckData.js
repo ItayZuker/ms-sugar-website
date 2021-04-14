@@ -10,7 +10,7 @@ const DeckData = ( props ) => {
     const [ price, setPrice ] = useState()
     const { updateItem } = useGetItem()
     const [ stockNotification, setStockNotification ] = useState()
-    const { currencyData, addItemToCheckout, getPrice, appState } = useContext( ShopContext )
+    const { currencyData, addItemToCheckout, getPrice, appState, clientInfo } = useContext( ShopContext )
     const deckInfo_ref = useRef()
     const [ deckOne ] = useState( () => {
         return `<p>
@@ -69,6 +69,7 @@ const DeckData = ( props ) => {
     useEffect(() => {
         const fetchData = async () => {
             const data = await getProduct()
+            console.log(currencyData)
             const price = await getPrice( data )
             setPrice( price )
             setProduct( data )

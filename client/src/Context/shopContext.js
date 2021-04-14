@@ -57,12 +57,21 @@ const ShopProvider = (props) => {
 
     const getPrice = async ( product ) => {
         if ( product.variant ) {
-            const currencyItem = await product.variant[0].presentmentPrices.find( item => item.price.currencyCode === currencyData.currentCurrencyCode )
-            return currencyItem.price.amount
+            // await currencyData
+            // if ( product.variant[0] ) {
+                const currencyItem = await product.variant[0].presentmentPrices.find( item => item.price.currencyCode === currencyData.currentCurrencyCode )
+                return currencyItem.price.amount
+            // } else {
+                
+            // }
         } else if ( product[0] ) {
             const currencyItem = await product[0].variant.presentmentPrices.find( item => item.price.currencyCode === currencyData.currentCurrencyCode )
             return currencyItem.price.amount
         } 
+    }
+
+    const getCurrencyData = ( ) => {
+
     }
 
     const changeCurrency = ( newCurrency ) => {

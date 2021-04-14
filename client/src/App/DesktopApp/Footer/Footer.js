@@ -90,7 +90,7 @@ const Footer = () => {
                     className='navbar_item'>
                     <h3>
                         <a href="https://www.facebook.com/mssugarskateshop" target="_blank">
-                            <i class="fab fa-facebook-square"></i>
+                            <i className="fab fa-facebook-square"></i>
                            { appState.language === 'english' ? 'Facebook' : 'פייסבוק' }
                         </a>
                     </h3>
@@ -99,21 +99,11 @@ const Footer = () => {
                     className='navbar_item'>
                     <h3>
                         <a href="https://www.youtube.com/channel/UC8hV-7QTBwNbOuV2i4dxIHg" target="_blank">
-                            <i class="fab fa-youtube"></i>
+                            <i className="fab fa-youtube"></i>
                             { appState.language === 'english' ? 'YouTube' : 'יוטיוב' }
                         </a>
                     </h3>
                 </div>
-                {/* <div
-                    className='navbar_item'> */}
-                    {/* <h3
-                        className={ appState.page === 'mission' ? 'selected' : '' }> */}
-                        {/* <a href="https://www.youtube.com/channel/UC8hV-7QTBwNbOuV2i4dxIHg" target="_blank"> */}
-                            {/* <i class="fab fa-youtube"></i>
-                            { appState.language === 'english' ? 'YouTube' : 'יוטיוב' } */}
-                        {/* </a> */}
-                    {/* </h3> */}
-                {/* </div> */}
             </div>
 
             <div className='copyright_container'>
