@@ -106,6 +106,7 @@ const TenPercentButton = () => {
                 onMouseEnter={ mouseEnter }
                 onMouseLeave={ mouseLeave }
                 onClick={ mouseClick }
+                alt='Ten_Percent_Button'
                 ></img>
         </div>
     )

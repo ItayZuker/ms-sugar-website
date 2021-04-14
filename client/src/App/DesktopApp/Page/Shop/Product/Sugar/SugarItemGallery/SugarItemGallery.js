@@ -111,7 +111,9 @@ const SugarItemGallery = () => {
                     onClick={ () => changeSelection( 'left' ) } >
                     <i className="fas fa-chevron-left"></i>
                 </div>
-                <img src={ selectedSugar.images[0].src } />
+                <img 
+                    src={ selectedSugar.images[0].src }
+                    alt='Sugar_Picture' />
                 <div 
                     className={ 'right_button ' + ( allSugars.legth > 1 ? '' : 'hide ') }
                     onClick={ () => changeSelection( 'right' ) } >

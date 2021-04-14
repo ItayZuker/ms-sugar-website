@@ -10,7 +10,7 @@ const DndFile = ( props ) => {
     const [ errMessage, setErrMessage ] = useState()
     const [ fileName, setFileName ] = useState('Choose file..')
     const [ info, setInfo ] = useState()
-    let { acceptedFiles, getRootProps, getInputProps} = useDropzone( { maxFiles:1 } )
+    let { acceptedFiles, getRootProps, getInputProps } = useDropzone( { maxFiles:1 } )
 
     const removeFile = () => {
         setFile()
@@ -56,7 +56,7 @@ const DndFile = ( props ) => {
     }
 
     useEffect(() => {
-        const test = async () => {
+        const updateFile = async () => {
             if ( acceptedFiles.length > 0 ) {
                 await validateFileSize( acceptedFiles[0] )
                 setFileName( acceptedFiles[0].path )
@@ -67,7 +67,7 @@ const DndFile = ( props ) => {
                 setFile( false )
             }
         }
-        test()
+        updateFile()
     }, [ acceptedFiles ])
 
 if ( file ) return (

@@ -17,7 +17,9 @@ const PreviewDeck = ( props ) => {
             <div 
                 className={ 'inner_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }
                 onClick={ selectItem }>
-                <img src={ props.extra.images[0].src } />
+                <img 
+                    src={ props.extra.images[0].src }
+                    alt='Extra_Image' />
                 { props.extra.availableForSale ? <h3 className='select'>{ appState.language === 'english' ? 'Select' : 'כניסה' }</h3> : <h3 className='out_of_stock'>{ appState.language === 'english' ? 'Out of stock' : 'נגמר המלאי' }</h3>}
             </div>
         </div>

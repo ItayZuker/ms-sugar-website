@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import { ShopContext } from '../../../../../Context/shopContext'
 import './confirmation_coupon.scss'
@@ -23,7 +23,6 @@ const ConfirmationCoupon = () => {
             <h3><i className="far fa-smile"></i></h3>
             <h3>{ appState.language === 'english' ? 'Coupon Sent' : 'הקופון נשלח' }</h3>
             <h4 onClick={ () => selectPage( 'shop' ) }>
-                {/* { appState.language === 'english' ? null : <i className="fas fa-chevron-left hebrew"></i> } */}
                 { appState.language === 'english' ? 'Go to Shop ' : ' כניסה לחנות' }
                 { appState.language === 'english' ? <i className="fas fa-chevron-right"></i> : <i className="fas fa-chevron-left hebrew"></i> } 
             </h4>

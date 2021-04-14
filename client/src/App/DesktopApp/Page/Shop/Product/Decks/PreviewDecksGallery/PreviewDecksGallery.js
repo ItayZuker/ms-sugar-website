@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect} from 'react'
-import { useParams } from 'react-router-dom'
 import { ShopContext } from '../../../../../../../Context/shopContext'
 import PreviewDeck from './PreviewDeck/PreviewDeck'
 import LoadingShop from '../../../ShopComponents/LoadingShop/LoadingShop'
@@ -9,8 +8,6 @@ const PreviewDecksGallery = ( props ) => {
 
     const { collections, appState } = useContext( ShopContext )
     const [ allDecks, setAllDecks ] = useState()
-
-    const { id } = useParams()
 
     useEffect( async() => {
         if ( collections ) {

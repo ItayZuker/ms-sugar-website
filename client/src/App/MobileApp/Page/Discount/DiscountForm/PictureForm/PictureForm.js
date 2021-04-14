@@ -212,22 +212,30 @@ const PictureForm = () => {
             console.log(err)
             switch ( err ) {
                 case 'bad_file':
-                    if ( appState.language !== 'english' ) err = 'בעיה בקובץ'
+                    if ( appState.language !== 'english' ) {
+                        err = 'בעיה בקובץ'
+                    }
                     trigerNotification( err, 'file' )
                     break
                 case 'Please add file':
-                    if ( appState.language !== 'english' ) err = 'לא בחרת קובץ'
+                    if ( appState.language !== 'english' ) {
+                        err = 'לא בחרת קובץ'
+                    }
                     trigerNotification( err, 'file' )
                     break
                 case 'about':
                     trigerNotification( err, 'about' )
                     break
                 case 'Please enter name':
-                    if ( appState.language !== 'english' ) err = 'לא כתבת שם'
+                    if ( appState.language !== 'english' ) {
+                        err = 'לא כתבת שם'
+                    }
                     trigerNotification( err, 'name' )
                     break
                 case 'Please enter email':
-                    if ( appState.language !== 'english' ) err = 'לא כתבת דוא"ל'
+                    if ( appState.language !== 'english' ) {
+                        err = 'לא כתבת דוא"ל'
+                    }
                     trigerNotification( err, 'email' )
                     break
                 case 'terms':

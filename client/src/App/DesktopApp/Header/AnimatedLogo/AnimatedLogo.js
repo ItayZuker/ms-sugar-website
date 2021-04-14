@@ -47,6 +47,7 @@ const AnimatedLogo = () => {
                 onMouseEnter={ mouseEnter }
                 onMouseLeave={ mouseLeave }
                 onClick={ () => mouseClick( 'mission' ) }
+                alt='Ms. Sugar Logo'
                 ></img>
         </div>
     )

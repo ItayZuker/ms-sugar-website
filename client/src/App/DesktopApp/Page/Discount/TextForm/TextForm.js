@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from 'react'
-import axios from 'axios'
 import emailjs from 'emailjs-com';
 import LoadingCoupon from '../LoadingCoupon/LoadingCoupon'
 import ConfirmationCoupon from '../ConfirmationCoupon/ConfirmationCoupon'

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { ShopContext } from '../../../../../Context/shopContext'
 import './shop_menu.scss'
@@ -6,7 +6,6 @@ import './shop_menu.scss'
 const ShopMenu = () => {
 
     const [ products ] = useState(['decks', 'grips', 'wheels', 'bearings', 'trucks', 'extra', 'sugar'])
-    const [ pageTitle, setPageTitle ] = useState()
     const { appState, setAppState } = useContext( ShopContext )
     const history = useHistory()
 
@@ -59,6 +58,7 @@ const ShopMenu = () => {
             case 'trucks': return 'צירים'
             case 'extra': return 'אקסטרה'
             case 'sugar': return 'Sugar'
+            default: return product
         }
     }
 

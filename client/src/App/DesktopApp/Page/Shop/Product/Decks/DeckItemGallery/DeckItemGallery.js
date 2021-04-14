@@ -110,7 +110,9 @@ const DeckItemGallery = () => {
                     onClick={ () => changeSelection( 'left' ) } >
                     <i className="fas fa-chevron-left"></i>
                 </div>
-                <img src={ selectedDeck.images[0].src } />
+                <img 
+                    src={ selectedDeck.images[0].src }
+                    alt='Deck_Picture' />
                 <div 
                     className='right_button'
                     onClick={ () => changeSelection( 'right' ) } >

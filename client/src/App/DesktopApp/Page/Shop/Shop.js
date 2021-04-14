@@ -8,7 +8,7 @@ import './shop.scss'
 const Shop = () => {
 
     const [ loadComponent, setLoadComponent ] = useState( false )
-    const { fetchAllCollections, collections, setAppState, appState } = useContext( ShopContext )
+    const { fetchAllCollections, setAppState, appState } = useContext( ShopContext )
 
     useEffect(() => {
         const html = document.querySelector('html')

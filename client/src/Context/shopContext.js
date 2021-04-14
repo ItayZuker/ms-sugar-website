@@ -70,10 +70,6 @@ const ShopProvider = (props) => {
         } 
     }
 
-    const getCurrencyData = ( ) => {
-
-    }
-
     const changeCurrency = ( newCurrency ) => {
         fetch(`/shopify/change-checkout-currency/${newCurrency}`, {
         })

@@ -24,7 +24,9 @@ const Mission = () => {
     return (
         <div className={ 'desktop_mission_container ' + ( loadComponent ? 'load_component' : '' ) }>
             <div className='skeleton_container'>
-                <img src={ skeleton }/>
+                <img 
+                    src={ skeleton }
+                    alt='Skeleton'/>
                 <div 
                     className='button_container'
                     onClick={ () => goToAnchor('mission_section') }

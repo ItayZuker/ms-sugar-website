@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import { ShopContext } from '../../../../../../../../../Context/shopContext'
 import Option from './Option/Option'
 import './options.scss'

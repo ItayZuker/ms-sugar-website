@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect} from 'react'
-import { useParams, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { ShopContext } from '../../../../../../../Context/shopContext'
 import PreviewExtra from './PreviewExtra/PreviewExtra'
 import LoadingShop from '../../../ShopComponents/LoadingShop/LoadingShop'
@@ -10,7 +10,6 @@ const PreviewExtraGallery = () => {
     const { collections, appState } = useContext( ShopContext )
     const [ allExtra, setAllExtra ] = useState()
     const history = useHistory()
-    const { id } = useParams()
 
     useEffect( async() => {
         if ( collections ) {

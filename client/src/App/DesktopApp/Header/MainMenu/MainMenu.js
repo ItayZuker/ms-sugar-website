@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import CurrencyDropdown from './CurrencyDropdown/CurrencyDropdown'
 import { useHistory } from 'react-router-dom'
 import { ShopContext } from '../../../../Context/shopContext'
@@ -7,7 +7,7 @@ import './main_menu.scss'
 const MainMenu = () => {
 
     const [ openDropdownCurrency, setOpenDropdownCurrency] = useState( false )
-    const { appState, setAppState, itemsInCart, currencyData, clientInfo } = useContext( ShopContext )
+    const { appState, setAppState, itemsInCart, currencyData } = useContext( ShopContext )
     const history = useHistory()
 
     const selectPage = (page) => { 

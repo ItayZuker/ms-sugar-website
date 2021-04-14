@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { ShopContext } from '../../../../../Context/shopContext'
 import './language_button.scss'
 
 const LanguageButton = () => {
 
-    const [ hideButton, setHideButton ] = useState( false )
+    const [ hideButton ] = useState( false )
     const { appState, setAppState } = useContext( ShopContext )
 
     const selectLanguage = ( language ) => {

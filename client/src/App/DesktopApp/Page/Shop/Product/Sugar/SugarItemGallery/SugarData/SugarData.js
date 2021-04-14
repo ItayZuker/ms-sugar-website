@@ -45,6 +45,7 @@ const SugarData = ( props ) => {
     const translate = ( data ) => {
         switch ( data.title ) {
             case 'sugar #1': return sugarOne
+            default: return
         }
     }
 

@@ -22,48 +22,53 @@ const Footer = () => {
                     className='navbar_item'
                     onClick={() => selectPage('mission')}>
                     <h3>
-                        <a className={ appState.page === 'mission' ? 'selected' : '' }>
+                        <button
+                            className={ appState.page === 'mission' ? 'selected' : '' }>
                             { appState.language === 'english' ? 'Mission' : 'משימה' }
-                        </a>
+                        </button>
                     </h3>
                 </div>
                 <div
                     className='navbar_item'
                     onClick={() => selectPage('shop')}>
                     <h3>
-                        <a className={ appState.page === 'shop' ? 'selected' : '' }>
+                        <button
+                            className={ appState.page === 'shop' ? 'selected' : '' }>
                             <i className="fas fa-store"></i>
                             { appState.language === 'english' ? 'Shop' : 'חנות' }
-                        </a>
+                        </button>
                     </h3>
                 </div>
                 <div
                     className='navbar_item'
                     onClick={() => selectPage('discount')}>
                     <h3>
-                        <a className={ appState.page === 'discount' ? 'selected' : '' }>{
+                        <button
+                            className={ appState.page === 'discount' ? 'selected' : '' }>{
                             appState.language === 'english' ? 'Discount' : 'הנחות' }
-                        </a>
+                        </button>
                     </h3>
                 </div>
                 <div
                     className='navbar_item'
                     onClick={() => selectPage('cart')}>
                     <h3>
-                        <a className={ appState.page === 'cart' ? 'selected' : '' }>
+                        <button  
+                            className={ appState.page === 'cart' ? 'selected' : '' }>
                             <i className="fas fa-shopping-cart"></i>
                             ({itemsInCart})
                             { appState.language === 'english' ? ' Cart' : ' עגלה' }
-                        </a> 
+                        </button> 
                     </h3>
                 </div>
                 <div
                     className='navbar_item'
                     onClick={() => selectPage('contact')}>
                     <h3>
-                        <a className={ appState.page === 'contact' ? 'selected' : '' }>
+                        <button
+                            className={ appState.page === 'contact' ? 'selected' : '' }>
                             { appState.language === 'english' ? 'Contact' : 'צור קשר' }
-                        </a>
+                        </button>
                     </h3>
                 </div>
             </div>
@@ -71,7 +76,8 @@ const Footer = () => {
                 <div
                     className='navbar_item'>
                     <h3>
-                        <a href="https://twitter.com/Sugar_Skateshop" target="_blank">
+                        <a  rel='noreferrer'
+                            href="https://twitter.com/Sugar_Skateshop" target="_blank">
                             <i className="fab fa-twitter"></i>
                             { appState.language === 'english' ? 'Twitter' : 'טוויטר' }
                         </a>
@@ -80,7 +86,8 @@ const Footer = () => {
                 <div
                     className='navbar_item'>
                     <h3>
-                        <a href="https://www.instagram.com/ms_sugar_skateshop/" target="_blank">
+                        <a  rel='noreferrer'
+                            href="https://www.instagram.com/ms_sugar_skateshop/" target="_blank">
                             <i className="fab fa-instagram"></i>
                             { appState.language === 'english' ? 'Instagram' : 'אינסטגרם' }
                         </a>
@@ -89,7 +96,8 @@ const Footer = () => {
                 <div
                     className='navbar_item'>
                     <h3>
-                        <a href="https://www.facebook.com/mssugarskateshop" target="_blank">
+                        <a  rel='noreferrer'
+                            href="https://www.facebook.com/mssugarskateshop" target="_blank">
                             <i className="fab fa-facebook-square"></i>
                            { appState.language === 'english' ? 'Facebook' : 'פייסבוק' }
                         </a>
@@ -98,7 +106,8 @@ const Footer = () => {
                 <div
                     className='navbar_item'>
                     <h3>
-                        <a href="https://www.youtube.com/channel/UC8hV-7QTBwNbOuV2i4dxIHg" target="_blank">
+                        <a  rel='noreferrer'
+                            href="https://www.youtube.com/channel/UC8hV-7QTBwNbOuV2i4dxIHg" target="_blank">
                             <i className="fab fa-youtube"></i>
                             { appState.language === 'english' ? 'YouTube' : 'יוטיוב' }
                         </a>

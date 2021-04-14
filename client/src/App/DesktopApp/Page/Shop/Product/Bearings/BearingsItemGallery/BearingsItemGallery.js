@@ -111,7 +111,9 @@ const BearingsItemGallery = () => {
                     onClick={ () => changeSelection( 'left' ) } >
                     <i className="fas fa-chevron-left"></i>
                 </div>
-                <img src={ variant ? variant[0].image.src : selectedBearings.images[0].src } />
+                <img 
+                    src={ variant ? variant[0].image.src : selectedBearings.images[0].src } 
+                    alt='Bearings_Image'/>
                 <div 
                     className={ 'right_button ' + ( allBearings.legth > 1 ? '' : 'hide ') }
                     onClick={ () => changeSelection( 'right' ) } >

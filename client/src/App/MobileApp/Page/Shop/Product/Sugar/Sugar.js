@@ -73,18 +73,6 @@ const Sugar = () => {
         })
     }
 
-    const getCurrentSugar = ( allSugars ) => {
-        return new Promise( resolve => {
-            const currentSugar = allSugars.find( ( sugar, index ) => {
-                // if ( sugar.id === id ) {
-                    setCurrentIndex( index )
-                    return sugar
-                // }
-            })
-            resolve( currentSugar )
-        })
-    }
-
     const getProduct = ( selectedSugarAPI ) => {
         return new Promise( resolve => {
             const data = updateItem( selectedSugarAPI )
@@ -157,7 +145,9 @@ const Sugar = () => {
                         className={ "fas fa-chevron-left " + ( allSugars.length > 1 ? '' : 'hide ') }
                         onClick={ () => changeSelection( 'left' ) }></i>
                     <div className='img_container'>
-                        <img src={ product.images[0].src }/>
+                        <img 
+                            src={ product.images[0].src }
+                            alt='Sugar_Picture' />
                     </div>
                     <i 
                         className={ "fas fa-chevron-right " + ( allSugars.length > 1 ? '' : 'hide ' ) }

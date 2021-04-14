@@ -111,7 +111,9 @@ const TrucksItemGallery = () => {
                     onClick={ () => changeSelection( 'left' ) } >
                     <i className="fas fa-chevron-left"></i>
                 </div>
-                <img src={ variant ? variant[0].image.src : selectedTrucks.images[0].src } />
+                <img 
+                    src={ variant ? variant[0].image.src : selectedTrucks.images[0].src }
+                    alt='Trucks_Picture' />
                 <div 
                     className={ 'right_button ' + ( allTrucks.legth > 1 ? '' : 'hide ') }
                     onClick={ () => changeSelection( 'right' ) } >
