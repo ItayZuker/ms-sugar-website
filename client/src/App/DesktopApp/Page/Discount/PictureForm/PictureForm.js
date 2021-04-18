@@ -278,7 +278,7 @@ const PictureForm = () => {
                     onClick={ checkAnonimus }>
                     <div className='checkbox'>{ anonymous ? <i className="fas fa-check"></i> : '' }</div>
                     <p>
-                        { appState.language === 'english' ? 'I would like to be anonimus.' : 'אני רוצה להשאר אנונימי' }</p>
+                        { appState.language === 'english' ? 'I would like to be anonymous.' : 'אני רוצה להשאר אנונימי' }</p>
                 </div>
                 <div 
                     className={ 'checkbox_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }
