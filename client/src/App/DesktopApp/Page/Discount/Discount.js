@@ -19,27 +19,28 @@ const Discount = () => {
     const setLenguage = ( language ) => {
         if ( language === 'english' ) {
             setPictureText( `
-                Send us a visual you made, and you will get a 10% discount coupon. 
-                It can be a sketch, a picture, a drawing, a painting or any other visual you made. 
+                Send a visual you made, to get a 10% Discount.
+                It can be a sketch, a picture, a drawing, or any other visual. 
                 As long as you'r the artist, you can send us anything.
             ` )
             setTextText( `
                 Send us a poem, a short story or a thought you've written down, 
-                and you will get a 10% discount coupon.
+                to get a 10% coupon.
                 Give your mind a place to be. 
                 Anything you write is great.
             ` )
         } else {
             setPictureText( `
-                שילחו לנו תמונה של יצירת אומנות שעשיתם,
-                ותקבלו קופון הנחה של 10% לשימוש חד-פעמי.
-                זה יכול להיות סתם שירבוט מעניין במחברת, תמונה שצלמתם, רישום, ציור או כל דבר אחר.
-                כל עוד אתם היוצרים, אפשר לשלוח כל דבר.
+                שילחו תמונה של יצירה מקורית,
+                ובתמורה קבלו קופון של 10% הנחה.
+                זה יכול להיות קירבוט מעניין במחברת, תמונה, רישום או כל דבר אחר.
+                כל עוד זו היצירה שלך, אפשר לשלוח כל דבר.
             ` )
             setTextText( `
-                שילחו לנו שיר שכתבתם, סיפור קצר או מחשבה מעניינת,
-                ותקבלו קופון הנחה של 10% לשימוש חד-פעמי.
-                תנו במה למילים שכתבתם. אתם יכולים לשלוח כל קטע שכתבתם ואתם רוצים לשתף. 
+                כתבתם שיר, סיפור קצר או מחשבה מעניינת?
+                שתפו אותנו וקבלו קופון של 10% הנחה.
+                תנו במה למילים שכתבתם.
+                כל עוד זו היצירה שלך, אפשר לשלוח כל דבר.
             ` )
         }
     }
