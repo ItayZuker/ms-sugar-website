@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import ScrollableAnchor from 'react-scrollable-anchor'
-
 import { ShopContext } from '../../../../../Context/shopContext'
 import './about_mission.scss'
 
@@ -39,7 +38,7 @@ const AboutMission = () => {
     ` )
     const [ disscountHEB ] = useState( `
         סקייטבורד הוא צורה של אומנות,
-        וסקייטרים הם אנשים מאוד מוכשרים.
+        וסקייטרים הם אנשים מוכשרים.
         אנחנו מאמינים שיצירה היא חלק מהאישיות של בן אדם,
         ולכן אנחנו מזמינים אתכם להשתמש בכישרון,
         ולשתף אותנו ואת העולם ביצירה שלכם.
@@ -57,9 +56,9 @@ const AboutMission = () => {
     ` )
     const [ sugarHEB ] = useState( `
         מותג הסקייטבורד 'מיס שוגר' נולד בתוך הספר 'שוגר'.
-        איתי צוקר הוא הכותב של הספר וגם היוצר של החברה,
-        והספר מציג אוסף של שירים ואיורים שהוא כתב.
-        הספר זמין למכירה באתר.
+        איתי צוקר הוא הכותב של הספר וגם היוצר של החברה.
+        הספר מציג אוסף של שירים ואיורים שהוא כתב,
+        והוא זמין למכירה באתר.
         כל מהדורות הספר 'שוגר' שיצאו בעתיד,
         יציגו אוסף אומנות של סקייטרים שנקבל כאן באתר.
     ` )

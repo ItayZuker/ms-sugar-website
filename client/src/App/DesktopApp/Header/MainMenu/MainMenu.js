@@ -39,7 +39,7 @@ const MainMenu = () => {
                 >
                 <h4
                     className={ appState.page === 'mission' ? 'selected' : '' }
-                    >{ appState.language === 'english' ? 'Mission' : 'משימה' }</h4>
+                    >{ appState.language === 'english' ? 'Mission' : 'אודות' }</h4>
             </div>
             <div 
                 className='nav_item'

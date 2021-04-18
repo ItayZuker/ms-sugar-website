@@ -25,7 +25,7 @@ const MobileMainMenu = () => {
                 className='page_item'
                 onClick={() => selectPage('mission')}>
                 <h3 className={ ( appState.page === 'mission' ? 'selected ' : '' ) + ( appState.language === 'english' ? '' : 'hebrew' ) }>
-                    { appState.language === 'english' ? 'Mission' : 'משימה' }
+                    { appState.language === 'english' ? 'Mission' : 'אודות' }
                 </h3>
             </div>
             <div 

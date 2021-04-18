@@ -13,53 +13,57 @@ const AboutMission = () => {
     const [ missionENG ] = useState( `
         Ms. Sugar thinks that skaters are the most creative people on the planet,
         and our mission is to celebrate this talent.
-        To do that, we publish skaters art on social platforms,
-        and we also publish a selected skaters art collection on our Sugar book.
-        Share your art and celebrate your talent, we promise that we treat it with respect.
-        Come up on the stage and join the Ms. Sugar Mission. This is why we're here.
+        We publish skaters art on our social platforms, 
+        and we try to be inspiring as we can be.
+        Share your art and celebrate your talent, 
+        we promise that we treat it with respect.
+        This is why we're here.
     ` )
     const [ missionHEB ] = useState( `
         סקייטרים הם האנשים המוכשרים ביותר על כדור הארץ,
         והמשימה שלנו היא לתת במה לכישרון.
-        חלק מהיצירות אנחנו מפרסמים בעמודי הרשת החברתית שלנו ובנוסף,
-        אנחנו מוציאים לאור את הספר "שוגר"
-        שכולל בתוכו אוסף יצירות נבחרות של סקייטרים שאנחנו מקבלים כאן אתר.
-        אנחנו מבטיחים להתייחס ליצירות בכבוד.
-        שתפו אותנו ועלו על הבמה, זו המשימה שבגללה אנחנו כאן.
+        אנחנו מפרסמים אומנות של סקייטרים בעמודי הרשת שלנו,
+        ותמיד ננסה להיות כמה שיותר מעוררי השראה.
+        שתפו אותנו באומנות שלכם, ותעלו אל הבמה.
+        אנחנו מבטיחים להתייחס לכל יצירה בכבוד,
+        זו המשימה שבגללה אנחנו כאן.
     ` )
     const [ disscountENG ] = useState( `
-        Use your creativity to make a work of art, 
-        and get a one time 10% discount for any purchase on the website.
-        You can send us anything you want. 
-        It can be a sketch, a poem or something else,
-        and you can also choose to be anonymous.
-        as long as you're the artist, you can send us anything.
+        Skateboard is a form of art,
+        and skaters are the most creative people on the planet.
+        We believe that your creation is a little part of who you are,
+        and we encourage you to share that with the world.
+        For every work of art you send us, 
+        you will get a one-time 10% discount on our skateshop.
+        You can choose to be anonymous,
+        and as long as you're the artist, 
+        you can send us anything.
     ` )
     const [ disscountHEB ] = useState( `
-        אנחנו מזמינים אתכם להשתמש בכישרון, ולשתף אותנו ביצירות אומנות שהכנתם.
-        בתמורה, תקבלו למייל קופון של 10% הנחה על כל המוצרים באתר.
-        אפשר לשלוח כל דבר.
-        זה יכול להיות שיר שכתבתם, שרבוט מעניין במחברת, תמונה, ציור או כל דבר אחר.
-        למי שמעוניין, אפשר לבחור להישאר אנונימי.
-        כל עוד אתם היוצרים של היצירה ששלכתם, אפשר לשלוח כל דבר.
-    
+        סקייטבורד הוא צורה של אומנות,
+        וסקייטרים הם אנשים מוכשרים.
+        אנחנו מאמינים שיצירה היא חלק מהאישיות של בן אדם,
+        ולכן אנחנו מזמינים אתכם להשתמש בכישרון,
+        ולשתף אותנו ואת העולם ביצירה שלכם.
+        בתמורה, תקבלו 10% הנחה על כל המוצרים בחנות של האתר.
+        למי שמעוניין, אפשר לבחור להשאר אנונימי,
+        וכל עוד אתם אומנים של היצירה, אפשר לשלוח כל דבר.
     ` )
     const [ sugarENG ] = useState( `
-        Sugar is a book with a selected skaters art collection, 
-        That we publish when we feel it's right.
-        For now, because we're young, there's only one edition with the art of Itay Zuker.
-        Itay is the creator of the Ms. Sugar company.
-        If you're interested in skaters art, the book is on for sale.
-        In the future, we will have a lot more books with skaters art collections from all around the world.
+        The Sugar book is where the Ms. Sugar company was born,
+        and the writer of the book is the creator of the company, Itay Zuker.
+        The book is a collection of his poems and drawing,
+        and you can buy it on the website skateshop.
+        All Future editions of the Sugar book,
+        will be collections of selected skaters art we get here on the website. 
     ` )
     const [ sugarHEB ] = useState( `
-        "שוגר" הוא ספר אומנות של סקייטרים.
-        המטרה היא להוציא לאור ספר "שוגר" חדש, בכל פעם שאנחנו אוספים מספיק יצירות אומנות של סקייטרים.
-        בינתיים, בגלל שאנחנו חדשים בעולם, יש רק מהדורה אחת עם האומנות של איתי צוקר.
-        איתי הוא היוצר של מותג הסקייטבורד "מיס שוגר".
-        אם אתם מתעניינים באומנות של סקייטרים או אומנות בכלל, הספר מוצע למכירה באתר.
-        בעתיד יהיו עוד עותקים רבים של "שוגר" עם אוסף אומנות של סקייטרים מכל העולם. 
-
+        מותג הסקייטבורד 'מיס שוגר' נולד בתוך הספר 'שוגר'.
+        איתי צוקר הוא הכותב של הספר וגם היוצר של החברה.
+        הספר מציג אוסף של שירים ואיורים שהוא כתב,
+        והוא זמין למכירה באתר.
+        כל מהדורות הספר 'שוגר' שיצאו בעתיד,
+        יציגו אוסף אומנות של סקייטרים שנקבל כאן באתר.
     ` )
 
     const goToShop = ( product ) => {
