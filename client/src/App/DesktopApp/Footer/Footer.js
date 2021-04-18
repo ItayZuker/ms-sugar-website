@@ -24,7 +24,7 @@ const Footer = () => {
                     <h3>
                         <button
                             className={ appState.page === 'mission' ? 'selected' : '' }>
-                            { appState.language === 'english' ? 'Mission' : 'משימה' }
+                            { appState.language === 'english' ? 'Mission' : 'אודות' }
                         </button>
                     </h3>
                 </div>
