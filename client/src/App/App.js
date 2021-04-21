@@ -10,7 +10,7 @@ const App = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await   fetch(`https://geolocation-db.com/json/`)
+      const data = await fetch(`https://geolocation-db.com/json/`)
       const geoData = await data.json()
       selectCurrency( geoData )
       selectLanguage( geoData )

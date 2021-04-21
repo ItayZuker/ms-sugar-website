@@ -33,7 +33,6 @@ const Product = () => {
             { product === 'bearings' ? <Bearings /> : null }
             { product === 'grips' ? <Grips /> : null }
             { product === 'extra' ? <Extra /> : null }
-            { product === 'sugar' ? <Sugar /> : null }
         </div>
     )
 }

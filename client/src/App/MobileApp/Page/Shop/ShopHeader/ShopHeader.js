@@ -21,7 +21,7 @@ const ShopHeader = () => {
             case 'bearings': return 'לאגרים'
             case 'trucks': return 'צירים'
             case 'extra': return 'אקסטרה'
-            case 'sugar': return 'Sugar'
+            // case 'sugar': return 'Sugar'
             default: return product
         }
     }

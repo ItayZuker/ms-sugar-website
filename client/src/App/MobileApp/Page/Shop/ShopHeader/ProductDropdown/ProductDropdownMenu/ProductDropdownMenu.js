@@ -8,7 +8,7 @@ const ProductDropdownMenu = ( props ) => {
     const { appState, setAppState } = useContext( ShopContext )
     const history = useHistory()
 
-    const products = ['decks', 'grips', 'wheels', 'bearings', 'trucks', 'extra', 'sugar']
+    const products = ['decks', 'grips', 'wheels', 'bearings', 'trucks', 'extra']
 
     const addIcon = ( product ) => {
         switch ( product ) {

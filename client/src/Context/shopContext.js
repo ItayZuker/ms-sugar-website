@@ -164,7 +164,7 @@ const ShopProvider = (props) => {
         })
         setItemsInCart(quantity)
     }
-
+ 
     const contextValue = {
         fetchAllCollections,
         fetchAllProducts,

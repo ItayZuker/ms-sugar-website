@@ -5,7 +5,7 @@ import './shop_menu.scss'
 
 const ShopMenu = () => {
 
-    const [ products ] = useState(['decks', 'grips', 'wheels', 'bearings', 'trucks', 'extra', 'sugar'])
+    const [ products ] = useState(['decks', 'grips', 'wheels', 'bearings', 'trucks', 'extra'])
     const { appState, setAppState } = useContext( ShopContext )
     const history = useHistory()
 

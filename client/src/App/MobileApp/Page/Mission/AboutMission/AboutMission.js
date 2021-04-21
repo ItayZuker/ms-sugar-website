@@ -117,7 +117,7 @@ const AboutMission = () => {
                     </button>
                 </div>
             </div>
-            <div className='bullet_section'>
+            {/* <div className='bullet_section'>
                 <div className={ 'title_container ' + ( appState.language === 'english' ? '' : 'hebrew ' ) }>
                     <i className="fas fa-skull-crossbones"></i>
                     <h3>{ appState.language === 'english' ? 'Sugar' : 'שוגר' }</h3>
@@ -131,7 +131,7 @@ const AboutMission = () => {
                         { appState.language === 'english' ? <i className="fas fa-caret-right"></i> : <i className="fas fa-caret-left"></i> }
                     </button>
                 </div>
-            </div>
+            </div> */}
         </div>
         </ScrollableAnchor>
     )
