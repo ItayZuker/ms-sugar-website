@@ -12,6 +12,24 @@ const DeckData = ( props ) => {
     const [ stockNotification, setStockNotification ] = useState()
     const { currencyData, addItemToCheckout, getPrice, appState } = useContext( ShopContext )
     const deckInfo_ref = useRef()
+    const [ deckInfoENG ] = useState( () => {
+        return `
+                All the Ms. Sugar decks are manufactured at the highest quality available,
+                and we alway try to give the lowest price we can.
+                We also think that it's important that all decks will be inspiring and beautiful,
+                and we try to make as many sizes as we can for each design.
+            `
+        })
+
+    const [ deckInfoHEB ] = useState( () => {
+        return `
+                כל הקרשים של 'מיס שוגר' מיוצרים באיכות הגבוהה ביותר,
+                ואנחנו מנסים לתת את המחיר הנמוך ביותר שאנחנו יכולים.
+                בנוסף, העיצובים של הקרשים תמיד יהיו יפים ומעוררי השארה,
+                וננסה לתת כמה שיותר מידות לכל עיצוב.
+            `
+        })
+
     const [ deckOne ] = useState( () => {
         return `<p>
                 <span>
@@ -72,8 +90,8 @@ const DeckData = ( props ) => {
             const price = await getPrice( data )
             setPrice( price )
             setProduct( data )
-            deckInfo_ref.current.innerHTML = data.description
-            appState.language === 'english' ? deckInfo_ref.current.innerHTML = data.description :  deckInfo_ref.current.innerHTML = translate( data )
+            // deckInfo_ref.current.innerHTML = data.description
+            // appState.language === 'english' ? deckInfo_ref.current.innerHTML = data.description :  deckInfo_ref.current.innerHTML = translate( data )
             appState.language === 'english' ? setStockNotification( 'Out of stock' ) : setStockNotification( 'נגמר המלאי' )
         }
         fetchData()
@@ -139,8 +157,10 @@ const DeckData = ( props ) => {
             <h4 className={ 'price ' + ( props.productAPI.availableForSale ? 'active' : '' )}>
                 { props.productAPI.availableForSale ? currencyData.currentCurrencySymbole + ' ' + price : stockNotification }
                 </h4>
-            <h3 className='inspiration_title'>{ appState.language === 'english' ? 'Inspiration' : 'השראה' }</h3>
-            <p ref={ deckInfo_ref }></p>
+            <h3 className='inspiration_title'>{ appState.language === 'english' ? 'Info' : 'פרטים' }</h3>
+            <p ref={ deckInfo_ref }>
+                { appState.language === 'english' ? deckInfoENG : deckInfoHEB }
+            </p>
             <div className='bottom_section'>
                 { props.productAPI.availableForSale ? <Options product={ product } setProduct={ setProduct } productAPI={ props.productAPI } /> : null }
                 <button 
