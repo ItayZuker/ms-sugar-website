@@ -16,6 +16,7 @@ $green: rgb(0, 150, 0);
     justify-content: flex-start;
     > h3 {
         &.title {
+            height: 5vh;
             color: $medium_gray;
             font-size: 7vw;
             font-weight: 300;
@@ -32,8 +33,8 @@ $green: rgb(0, 150, 0);
         color: $red;
         font-size: 5vw;
         font-weight: 400;
-        margin-top: 1vh;
         margin-left: auto;
+        height: 4vh;
         &.active {
             color: $medium_gray;
         }
