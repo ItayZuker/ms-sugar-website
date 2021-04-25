@@ -34,6 +34,8 @@ const CheckoutItem = ( props ) => {
             case 'concave': return 'זווית'
             case 'material': return 'חומר'
             case 'grip': return 'אחיזה'
+            case 'color': return 'צבע'
+            case 'density': return 'צפיפות'
             case 'deck #5': return 'קרש #5'
             case 'author': return 'כתיבה'
             default: return optionName
@@ -46,6 +48,8 @@ const CheckoutItem = ( props ) => {
             case 'medium': return 'בינוני'
             case 'small': return 'שטוח'
             case 'pro': return 'חזק'
+            case 'white': return 'לבן'
+            case 'black': return 'שחור'
             case 'regular': return 'רגיל'
             case 'maple wood': return 'עץ מייפל'
             default: return value

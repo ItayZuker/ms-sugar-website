@@ -228,7 +228,7 @@ export const useGetItem = () => {
         }
     }
 
-    const getWheelItem = async( productAPI, size, color, hardness ) => {
+    const getWheelItem = async( productAPI, size, color, density ) => {
         const allVariantsArray = await getVariantsArray( productAPI )
         if ( allVariantsArray.length > 0 ) {
             const sizeOptions = await getSizeOptions( productAPI, allVariantsArray ) 
@@ -236,7 +236,7 @@ export const useGetItem = () => {
             const colorOptionsForSize = await getColorOptionsForSize( productAPI, filterdSizeVariants )
             const filterdColorVariants = await getFilterdColorVariants( filterdSizeVariants, color || colorOptionsForSize[0] )
             const hardnessOptionsForColor = await getHardnessOptionsForColor( productAPI, filterdColorVariants )
-            const filterdHardnessVariants = await getFilterdMaterialVariants( filterdColorVariants, hardness || hardnessOptionsForColor[0] )
+            const filterdHardnessVariants = await getFilterdMaterialVariants( filterdColorVariants, density || hardnessOptionsForColor[0] )
             return { 
                 title: productAPI.title,
                 description: productAPI.descriptionHtml,
@@ -249,7 +249,7 @@ export const useGetItem = () => {
                     name: 'color', 
                     values: colorOptionsForSize 
                 }, { 
-                    name: 'hardness', 
+                    name: 'density', 
                     values: hardnessOptionsForColor
                 }],
             }
@@ -374,10 +374,10 @@ export const useGetItem = () => {
 
     const getHardnessOptionsForColor = ( product, variantsArray ) => {
         return new Promise( resolve => {
-            const allHardnessOptionsItem = product.options.filter( option => option.name === 'hardness' )
+            const allHardnessOptionsItem = product.options.filter( option => option.name === 'density' )
             const allHardnessArray = allHardnessOptionsItem[0].values.map( value => value.value )
-            const filterdHardnessArray = allHardnessArray.filter( Hardness => {
-                const variantsArrayWithHardness = variantsArray.filter( variant => variant.title.indexOf( Hardness ) > -1 )
+            const filterdHardnessArray = allHardnessArray.filter( density => {
+                const variantsArrayWithHardness = variantsArray.filter( variant => variant.title.indexOf( density ) > -1 )
                 return variantsArrayWithHardness.length > 0
             })
             const sortedFilterdHardnessArray = sortHardnessArray( filterdHardnessArray )

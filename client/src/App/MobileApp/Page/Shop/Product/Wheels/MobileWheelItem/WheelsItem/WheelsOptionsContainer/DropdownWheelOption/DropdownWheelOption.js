@@ -23,7 +23,7 @@ const DropdownWheelOption = ( props ) => {
                 const updatedColorProduct = await updateItem( props.productAPI, size, value )
                 props.setProduct( updatedColorProduct )
                 break
-            case 'hardness':
+            case 'density':
                 const updatedHaednessProduct = await updateItem( props.productAPI, size, color, value )
                 props.setProduct( updatedHaednessProduct )
                 break

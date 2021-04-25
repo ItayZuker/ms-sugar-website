@@ -5,8 +5,8 @@ import './option.scss'
 
 const Option = ( props ) => {
 
+    const { appState, setAppState } = useContext( ShopContext )
     const [ selectedVariant, setSelectedVariant ] = useState()
-    const { setAppState } = useContext( ShopContext )
     const { updateItem } = useGetItem()
 
     useEffect(() => {
@@ -28,7 +28,7 @@ const Option = ( props ) => {
         })
     }
 
-    const selectWheelVariant = async( value ) => {
+    const selectDeckVariant = async( value ) => {
         const size = await getSelectedOption( 'size' )
         const color = await getSelectedOption( 'color' )
         setAppState( prevState => {
@@ -38,17 +38,14 @@ const Option = ( props ) => {
             case 'size':
                 const updatedSizeProduct = await updateItem( props.productAPI, value )
                 props.setProduct( updatedSizeProduct )
-                props.setVariant( updatedSizeProduct.variant )
                 break
             case 'color':
                 const updatedColorProduct = await updateItem( props.productAPI, size, value )
                 props.setProduct( updatedColorProduct )
-                props.setVariant( updatedColorProduct.variant )
                 break
             case 'density':
                 const updatedHaednessProduct = await updateItem( props.productAPI, size, color, value )
                 props.setProduct( updatedHaednessProduct )
-                props.setVariant( updatedHaednessProduct.variant )
                 break
             default: break
         }
@@ -67,10 +64,27 @@ const Option = ( props ) => {
         }
     }
 
+    const translateValue = ( value ) => {
+        switch ( value ) {
+            case 'white': return 'לבן'
+            case 'black': return 'שחור'
+            default: return value
+        }
+    }
+
+    const translateOptionName = ( name ) => {
+        switch ( name ) {
+            case 'size': return 'מידה'
+            case 'color': return 'צבע'
+            case 'density': return 'צפיפות'
+            default: return name
+        }
+    }
+
     return (
-        <div className='desktop_option_container'>
-            <h4>{ capitalFirst( props.option.name ) }:</h4>
-            <div className='wheels_option_values_container'>
+        <div className={ 'mobile_option_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
+            <h4>{ appState.language === 'english' ? capitalFirst( props.option.name ) : translateOptionName( props.option.name ) }:</h4>
+            <div className={ 'option_values_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
                 { props.option.values.map( ( value, index ) => {
                     return (
                         <div
@@ -78,8 +92,8 @@ const Option = ( props ) => {
                             className='value_container'>
                             <h4 
                             className={ selectedVariant === value ? 'selected' : '' }
-                            onClick={ () => selectWheelVariant( value ) }> 
-                            { value } </h4>
+                            onClick={ () => selectDeckVariant( value ) }> 
+                            { appState.language === 'english' ? capitalFirst( value ) : translateValue( value ) } </h4>
                             { index === props.option.values.length - 1 ? '' : <span>/</span> }
                         </div>
                     )

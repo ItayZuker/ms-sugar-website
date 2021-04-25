@@ -2,38 +2,26 @@ import React, { useState, useContext, useEffect } from 'react'
 import LoadingShop from '../../ShopComponents/LoadingShop/LoadingShop'
 import { ShopContext } from '../../../../../../Context/shopContext'
 import MobileWheelItem from './MobileWheelItem/MobileWheelItem'
+import WheelItemGallery from './WheelItemGallery/WheelItemGallery'
+import { useParams } from 'react-router-dom'
+import PreviewWheelsGallery from './PreviewWheelsGallery/PreviewWheelsGallery'
 import './wheels.scss'
 
 const Wheels = () => {
 
-    const { collections } = useContext( ShopContext )
-    const [ wheelsAPI, setWheelsAPI ] = useState()
+    const { setAppState } = useContext( ShopContext )
+    const { id } = useParams()
 
-    useEffect( () => {
-        const fetchData = async() => {
-            const collectionArray = await getCollection()
-            setWheelsAPI( collectionArray[0] )
-        }
-        fetchData()
-    }, [])
-
-
-
-    const getCollection = () => {
-        return new Promise( resolve => {
-            const wheelsCollectionItem = collections.filter( collection => {
-                return collection.title === 'wheels'
-            })
-            resolve( wheelsCollectionItem[0].products )
+    useEffect(() => {
+        setAppState( prevState => {
+            return { ...prevState, currentProductType: 'wheels' }
         })
-    }
-
-    if ( !wheelsAPI ) return <LoadingShop />
+    }, [])
 
     return (
         <div
             className='wheels_container'>
-            <MobileWheelItem wheelsAPI={ wheelsAPI }/>
+            { id ? <WheelItemGallery /> : <PreviewWheelsGallery /> }
         </div>
     )
 }

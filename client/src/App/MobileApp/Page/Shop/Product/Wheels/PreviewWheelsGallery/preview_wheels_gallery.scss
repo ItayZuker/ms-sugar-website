@@ -9,14 +9,10 @@ $white: rgb(240, 240, 240);
 $red: rgb(200, 0, 0);
 $green: rgb(0, 150, 0);
 
-.wheels_container {
+.mobile_preview_wheels_gallery_container {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100vw;
-    height: fit-content;
-    min-height: 78vh;
-    background-color: $white;
-    margin-bottom: -8vh;
-    padding-bottom: 10vw;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    // background-color: red;
 }
