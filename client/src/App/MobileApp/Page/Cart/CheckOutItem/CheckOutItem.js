@@ -21,7 +21,8 @@ const CheckoutItem = ( props ) => {
             case 'deck #4': return 'קרש #4'
             case 'deck #5': return 'קרש #5'
             case 'grip #1': return 'גריפ #1'
-            case 'sugar #1': return 'שוגר #1'
+            case 'grip #2': return 'גריפ #2'
+            // case 'sugar #1': return 'שוגר #1'
             case 'stencil': return 'סטנסיל #1'
             default: return title
         }
@@ -32,7 +33,7 @@ const CheckoutItem = ( props ) => {
             case 'size': return 'מידה'
             case 'concave': return 'זווית'
             case 'material': return 'חומר'
-            case 'technology': return 'טכנולוגיה'
+            case 'grip': return 'אחיזה'
             case 'deck #5': return 'קרש #5'
             case 'author': return 'כתיבה'
             default: return optionName
@@ -44,8 +45,8 @@ const CheckoutItem = ( props ) => {
             case 'large': return 'גדול'
             case 'medium': return 'בינוני'
             case 'small': return 'שטוח'
-            case 'pro': return 'טכנולוגיה'
-            case 'standard': return 'רגיל'
+            case 'pro': return 'חזק'
+            case 'regular': return 'רגיל'
             case 'maple wood': return 'עץ מייפל'
             default: return value
         }

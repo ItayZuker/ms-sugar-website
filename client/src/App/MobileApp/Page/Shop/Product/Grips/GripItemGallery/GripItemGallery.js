@@ -1,15 +1,15 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import LoadingShop from '../../../ShopComponents/LoadingShop/LoadingShop'
-import DeckData from './DeckData/DeckData'
-import './mobile_deck_item_gallery.scss'
+import GripData from './GripData/GripData'
 import { ShopContext } from '../../../../../../../Context/shopContext'
+import './mobile_grip_item_gallery.scss'
 
-const DeckItemGallery = () => {
+const GripItemGallery = () => {
 
-    const [ selectedDeck, setSelectedDeck ] = useState()
+    const [ selectedItem, setSelectedItem ] = useState()
     const [ currentIndex, setCurrentIndex ] = useState()
-    const [ allDecks, setAllDecks ] = useState()
+    const [ collection, setCollection ] = useState()
     const { collections, appState } = useContext( ShopContext )
     const history = useHistory()
     const { id } = useParams()
@@ -17,61 +17,49 @@ const DeckItemGallery = () => {
     useEffect(() => {
         if ( collections ) {
             const fetchData = async () => {
-                const decksData = await getCollection()
-                setAllDecks( decksData )
+                const collectionData = await getCollection()
+                setCollection( collectionData )
             }
             fetchData()
         }
     }, [ collections ])
 
     useEffect(() => {
-        if ( allDecks ) {
-            const updateDeck = async () => {
-                const currentDeck = await getCurrentDeck()
-                setSelectedDeck( currentDeck )
+        if ( collection ) {
+            const updateItem = async () => {
+                const currentItem = await getCurrentItem()
+                setSelectedItem( currentItem )
             }
-            updateDeck()
+            updateItem()
         }
-    }, [ id, allDecks ])
+    }, [ id, collection ])
 
-    const getCurrentDeck = ( decksData ) => {
-        if ( decksData ) {
-            return new Promise( resolve => {
-                const currentDeck = decksData.find( ( deck, index ) => {
-                    if ( deck.id === id ) {
-                        setCurrentIndex( index )
-                        return deck
-                    }
-                })
-                resolve( currentDeck )
+    const getCurrentItem = () => {
+        return new Promise( resolve => {
+            const currentItem = collection.find( ( item, index ) => {
+                if ( item.id === id ) {
+                    setCurrentIndex( index )
+                    return item
+                }
             })
-        } else {
-            return new Promise( resolve => {
-                const currentDeck = allDecks.find( ( deck, index ) => {
-                    if ( deck.id === id ) {
-                        setCurrentIndex( index )
-                        return deck
-                    }
-                })
-                resolve( currentDeck )
-            })
-        }
+            resolve( currentItem )
+        })
     }
 
     const getCollection = () => {
         return new Promise( resolve => {
             const decksCollectionItem = collections.filter( collection => {
-                return collection.title === 'decks'
+                return collection.title === 'grips'
             })
             resolve( decksCollectionItem[0].products )
         })
     }
 
     useEffect(() => {
-        if ( allDecks ) {
+        if ( collection ) {
             const changeDeck = async () => {
-                const currentDeck = await allDecks.find( ( deck, index ) => index === currentIndex )
-                history.push(`/shop/decks/${ currentDeck.id }`)
+                const currentDeck = await collection.find( ( deck, index ) => index === currentIndex )
+                history.push(`/shop/grips/${ currentDeck.id }`)
             }
             changeDeck()
         }
@@ -79,24 +67,24 @@ const DeckItemGallery = () => {
 
     const changeSelection = async ( side ) => {
         if ( side === 'right' ) {
-            if ( currentIndex === allDecks.length - 1 ) {
+            if ( currentIndex === collection.length - 1 ) {
                 setCurrentIndex( 0 )
             } else {
                 setCurrentIndex( prevState => prevState += 1 )
             }
         } else {
             if ( currentIndex === 0 ) {
-                setCurrentIndex( allDecks.length - 1 )
+                setCurrentIndex( collection.length - 1 )
             } else {
                 setCurrentIndex( prevState => prevState -= 1 )
             }
         }
     }
 
-    if ( !selectedDeck ) return <LoadingShop />
+    if ( !selectedItem ) return <LoadingShop />
 
     return (
-        <div className={ 'mobile_deck_item_gallery_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
+        <div className={ 'mobile_grip_item_gallery_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
             <div className='deck_picture_gallery_container'>
                 <div 
                     className='left_button'
@@ -104,7 +92,7 @@ const DeckItemGallery = () => {
                     <i className="fas fa-chevron-left"></i>
                 </div>
                 <img 
-                    src={ selectedDeck.images[0].src }
+                    src={ selectedItem.images[0].src }
                     alt='Deck_Picture' />
                 <div 
                     className='right_button'
@@ -112,7 +100,7 @@ const DeckItemGallery = () => {
                     <i className="fas fa-chevron-right"></i>
                 </div>
             </div>
-            <DeckData productAPI={ selectedDeck } />
+            <GripData productAPI={ selectedItem } />
         </div>
     )
 
@@ -120,4 +108,4 @@ const DeckItemGallery = () => {
     
 }
 
-export default DeckItemGallery
+export default GripItemGallery

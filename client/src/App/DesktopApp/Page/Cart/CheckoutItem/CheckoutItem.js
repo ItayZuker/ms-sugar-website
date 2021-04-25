@@ -31,15 +31,15 @@ const CheckoutItem = (props) => {
             case 'size': return 'מידה'
             case 'concave': return 'זווית'
             case 'material': return 'חומר'
-            case 'technology': return 'טכנולוגיה'
+            case 'grip': return 'אחיזה'
         default: return optionName
         }
     }
 
     const translateValue = ( value ) => {
         switch ( value ) {
-            case 'pro': return 'מקצועי'
-            case 'standard': return 'רגיל'
+            case 'pro': return 'חזק'
+            case 'regular': return 'רגיל'
             case 'large': return 'גדול'
             case 'medium': return 'בינוני'
             case 'small': return 'שטוח'

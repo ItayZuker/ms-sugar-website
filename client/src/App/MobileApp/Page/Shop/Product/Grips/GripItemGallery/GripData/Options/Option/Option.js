@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { useGetItem } from '../../../../../../../../../../customHooks/useGetItem'
 import { ShopContext } from '../../../../../../../../../../Context/shopContext'
+import { useGetItem } from '../../../../../../../../../../customHooks/useGetItem'
 import './option.scss'
 
 const Option = ( props ) => {
 
+    const { appState, setAppState } = useContext( ShopContext )
     const [ selectedVariant, setSelectedVariant ] = useState()
-    const { setAppState, appState } = useContext( ShopContext )
     const { updateItem } = useGetItem()
 
     useEffect(() => {
@@ -28,7 +28,7 @@ const Option = ( props ) => {
         })
     }
 
-    const selectGripVariant = async( value ) => {
+    const selectDeckVariant = async( value ) => {
         const size = await getSelectedOption( 'size' )
         setAppState( prevState => {
             return { ...prevState, optionMenu: { open: false, productTitle: '', option: '' }}
@@ -59,14 +59,7 @@ const Option = ( props ) => {
         }
     }
 
-    const translate = ( optionName ) => {
-        switch ( optionName ) {
-            case 'size': return 'גודל'
-            case 'grip': return 'אחיזה'
-        }
-    }
-
-    const translatValue = ( value ) => {
+    const translateValue = ( value ) => {
         switch ( value ) {
             case 'pro': return 'חזק'
             case 'regular': return 'רגיל'
@@ -74,10 +67,18 @@ const Option = ( props ) => {
         }
     }
 
+    const translateOptionName = ( name ) => {
+        switch ( name ) {
+            case 'size': return 'מידה'
+            case 'grip': return 'אחיזה'
+            default: return name
+        }
+    }
+
     return (
-        <div className='desktop_option_container'>
-            <h4>{ appState.language === 'english' ? capitalFirst( props.option.name ) : translate( props.option.name ) }:</h4>
-            <div className={ 'option_values_container ' + ( appState.language === 'english' ? '' : 'hebrew ' ) }>
+        <div className={ 'mobile_option_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
+            <h4>{ appState.language === 'english' ? capitalFirst( props.option.name ) : translateOptionName( props.option.name ) }:</h4>
+            <div className={ 'option_values_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
                 { props.option.values.map( ( value, index ) => {
                     return (
                         <div
@@ -85,8 +86,8 @@ const Option = ( props ) => {
                             className='value_container'>
                             <h4 
                             className={ selectedVariant === value ? 'selected' : '' }
-                            onClick={ () => selectGripVariant( value ) }> 
-                            { appState.language === 'english' ? value : translatValue( value ) } </h4>
+                            onClick={ () => selectDeckVariant( value ) }> 
+                            { appState.language === 'english' ? capitalFirst( value ) : translateValue( value ) } </h4>
                             { index === props.option.values.length - 1 ? '' : <span>/</span> }
                         </div>
                     )

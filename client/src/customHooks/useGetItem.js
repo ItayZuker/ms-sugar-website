@@ -280,7 +280,7 @@ export const useGetItem = () => {
                     name: 'size', 
                     values: sizeOptions 
                 }, { 
-                    name: 'technology', 
+                    name: 'grip', 
                     values: technologyOptionsForSize 
                 }],
             }
@@ -401,7 +401,7 @@ export const useGetItem = () => {
 
     const getTechnologyOptionsForSize = ( product, variantsArray ) => {
         return new Promise( resolve => {
-            const allTechnologyOptionsItem = product.options.filter( option => option.name === 'technology' )
+            const allTechnologyOptionsItem = product.options.filter( option => option.name === 'grip' )
             const allTechnologysArray = allTechnologyOptionsItem[0].values.map( value => value.value )
             const filterdTechnologysArray = allTechnologysArray.filter( technology => {
                 const variantsArrayWithTechnology = variantsArray.filter( variant => variant.title.indexOf( technology ) > -1 )
@@ -612,13 +612,13 @@ export const useGetItem = () => {
         }
     }
 
-    const getFilterdTechnologyVariants = ( variantsArray, technology ) => {
+    const getFilterdTechnologyVariants = ( variantsArray, grip ) => {
         if ( variantsArray.length ) {
             return new Promise( resolve => {
                 const filterdVariantsArray = variantsArray.filter( variant => {
-                    const option = variant.selectedOptions.find( option => option.name === 'technology') 
+                    const option = variant.selectedOptions.find( option => option.name === 'grip') 
                     if ( option ) {
-                        return option.value === technology
+                        return option.value === grip
                     } else {
                         return []
                     }
@@ -627,8 +627,8 @@ export const useGetItem = () => {
             })
         } else {
             return new Promise( resolve => {
-                const option = variantsArray.selectedOptions.find( option => option.name === 'technology')
-                if ( option.value === technology ) {
+                const option = variantsArray.selectedOptions.find( option => option.name === 'grip')
+                if ( option.value === grip ) {
                     resolve( variantsArray )
                 } else {
                     resolve([])
@@ -734,7 +734,7 @@ export const useGetItem = () => {
 
     const sortTechnologyArray = ( array ) => {
         let sorted = []
-        const itemOne = array.find( item => item === 'standard')
+        const itemOne = array.find( item => item === 'regular')
         const itemTwo = array.find( item => item === 'pro')
         if ( itemOne ) sorted.push( itemOne )
         if ( itemTwo ) sorted.push( itemTwo )
