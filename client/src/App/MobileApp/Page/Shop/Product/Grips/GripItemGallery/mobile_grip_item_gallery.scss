@@ -22,6 +22,9 @@ $green: rgb(0, 150, 0);
         > .left_button {
             color: $light_gray;
             transition: color 0.2s;
+            &.hide {
+                display: none;
+            }
             &:active {
                 color: $dark_gray;
             }
@@ -32,6 +35,9 @@ $green: rgb(0, 150, 0);
         > .right_button {
             color: $light_gray;
             transition: color 0.2s;
+            &.hide {
+                display: none;
+            }
             &:active {
                 color: $dark_gray;
             }

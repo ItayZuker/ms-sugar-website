@@ -21,10 +21,10 @@ const PreviewGripsGallery = () => {
 
     const getCollection = () => {
         return new Promise( resolve => {
-            const decksCollectionItem = collections.filter( collection => {
+            const collectionItem = collections.filter( collection => {
                 return collection.title === 'grips'
             })
-            resolve( decksCollectionItem[0].products )
+            resolve( collectionItem[0].products )
         })
     }
 

@@ -48,10 +48,10 @@ const App = () => {
   return (
     <>
       <BrowserView>
-        <DesktopApp />
+        {/* <DesktopApp /> */}
+        <MobileApp />
       </BrowserView>
       <MobileView>
-        <MobileApp />
       </MobileView>
     </>
   )

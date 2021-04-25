@@ -87,7 +87,7 @@ const GripItemGallery = () => {
         <div className={ 'mobile_grip_item_gallery_container ' + ( appState.language === 'english' ? '' : 'hebrew' ) }>
             <div className='deck_picture_gallery_container'>
                 <div 
-                    className='left_button'
+                    className={ 'left_button ' + ( collection.length > 1 ? '' : 'hide ' ) }
                     onClick={ () => changeSelection( 'left' ) } >
                     <i className="fas fa-chevron-left"></i>
                 </div>
@@ -95,7 +95,7 @@ const GripItemGallery = () => {
                     src={ selectedItem.images[0].src }
                     alt='Deck_Picture' />
                 <div 
-                    className='right_button'
+                    className={ 'right_button ' + ( collection.length > 1 ? '' : 'hide ' ) }
                     onClick={ () => changeSelection( 'right' ) } >
                     <i className="fas fa-chevron-right"></i>
                 </div>

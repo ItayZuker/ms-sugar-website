@@ -20,26 +20,6 @@ const Grips = () => {
         })
     }, [])
 
-    // useEffect(() => {
-    //     const fetchData = async() => {
-    //         const collectionArray = await getCollection()
-    //         setGripsCollections( collectionArray )
-    //     }
-    //     fetchData()
-    // }, [])
-
-
-    // const getCollection = () => {
-    //     return new Promise( resolve => {
-    //         const gripsCollectionItem = collections.filter( collection => {
-    //             return collection.title === 'grips'
-    //         })
-    //         resolve( gripsCollectionItem[0].products )
-    //     })
-    // }
-
-    // if ( !gripsCollections ) return <LoadingShop />
-
     return (
         <div
             className='grips_container'>
