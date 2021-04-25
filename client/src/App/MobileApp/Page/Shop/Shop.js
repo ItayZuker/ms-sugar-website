@@ -32,6 +32,7 @@ const Shop = () => {
                 <Switch>
                     <Route path='/shop' exact component={ Product }/>
                     <Route path='/shop/:product' exact component={ Product }/>
+                    <Route path='/shop/:product/:id' exact component={ Product }/>
                 </Switch>
         </div>
     )
